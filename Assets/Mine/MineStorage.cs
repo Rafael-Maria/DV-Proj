@@ -12,6 +12,11 @@ public class MineStorage : MonoBehaviour
     private float amountStone;
     private float amountSilver;
     private float amountGold;
+    private float amountStoneSend;
+    private float amountSilverSend;
+    private float amountGoldSend;
+    private float maxAmountToSend;
+    private float actualAmountToSend;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +29,7 @@ public class MineStorage : MonoBehaviour
         
     }
 
-    void addProduct(int codeOre){
+    public void addProduct(int codeOre){
         if(storageSpaceOcupy >=storageSpaceAvailable){
             return;
         }
@@ -42,6 +47,49 @@ public class MineStorage : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    void Send(){
+        if(amountStoneSend == 0 && amountSilverSend == 0 && amountGoldSend == 0){
+            return;
+        }
+        amountGold -= amountGoldSend;
+        amountSilver -= amountSilverSend;
+        amountStone -= amountStoneSend;
+        //Switch Later
+        amountGoldSend=0;
+        amountSilverSend=0;
+        amountStoneSend=0;
+    }
+
+    void addStoneToSend(){
+        if(amountStoneSend >= amountStone){
+            return;
+        }
+        if(actualAmountToSend >= maxAmountToSend){
+            return;
+        }
+        amountStoneSend++;
+    }
+
+    void addSilverToSend(){
+        if(amountSilverSend >= amountSilver){
+            return;
+        }
+        if(actualAmountToSend >= maxAmountToSend){
+            return;
+        }
+        amountSilverSend++;
+    }
+
+    void addGoldToSend(){
+        if(amountGoldSend >= amountGold){
+            return;
+        }
+        if(actualAmountToSend >= maxAmountToSend){
+            return;
+        }
+        amountGoldSend++;
     }
 
 }
