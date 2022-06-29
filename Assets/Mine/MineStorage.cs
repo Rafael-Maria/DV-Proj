@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MineStorage : MonoBehaviour
 {
-
+    //In add product Add time it takes to send - more material -> more Time
     //calc to Send
     //Plan since we don't know the amount of ores of each type
     private float storageSpaceAvailable; //Storage mine itself
@@ -17,8 +17,11 @@ public class MineStorage : MonoBehaviour
     private float amountGoldSend;
     private float maxAmountToSend;  //Storage transport
     private float actualAmountToSend;
-
+    //Time to send
+    private float timeTakes; //in seconds
+    private bool sending;
      void Awake(){
+        sending = false;
         storageSpaceAvailable = 10;
         storageSpaceOcupy = 0;
         amountStone = 0;
@@ -29,6 +32,7 @@ public class MineStorage : MonoBehaviour
         amountGoldSend = 0;
         maxAmountToSend = 10;
         actualAmountToSend = 0;
+        timeTakes = 0;
         DontDestroyOnLoad(this.gameObject);
     }
 
@@ -41,7 +45,16 @@ public class MineStorage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(timeTakes <= 0 && sending){
+            //Do the delivery
+            timeTakes = 0;
+            amountGoldSend=0;
+            amountSilverSend=0;
+            amountStoneSend=0;
+            sending = false
+        }else{
+            timeTakes -= Time.deltaTime; 
+        }
     }
 
     public void addProduct(int codeOre){
@@ -68,16 +81,16 @@ public class MineStorage : MonoBehaviour
         if(amountStoneSend == 0 && amountSilverSend == 0 && amountGoldSend == 0){
             return;
         }
+        sending = true;
         amountGold -= amountGoldSend;
         amountSilver -= amountSilverSend;
         amountStone -= amountStoneSend;
-        //Switch Later
-        amountGoldSend=0;
-        amountSilverSend=0;
-        amountStoneSend=0;
     }
 
     void addStoneToSend(){
+        if(sending){
+            return
+        }
         if(amountStoneSend >= amountStone){
             return;
         }
@@ -88,6 +101,9 @@ public class MineStorage : MonoBehaviour
     }
 
     void addSilverToSend(){
+        if(sending){
+            return
+        }
         if(amountSilverSend >= amountSilver){
             return;
         }
@@ -98,6 +114,9 @@ public class MineStorage : MonoBehaviour
     }
 
     void addGoldToSend(){
+        if(sending){
+            return
+        }
         if(amountGoldSend >= amountGold){
             return;
         }
