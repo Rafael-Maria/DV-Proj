@@ -5,13 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-
-    public void PlayPractice(){
+    public void NewGame(){
+        //reset
         SceneManager.LoadScene(1);
     }
 
-    public void PlayAdvanced(){
-        SceneManager.LoadScene(2);
+    public void Play(){
+        SceneManager.LoadScene(1);
     }
 
     public void QuitGame(){
