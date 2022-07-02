@@ -203,7 +203,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &178
 Transform:
@@ -217,7 +217,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &181
 Camera:
@@ -396,6 +396,10 @@ PrefabInstance:
       value: DarAgaci
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: b2b2324e0b9b82e428d2271690aefadd, type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: b2b2324e0b9b82e428d2271690aefadd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 45.596626
       objectReference: {fileID: 0}
@@ -437,6 +441,10 @@ PrefabInstance:
       value: Miner
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d48bfed09a3243844ac89fb650a7a16f, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d48bfed09a3243844ac89fb650a7a16f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 44.067146
       objectReference: {fileID: 0}
@@ -476,6 +484,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: d48bfed09a3243844ac89fb650a7a16f, type: 3}
       propertyPath: m_Name
       value: Miner
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d48bfed09a3243844ac89fb650a7a16f, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d48bfed09a3243844ac89fb650a7a16f, type: 3}
       propertyPath: m_LocalScale.x
@@ -527,6 +539,10 @@ PrefabInstance:
       value: Bag
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: fb24517d23c270d4a9e3a5614089f59d, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: fb24517d23c270d4a9e3a5614089f59d, type: 3}
       propertyPath: m_LocalScale.y
       value: 76.529465
       objectReference: {fileID: 0}
@@ -576,6 +592,10 @@ PrefabInstance:
       value: Bag
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: fb24517d23c270d4a9e3a5614089f59d, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: fb24517d23c270d4a9e3a5614089f59d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 43.396454
       objectReference: {fileID: 0}
@@ -615,6 +635,10 @@ PrefabInstance:
     - target: {fileID: 100002, guid: 927e10102c2beb840834f20b5eec2fb2, type: 3}
       propertyPath: m_Name
       value: handableTorch
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 927e10102c2beb840834f20b5eec2fb2, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 927e10102c2beb840834f20b5eec2fb2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -658,6 +682,10 @@ PrefabInstance:
       value: goldCoins
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 0a9321a2950c7b741afe9d4a2903b5b3, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 0a9321a2950c7b741afe9d4a2903b5b3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 40.91723
       objectReference: {fileID: 0}
@@ -697,6 +725,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: ee03f6299bc369f49969b6c87f2df832, type: 3}
       propertyPath: m_Name
       value: Rolled Map
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: ee03f6299bc369f49969b6c87f2df832, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ee03f6299bc369f49969b6c87f2df832, type: 3}
       propertyPath: m_LocalPosition.x
@@ -740,6 +772,10 @@ PrefabInstance:
       value: goldcoin
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1819ae200e3a44440bdf232cfa4992fa, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 1819ae200e3a44440bdf232cfa4992fa, type: 3}
       propertyPath: m_LocalPosition.x
       value: 40.591152
       objectReference: {fileID: 0}
@@ -776,6 +812,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 400000, guid: 3fa3424deb723474e9f87c1327eba203, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 3fa3424deb723474e9f87c1327eba203, type: 3}
       propertyPath: m_LocalPosition.x
       value: 40.76177
@@ -816,6 +856,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 40fd7cdfda7b06f48b83f7f5af135f46, type: 3}
       propertyPath: m_Name
       value: Crate2
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 40fd7cdfda7b06f48b83f7f5af135f46, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 40fd7cdfda7b06f48b83f7f5af135f46, type: 3}
       propertyPath: m_LocalPosition.x
