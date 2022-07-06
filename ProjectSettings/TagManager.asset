@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Target
   layers:
   - Default
   - TransparentFX
@@ -43,4 +44,10 @@ TagManager:
     locked: 0
   - name: Tumbleweed
     uniqueID: 4025127441
+    locked: 0
+  - name: Body
+    uniqueID: 3409355673
+    locked: 0
+  - name: Target
+    uniqueID: 2308875505
     locked: 0

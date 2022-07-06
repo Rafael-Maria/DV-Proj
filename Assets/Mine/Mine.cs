@@ -1,15 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/*
+*Missing change the material of the mine clicker
+*/
 public class Mine : MonoBehaviour
 {
-    MineStorage storage;
+    [SerializeField] MineStorage storage;
     float mineLevel;
     float StoneLuck; 
     float SilverLuck;
     int random;
-    int currentOre;
+    int currentOre; // 1-Stone; 2-Silver; 3 - Gold
+    [SerializeField] Material stone;
+    [SerializeField] Material silver;
+    [SerializeField] Material gold;
+
     void Awake(){
         mineLevel = 0;
         StoneLuck = 100;
