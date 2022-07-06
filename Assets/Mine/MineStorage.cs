@@ -51,7 +51,7 @@ public class MineStorage : MonoBehaviour
             amountGoldSend=0;
             amountSilverSend=0;
             amountStoneSend=0;
-            sending = false
+            sending = false;
         }else{
             timeTakes -= Time.deltaTime; 
         }
@@ -89,7 +89,7 @@ public class MineStorage : MonoBehaviour
 
     void addStoneToSend(){
         if(sending){
-            return
+            return;
         }
         if(amountStoneSend >= amountStone){
             return;
@@ -102,7 +102,7 @@ public class MineStorage : MonoBehaviour
 
     void addSilverToSend(){
         if(sending){
-            return
+            return;
         }
         if(amountSilverSend >= amountSilver){
             return;
@@ -115,7 +115,7 @@ public class MineStorage : MonoBehaviour
 
     void addGoldToSend(){
         if(sending){
-            return
+            return;
         }
         if(amountGoldSend >= amountGold){
             return;
