@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class ShootingMinigame : MonoBehaviour
 {
@@ -47,26 +49,26 @@ public class ShootingMinigame : MonoBehaviour
     }
     void Update()
     {
-        if (!reloading) { 
-            bulletsText.text = "bullets: " + bullets.ToString();
-        }
-
-        if (Input.GetMouseButtonDown(0))
-        {
+        if (playing) {
             if (!reloading)
             {
-                FireBullet();
-            } else
-            {
-                sfxAudioSource.PlayOneShot(noAmmo);
+                bulletsText.text = "bullets: " + bullets.ToString();
             }
-        }
 
-        if (playing) {
-            scoreText.text = score.ToString();
-            gameDuration -= Time.deltaTime;
-            countdownText.text = Mathf.Round(gameDuration).ToString("0");
+            if (Input.GetMouseButtonDown(0))
+            {
+                if (!reloading)
+                {
+                    FireBullet();
+                }
+                else
+                {
+                    sfxAudioSource.PlayOneShot(noAmmo);
+                }
+            }
 
+            scoreText.text = "Score: " + score.ToString();
+            
             if (Mathf.Round(gameDuration) < 0)
             {
                 Debug.Log("Time is over!");
@@ -76,7 +78,17 @@ public class ShootingMinigame : MonoBehaviour
                 {
                     Destroy(child.gameObject);
                 }
+            } else
+            {
+                gameDuration -= Time.deltaTime;
+
+                int minutes = Mathf.FloorToInt(gameDuration / 60F);
+                int seconds = Mathf.FloorToInt(gameDuration - minutes * 60);
+                countdownText.text = string.Format("{0:0}:{1:00}", minutes, seconds);
             }
+        } else
+        {
+            countdownText.text = string.Format("{0:0}:{1:00}", 0, 0);
         }
 
         if (Input.GetKeyDown(KeyCode.R))
@@ -88,7 +100,7 @@ public class ShootingMinigame : MonoBehaviour
     public void AddScore(int points)
     {
         score += points;
-        Debug.Log("Current score: " + score);
+        //Debug.Log("Current score: " + score);
     }
 
     public void FireBullet()
@@ -138,7 +150,6 @@ public class ShootingMinigame : MonoBehaviour
         bullets = 5;
         spawnedCactus = 0;
         gameDuration = 30;
-        bulletsText.text = "bullets: " + bullets.ToString();
 
         SpawnEnemy(1);
         SpawnEnemy(2);

@@ -11,15 +11,14 @@ public class CatoController : MonoBehaviour
     private GameObject parent;
     private void Start()
     {
+        sm = FindObjectOfType<ShootingMinigame>();
         parent = transform.parent.gameObject;
         randomizeSpeed();
     }
 
     void OnMouseDown()
     {
-        sm = FindObjectOfType<ShootingMinigame>();   
         if(sm != null) {
-
             if (sm.GetBullets() > 0)
             {
                 if (parent != null)
@@ -29,9 +28,6 @@ public class CatoController : MonoBehaviour
 
                 sm.AddScore(score);
                 sm.SpawnEnemy(type);
-            } else
-            {
-                //Aviso: ficou sem balas!
             }
         }
     }
