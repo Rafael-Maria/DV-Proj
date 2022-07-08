@@ -4,6 +4,8 @@ using System.Collections;
 public class City_Menus: MonoBehaviour {
 
     public GameObject board;
+    public GameObject navigation;
+    public GameObject navigation_optional;
     private Vector3 startPos;
     private Vector3 endPos;
     private float distance=215f;
@@ -16,14 +18,19 @@ public class City_Menus: MonoBehaviour {
         endPos = board.transform.position + Vector3.down * distance;
     }
 
+    public void pressed(){
+        isPressed = true;
+        //navigation.SetActive(false);
+        //navigation_optional.SetActive(true);
+    }
+
     void Update(){
-        if(Input.GetMouseButtonDown(0)) {
-            isPressed = true;
-        }
         if(isPressed == true) {
             currentTime += Time.deltaTime;
             if(currentTime >= duration){
-                isPressed =  false;
+                isPressed = false;
+                //navigation.SetActive(true);
+                //navigation_optional.SetActive(false);
             }
 
             float Perc = currentTime/duration;
