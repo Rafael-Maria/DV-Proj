@@ -6,10 +6,10 @@ using UnityEngine.SceneManagement;
 public class ScenesController : MonoBehaviour
 {
     public GameObject loading;
-    public Sprite menuLoading;
-    public Sprite cityLoading;
-    public Sprite gunFightLoading;
-    public Sprite mineLoading;    
+    private Sprite menuLoading;
+    private Sprite cityLoading;
+    private Sprite gunFightLoading;
+    private Sprite mineLoading;    
 
     // Start is called before the first frame update
     void Start()
