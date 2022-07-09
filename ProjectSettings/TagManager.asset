@@ -4,7 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Target
+  - stone_counter
+  - gold_counter
+  - silver_counter
   layers:
   - Default
   - TransparentFX
