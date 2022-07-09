@@ -13,18 +13,14 @@ public class MainMenu : MonoBehaviour
     public void NewGame(){
         //reset
 
-        loading.SetActive(true);
         loading.GetComponent<UnityEngine.UI.Image>().sprite = cityLoading;
-        StartCoroutine(ShowAndHide(loading, 1.0f)); // 1 second
-        loading.SetActive(false);
+        StartCoroutine(ShowAndHide(loading, 2.0f)); // 2 second
         SceneManager.LoadScene(1);
     }
 
     public void Play(){
-        loading.SetActive(true);
         loading.GetComponent<UnityEngine.UI.Image>().sprite = cityLoading;
-        StartCoroutine(ShowAndHide(loading, 1.0f)); // 1 second
-        loading.SetActive(false);
+        StartCoroutine(ShowAndHide(loading, 2.0f)); // 2 second
         SceneManager.LoadScene(1);
     }
 
@@ -36,8 +32,8 @@ public class MainMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        menuLoading = Resources.Load<Sprite>("Images/Loading_Initial");
-        cityLoading = Resources.Load<Sprite>("Images/Loading_city");
+        menuLoading = Resources.Load<Sprite>("Loading_Initial");
+        cityLoading = Resources.Load<Sprite>("Loading_city");    
     }
 
     // Update is called once per frame
