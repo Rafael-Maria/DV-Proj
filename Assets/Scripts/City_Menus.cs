@@ -4,6 +4,7 @@ using System.Collections;
 
 public class City_Menus: MonoBehaviour {
 
+    private GameController gameController;
     //Resources
     private int stone;
     private int gold;
@@ -28,17 +29,19 @@ public class City_Menus: MonoBehaviour {
 
     void Start(){
         //Resources
-        stone = 80;
+        /*stone = 80;
         gold = 40;
-        silver = 25;
+        silver = 25;*/
+        gameController = FindObjectOfType<GameController>();
+
 
         // Menus ---------------------------------------------------
         validation = true;
         goUp = false;
-        isPressed=false;
-        currentTime=0;
-        duration=1.1f;
-        distance=256f;
+        isPressed = false;
+        currentTime = 0;
+        duration= 1.1f;
+        distance= 256f;
         startPos = board.transform.position;
         endPos = board.transform.position + Vector3.down * distance;
         startPos2 = endPos;
@@ -48,7 +51,7 @@ public class City_Menus: MonoBehaviour {
     public void pressed(){
         if(validation == true){
             isPressed = true;
-            currentTime=0;
+            currentTime = 0;
             validation = false;
             //navigation.SetActive(false);
             //navigation_optional.SetActive(true);
@@ -70,9 +73,9 @@ public class City_Menus: MonoBehaviour {
 
     void Update(){
         //Resources
-        GameObject.FindWithTag("stone_counter").GetComponent<Text>().text = stone.ToString();
-        GameObject.FindWithTag("gold_counter").GetComponent<Text>().text = gold.ToString(); 
-        GameObject.FindWithTag("silver_counter").GetComponent<Text>().text = silver.ToString(); 
+        GameObject.FindWithTag("stone_counter").GetComponent<Text>().text = gameController.GetStoneAmount().ToString();
+        GameObject.FindWithTag("gold_counter").GetComponent<Text>().text = gameController.GetGoldAmount().ToString(); 
+        GameObject.FindWithTag("silver_counter").GetComponent<Text>().text = gameController.GetSilverAmount().ToString(); 
 
         // Menus ------------------------------------------------------
         if(isPressed == true && goUp == false && validation == false) {

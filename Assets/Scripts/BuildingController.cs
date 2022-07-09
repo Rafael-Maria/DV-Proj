@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class BuildingController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] private int level;
+    [SerializeField] private int resourcesAmount; //Quantos recursos produz
     void Start()
     {
         
@@ -14,5 +15,31 @@ public class BuildingController : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public int GetLevel()
+    {
+        return level;
+    }
+
+    public void SetLevel(int level)
+    {
+        this.level = level;
+    }
+
+    public int GetResourcesAmount()
+    {
+        return resourcesAmount;
+    }
+
+    public void SetResourcesAmount(int amount)
+    {
+        this.resourcesAmount = amount;
+    }
+
+    public void Reset()
+    {
+        this.level = 0;
+        this.resourcesAmount = 0;
     }
 }
