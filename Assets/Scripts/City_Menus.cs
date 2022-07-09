@@ -13,6 +13,7 @@ public class City_Menus: MonoBehaviour {
     public GameObject board;
     public GameObject navigation;
     public GameObject navigation_optional;
+    public GameObject boardUpgrade;
     private Vector3 startPos;
     private Vector3 endPos;
     private Vector3 startPos2;
@@ -23,6 +24,7 @@ public class City_Menus: MonoBehaviour {
     private bool isPressed;
     private bool goUp;
     private bool validation;
+    
 
     void Start(){
         //Resources
@@ -94,6 +96,7 @@ public class City_Menus: MonoBehaviour {
                 validation = true;
                 //navigation.SetActive(true);
                 //navigation_optional.SetActive(false);
+                boardUpgrade.SetActive(false);
             }
 
             float Perc = currentTime/duration;
