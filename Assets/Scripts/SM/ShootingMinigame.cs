@@ -16,14 +16,10 @@ public class ShootingMinigame : MonoBehaviour
     [SerializeField] private float gameDuration;
 
     [Header("Game Core Settings")]
-    /*[SerializeField] private GameObject catosGameObject;
-    [SerializeField] private int firstCatoNum = 2;
-    [SerializeField] private int secondCatoNum = 2;
-    [SerializeField] private int thirdCatoNum = 1;
-    [SerializeField] private int fourthCatoNum = 1;*/
     [SerializeField] private Text countdownText;
     [SerializeField] private Text bulletsText;
     [SerializeField] private Text scoreText;
+    [SerializeField] private Text reloadText;
     [SerializeField] private AudioClip noAmmo;
     [SerializeField] private AudioClip gunshot;
     [SerializeField] AudioSource sfxAudioSource;
@@ -57,19 +53,21 @@ public class ShootingMinigame : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0))
             {
-                if (!reloading)
+                if (!reloading && bullets >= 1)
                 {
+   
                     FireBullet();
                 }
                 else
                 {
+                    reloadText.gameObject.SetActive(true);
                     sfxAudioSource.PlayOneShot(noAmmo);
                 }
             }
 
             scoreText.text = "Score: " + score.ToString();
             
-            if (Mathf.Round(gameDuration) < 0)
+            if (Mathf.Round(gameDuration) <= 0)
             {
                 Debug.Log("Time is over!");
                 gameDuration = 0;
@@ -91,9 +89,10 @@ public class ShootingMinigame : MonoBehaviour
             countdownText.text = string.Format("{0:0}:{1:00}", 0, 0);
         }
 
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R) && bullets == 0)
         {
-            InitGame();
+            reloading = true;
+            StartCoroutine(ReloadGun(1));
         }
     }
 
@@ -107,11 +106,11 @@ public class ShootingMinigame : MonoBehaviour
     {
         sfxAudioSource.PlayOneShot(gunshot, 0.5F);
         bullets--;
-        if (bullets == 0)
+        /*if (bullets == 0)
         {
             reloading = true;
             StartCoroutine(ReloadGun(2));
-        }
+        }*/
     }
 
     public int GetBullets()
@@ -164,5 +163,6 @@ public class ShootingMinigame : MonoBehaviour
         yield return new WaitForSeconds(secs);
         bullets = 5;
         reloading = false;
+        reloadText.gameObject.SetActive(false);
     }
 }
