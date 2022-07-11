@@ -739,7 +739,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5d33ad0e99b5174fbb9488b1c81dd9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorArrow: {fileID: 2800000, guid: 96d30af0afa78b94fb03b7951cec971b, type: 3}
+  cursorTexture: {fileID: 2800000, guid: 96d30af0afa78b94fb03b7951cec971b, type: 3}
   score: 0
   bullets: 0
   gameDuration: 30

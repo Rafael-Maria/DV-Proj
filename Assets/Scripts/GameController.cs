@@ -16,6 +16,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private GameObject saloon_GO;
     [SerializeField] private GameObject stable_GO;
     [SerializeField] private GameObject home_GO;
+    [SerializeField] private GameObject mine_GO;
 
     void Start()
     {
@@ -38,6 +39,8 @@ public class GameController : MonoBehaviour
             stable_GO.GetComponent<BuildingController>().SetLevel(PlayerPrefs.GetInt("Stable"));
         if (PlayerPrefs.HasKey("Home"))
             home_GO.GetComponent<BuildingController>().SetLevel(PlayerPrefs.GetInt("Home"));
+        if (PlayerPrefs.HasKey("Mine"))
+            mine_GO.GetComponent<BuildingController>().SetLevel(PlayerPrefs.GetInt("Mine"));
     }
 
     void Update()
@@ -53,6 +56,7 @@ public class GameController : MonoBehaviour
             saloon_GO.GetComponent<BuildingController>().Reset();
             stable_GO.GetComponent<BuildingController>().Reset();
             home_GO.GetComponent<BuildingController>().Reset();
+            mine_GO.GetComponent<BuildingController>().Reset();
             PlayerPrefs.DeleteAll();
         }
     }
@@ -69,6 +73,7 @@ public class GameController : MonoBehaviour
         PlayerPrefs.SetInt("Saloon", saloon_GO.GetComponent<BuildingController>().GetLevel());
         PlayerPrefs.SetInt("Stable", stable_GO.GetComponent<BuildingController>().GetLevel());
         PlayerPrefs.SetInt("Home", home_GO.GetComponent<BuildingController>().GetLevel());
+        PlayerPrefs.SetInt("Mine", mine_GO.GetComponent<BuildingController>().GetLevel());
     }
 
     public int GetGoldAmount()

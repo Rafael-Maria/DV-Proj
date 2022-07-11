@@ -8,7 +8,9 @@ using Random = UnityEngine.Random;
 public class ShootingMinigame : MonoBehaviour
 {
     [Header("GUI Settings")]
-    public Texture2D cursorArrow;
+    public Texture2D cursorTexture;
+    private Vector2 cursorHotspot;
+
 
     [Header("Player")]
     public int score;
@@ -40,7 +42,8 @@ public class ShootingMinigame : MonoBehaviour
     private int spawnedCactus;
     void Start()
     {
-        Cursor.SetCursor(cursorArrow, Vector2.zero, CursorMode.ForceSoftware);
+        cursorHotspot = new Vector2(cursorTexture.width / 2, cursorTexture.height / 2);
+        Cursor.SetCursor(cursorTexture, Vector2.zero, CursorMode.ForceSoftware);
         InitGame();
     }
     void Update()
