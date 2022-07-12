@@ -149,17 +149,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 649912362}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fce0dadc4d33f043b0dfcacd1dcec7c, type: 3}
+  m_Script: {fileID: 11500000, guid: ac95b3a9ac1ab434b91603fd81892742, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   mineLevel: 0
   mineLevelText: {fileID: 1919809947}
   sfxAudioSource: {fileID: 1498338270}
-  pickaxeSounds:
-  - {fileID: 8300000, guid: 8c83a75b20f07b6419b2e53607d1a9fb, type: 3}
-  - {fileID: 8300000, guid: 22a158f3d51f0b74ba92aaa4b5f25660, type: 3}
-  - {fileID: 8300000, guid: 99f44ade275356e489a8112853a10098, type: 3}
-  - {fileID: 8300000, guid: 2da0fdaed448d5f498e201cb27fe4c0c, type: 3}
+  pickaxeSounds: []
   gold: {fileID: 8300000, guid: 4954ff577ec6bbb408726dbaa68075ee, type: 3}
   silver: {fileID: 8300000, guid: 0e9bafe7cc3573e4eb6fc1c586815531, type: 3}
   stone: {fileID: 8300000, guid: 2762762baf5d7704f9b0975905b5807b, type: 3}
