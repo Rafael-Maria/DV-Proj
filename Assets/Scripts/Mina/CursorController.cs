@@ -20,7 +20,7 @@ public class CursorController : MonoBehaviour
         targetPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         transform.position = targetPos;
 
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButton(0))
         {
             if (!mining) { 
                 StartCoroutine(AnimateCursor(0.5f));
