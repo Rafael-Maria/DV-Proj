@@ -10,8 +10,14 @@ public class HighscoreTable : MonoBehaviour {
     private Transform entryContainer;
     private Transform entryTemplate;
     private List<Transform> highscoreEntryTransformList;
+    private int newRank;
+    private int newScore;
 
     private void Awake() {
+        sort();
+    }
+
+    public void sort(){
         entryContainer = transform.Find("highscoreEntryContainer");
         entryTemplate = entryContainer.Find("highscoreEntryTemplate");
 

@@ -42,16 +42,28 @@ public class ShootingMinigame : MonoBehaviour
 
     [Header("Menus")]
     [SerializeField] private GameObject inGame;
+    [SerializeField] private GameObject InitialMenu;
     [SerializeField] private GameObject endMenu;
     private HighscoreTable highscoreTable;
 
-    void Start()
-    {
+    [Header("Countdown")]
+    [SerializeField] private int countdownTime;
+    [SerializeField] private Text countdownDisplay;
+
+    [Header("Countdown")]
+    [SerializeField] private GameObject r6;
+    [SerializeField] private GameObject r5;
+    [SerializeField] private GameObject r4;
+    [SerializeField] private GameObject r3;
+    [SerializeField] private GameObject r2;
+    [SerializeField] private GameObject r1;
+    [SerializeField] private GameObject r0;
+    [SerializeField] private GameObject red;
+
+    void Start() {
         highscoreTable = GameObject.FindGameObjectWithTag("highscoreTable").GetComponent<HighscoreTable>();
         endMenu.SetActive(false);
-        cursorHotspot = new Vector2(cursorTexture.width / 2, cursorTexture.height / 2);
-        Cursor.SetCursor(cursorTexture, Vector2.zero, CursorMode.ForceSoftware);
-        InitGame();
+        StartCoroutine(countdownToStart());
     }
 
     void Update()
@@ -66,7 +78,6 @@ public class ShootingMinigame : MonoBehaviour
             {
                 if (!reloading && bullets >= 1)
                 {
-   
                     FireBullet();
                 }
                 else
@@ -93,9 +104,9 @@ public class ShootingMinigame : MonoBehaviour
                 Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto); 
                 inGame.SetActive(false);
                 yourScoreText.text = "Score: " + score.ToString();
+                highscoreTable.sort();
                 endMenu.SetActive(true);
-                highscoreTable.gameObject.SetActive(false);
-                highscoreTable.gameObject.SetActive(true);
+                
 
             } else {
                 gameDuration -= Time.deltaTime;
@@ -131,11 +142,54 @@ public class ShootingMinigame : MonoBehaviour
             reloading = true;
             StartCoroutine(ReloadGun(2));
         }*/
+        changeRevolver();
     }
 
     public int GetBullets()
     {
         return bullets;
+    }
+
+    public void changeRevolver(){
+        switch(bullets){
+            case 6:
+                r6.SetActive(true);
+                r5.SetActive(true);
+                r4.SetActive(true);
+                r3.SetActive(true);
+                r2.SetActive(true);
+                r1.SetActive(true);
+                red.SetActive(false);
+                break;
+            case 5:
+                r6.SetActive(false);
+                break;
+            case 4:
+                r5.SetActive(false);
+                break;
+            case 3:
+                r4.SetActive(false);
+                break;
+            case 2:
+                r3.SetActive(false);
+                break;
+            case 1:
+                r2.SetActive(false);
+                break;
+            case 0:
+                r1.SetActive(false);
+                Debug.Log(bullets);
+                red.SetActive(true);
+                wait(0.3f);
+                red.SetActive(false);
+                Debug.Log("aqui");
+                break;
+            default: break;
+        }
+    }
+
+    IEnumerator wait(float timeToWait){
+        yield return new WaitForSeconds(timeToWait);
     }
 
     public void SpawnEnemy(int type)
@@ -166,7 +220,7 @@ public class ShootingMinigame : MonoBehaviour
         reloading = false;
         playing = true;
         score = 0;
-        bullets = 5;
+        bullets = 6;
         spawnedCactus = 0;
         gameDuration = 30;
 
@@ -181,9 +235,10 @@ public class ShootingMinigame : MonoBehaviour
     {
         bulletsText.text = "reloading...";
         yield return new WaitForSeconds(secs);
-        bullets = 5;
+        bullets = 6;
         reloading = false;
         reloadText.gameObject.SetActive(false);
+        changeRevolver();
     }
 
     public void restartgame(){
@@ -191,5 +246,28 @@ public class ShootingMinigame : MonoBehaviour
         Cursor.SetCursor(cursorTexture, Vector2.zero, CursorMode.ForceSoftware);
         inGame.SetActive(true);
         InitGame();
+    }
+
+    private void go(){
+        cursorHotspot = new Vector2(cursorTexture.width / 2, cursorTexture.height / 2);
+        Cursor.SetCursor(cursorTexture, Vector2.zero, CursorMode.ForceSoftware);
+        inGame.SetActive(true);
+        InitialMenu.SetActive(false);
+        InitGame();
+    }
+
+    IEnumerator countdownToStart(){
+        while(countdownTime > 0){
+            countdownDisplay.text = countdownTime.ToString();
+            yield return new WaitForSeconds(1f);
+            countdownTime--;
+        }
+
+        countdownDisplay.text = "GO!";
+        yield return new WaitForSeconds(0.8f);
+        
+        go();
+
+        countdownDisplay.gameObject.SetActive(false);
     }
 }
