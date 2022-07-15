@@ -11,7 +11,6 @@ public class ShootingMinigame : MonoBehaviour
     public Texture2D cursorTexture;
     private Vector2 cursorHotspot;
 
-
     [Header("Player")]
     public int score;
     public int bullets;
@@ -22,6 +21,7 @@ public class ShootingMinigame : MonoBehaviour
     [SerializeField] private Text bulletsText;
     [SerializeField] private Text scoreText;
     [SerializeField] private Text reloadText;
+    [SerializeField] private Text yourScoreText;
     [SerializeField] private AudioClip noAmmo;
     [SerializeField] private AudioClip gunshot;
     [SerializeField] AudioSource sfxAudioSource;
@@ -36,16 +36,24 @@ public class ShootingMinigame : MonoBehaviour
     [Header("Totem Prefabs")]
     [SerializeField] private GameObject firstTotemPrefab;
 
-    
     private bool playing;
     private bool reloading;
     private int spawnedCactus;
+
+    [Header("Menus")]
+    [SerializeField] private GameObject inGame;
+    [SerializeField] private GameObject endMenu;
+    private HighscoreTable highscoreTable;
+
     void Start()
     {
+        highscoreTable = GameObject.FindGameObjectWithTag("highscoreTable").GetComponent<HighscoreTable>();
+        endMenu.SetActive(false);
         cursorHotspot = new Vector2(cursorTexture.width / 2, cursorTexture.height / 2);
         Cursor.SetCursor(cursorTexture, Vector2.zero, CursorMode.ForceSoftware);
         InitGame();
     }
+
     void Update()
     {
         if (playing) {
@@ -79,8 +87,17 @@ public class ShootingMinigame : MonoBehaviour
                 {
                     Destroy(child.gameObject);
                 }
-            } else
-            {
+
+                highscoreTable.AddHighscoreEntry(score, "Scr");
+                reloadText.gameObject.SetActive(false);
+                Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto); 
+                inGame.SetActive(false);
+                yourScoreText.text = "Score: " + score.ToString();
+                endMenu.SetActive(true);
+                highscoreTable.gameObject.SetActive(false);
+                highscoreTable.gameObject.SetActive(true);
+
+            } else {
                 gameDuration -= Time.deltaTime;
 
                 int minutes = Mathf.FloorToInt(gameDuration / 60F);
@@ -167,5 +184,12 @@ public class ShootingMinigame : MonoBehaviour
         bullets = 5;
         reloading = false;
         reloadText.gameObject.SetActive(false);
+    }
+
+    public void restartgame(){
+        cursorHotspot = new Vector2(cursorTexture.width / 2, cursorTexture.height / 2);
+        Cursor.SetCursor(cursorTexture, Vector2.zero, CursorMode.ForceSoftware);
+        inGame.SetActive(true);
+        InitGame();
     }
 }

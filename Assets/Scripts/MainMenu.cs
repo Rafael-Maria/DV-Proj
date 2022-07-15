@@ -6,9 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public GameObject loading;
-    public Sprite menuLoading;
-    public Sprite cityLoading;
+    [SerializeField] private GameObject loading;
+    private Sprite menuLoading;
+    private Sprite cityLoading;
 
     public void NewGame(){
         //reset
