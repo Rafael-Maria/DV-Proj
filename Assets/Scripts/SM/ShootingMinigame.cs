@@ -79,6 +79,8 @@ public class ShootingMinigame : MonoBehaviour
                 {
                     Destroy(child.gameObject);
                 }
+
+                //Converter points em algo útil
             } else
             {
                 gameDuration -= Time.deltaTime;
