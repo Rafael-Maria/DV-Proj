@@ -10,8 +10,6 @@ public class HighscoreTable : MonoBehaviour {
     private Transform entryContainer;
     private Transform entryTemplate;
     private List<Transform> highscoreEntryTransformList;
-    private int newRank;
-    private int newScore;
 
     private void Awake() {
         sort();
@@ -24,12 +22,30 @@ public class HighscoreTable : MonoBehaviour {
         entryTemplate.gameObject.SetActive(false);
 
         string jsonString = PlayerPrefs.GetString("highscoreTable");
-        Highscores highscores = JsonUtility.FromJson<Highscores>(jsonString);
+        Highscores highscores = new Highscores() {
+            highscoreEntryList = new List<HighscoreEntry>()
+        };
+        highscores = JsonUtility.FromJson<Highscores>(jsonString);
 
         if (highscores == null) {
             jsonString = PlayerPrefs.GetString("highscoreTable");
             highscores = JsonUtility.FromJson<Highscores>(jsonString);
         }
+
+        Debug.Log("aqui");
+        GameObject[] taggedObjects = GameObject.FindGameObjectsWithTag("clone");
+        Debug.Log(taggedObjects.Length);
+        foreach(GameObject taggedObject in taggedObjects){
+            GameObject.Destroy(taggedObject);
+        }
+
+        /*GameObject temp  = GameObject.FindWithTag("clone");
+        while (temp != null) {
+            Destroy(temp);
+            temp  = GameObject.FindWithTag("clone");
+        }*/
+
+        
 
         // Sort entry list by Score
         for (int i = 0; i < highscores.highscoreEntryList.Count; i++) {
@@ -105,6 +121,7 @@ public class HighscoreTable : MonoBehaviour {
 
             }
 
+            entryTransform.tag = "clone";
             transformList.Add(entryTransform);
         }
     }

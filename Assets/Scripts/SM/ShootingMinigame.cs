@@ -117,7 +117,7 @@ public class ShootingMinigame : MonoBehaviour
             }
         } else
         {
-            countdownText.text = string.Format("{0:0}:{1:00}", 0, 0);
+            countdownText.text = string.Format("{0:0}:{1:00}", 0, 30);
         }
 
         if (Input.GetKeyDown(KeyCode.R) && bullets == 0)
@@ -178,11 +178,7 @@ public class ShootingMinigame : MonoBehaviour
                 break;
             case 0:
                 r1.SetActive(false);
-                Debug.Log(bullets);
                 red.SetActive(true);
-                wait(0.3f);
-                red.SetActive(false);
-                Debug.Log("aqui");
                 break;
             default: break;
         }
@@ -219,6 +215,7 @@ public class ShootingMinigame : MonoBehaviour
     {
         reloading = false;
         playing = true;
+
         score = 0;
         bullets = 6;
         spawnedCactus = 0;
@@ -242,10 +239,7 @@ public class ShootingMinigame : MonoBehaviour
     }
 
     public void restartgame(){
-        cursorHotspot = new Vector2(cursorTexture.width / 2, cursorTexture.height / 2);
-        Cursor.SetCursor(cursorTexture, Vector2.zero, CursorMode.ForceSoftware);
-        inGame.SetActive(true);
-        InitGame();
+        go();
     }
 
     private void go(){
@@ -253,10 +247,18 @@ public class ShootingMinigame : MonoBehaviour
         Cursor.SetCursor(cursorTexture, Vector2.zero, CursorMode.ForceSoftware);
         inGame.SetActive(true);
         InitialMenu.SetActive(false);
+        countdownToStart();
         InitGame();
     }
 
     IEnumerator countdownToStart(){
+        score = 0;
+        scoreText.text = "Score: " + score.ToString();
+        bullets = 6;
+        bulletsText.text = "bullets: " + bullets.ToString();
+        gameDuration = 30;
+        spawnedCactus = 0;
+
         while(countdownTime > 0){
             countdownDisplay.text = countdownTime.ToString();
             yield return new WaitForSeconds(1f);
