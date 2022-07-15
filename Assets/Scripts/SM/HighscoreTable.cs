@@ -7,8 +7,8 @@ using System.Linq;
 
 public class HighscoreTable : MonoBehaviour {
 
-    private Transform entryContainer;
-    private Transform entryTemplate;
+    [SerializeField] private GameObject entryContainer;
+    [SerializeField] private GameObject entryTemplate;
     private List<Transform> highscoreEntryTransformList;
 
     private void Awake() {
@@ -16,10 +16,11 @@ public class HighscoreTable : MonoBehaviour {
     }
 
     public void sort(){
-        entryContainer = transform.Find("highscoreEntryContainer");
-        entryTemplate = entryContainer.Find("highscoreEntryTemplate");
+        //entryContainer = transform.Find("highscoreEntryContainer");
+        //entryTemplate = entryContainer.Find("highscoreEntryTemplate");
 
-        entryTemplate.gameObject.SetActive(false);
+        //entryTemplate.gameObject.SetActive(false);
+        //entryTemplate.SetActive(false);
 
         string jsonString = PlayerPrefs.GetString("highscoreTable");
         Highscores highscores = new Highscores() {
@@ -32,20 +33,13 @@ public class HighscoreTable : MonoBehaviour {
             highscores = JsonUtility.FromJson<Highscores>(jsonString);
         }
 
-        Debug.Log("aqui");
-        GameObject[] taggedObjects = GameObject.FindGameObjectsWithTag("clone");
-        Debug.Log(taggedObjects.Length);
-        foreach(GameObject taggedObject in taggedObjects){
-            GameObject.Destroy(taggedObject);
+        foreach (Transform child in entryContainer.transform)
+        {
+            if(child.CompareTag("clone")) { 
+                Destroy(child.gameObject);
+            }
         }
 
-        /*GameObject temp  = GameObject.FindWithTag("clone");
-        while (temp != null) {
-            Destroy(temp);
-            temp  = GameObject.FindWithTag("clone");
-        }*/
-
-        
 
         // Sort entry list by Score
         for (int i = 0; i < highscores.highscoreEntryList.Count; i++) {
@@ -61,14 +55,14 @@ public class HighscoreTable : MonoBehaviour {
 
         highscoreEntryTransformList = new List<Transform>();
         foreach (HighscoreEntry highscoreEntry in highscores.highscoreEntryList) {
-            CreateHighscoreEntryTransform(highscoreEntry, entryContainer, highscoreEntryTransformList);
+            CreateHighscoreEntryTransform(highscoreEntry, entryContainer.transform, highscoreEntryTransformList);
         }
     }
 
     private void CreateHighscoreEntryTransform(HighscoreEntry highscoreEntry, Transform container, List<Transform> transformList) {
         if(transformList.Count < 12){
             float templateHeight = 82f;
-            Transform entryTransform = Instantiate(entryTemplate, container);
+            Transform entryTransform = Instantiate(entryTemplate.transform, container);
             RectTransform entryRectTransform = entryTransform.GetComponent<RectTransform>();
             entryRectTransform.anchoredPosition = new Vector2(0, -templateHeight * transformList.Count);
             entryTransform.gameObject.SetActive(true);

@@ -20,27 +20,27 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
-        if (PlayerPrefs.HasKey("Gold"))
-            goldAmount = PlayerPrefs.GetInt("Gold");
-        if (PlayerPrefs.HasKey("Silver"))
-            silverAmount = PlayerPrefs.GetInt("Silver");
-        if (PlayerPrefs.HasKey("Stone"))
-            stoneAmount = PlayerPrefs.GetInt("Stone");
-        if (PlayerPrefs.HasKey("Citizens"))
-            citizensAmount = PlayerPrefs.GetInt("Citizens");
+        if (PlayerPrefs.HasKey("GoldAmount"))
+            goldAmount = PlayerPrefs.GetInt("GoldAmount");
+        if (PlayerPrefs.HasKey("SilverAmount"))
+            silverAmount = PlayerPrefs.GetInt("SilverAmount");
+        if (PlayerPrefs.HasKey("StoneAmount"))
+            stoneAmount = PlayerPrefs.GetInt("StoneAmount");
+        if (PlayerPrefs.HasKey("CitizensAmount"))
+            citizensAmount = PlayerPrefs.GetInt("CitizensAmount");
 
-        if (PlayerPrefs.HasKey("Warehouse"))
-            warehouse_GO.GetComponent<BuildingController>().SetLevel(PlayerPrefs.GetInt("Warehouse"));
-        if (PlayerPrefs.HasKey("Sheriff"))
-            sheriff_GO.GetComponent<BuildingController>().SetLevel(PlayerPrefs.GetInt("Sheriff"));
-        if (PlayerPrefs.HasKey("Saloon"))
-            saloon_GO.GetComponent<BuildingController>().SetLevel(PlayerPrefs.GetInt("Saloon"));
-        if (PlayerPrefs.HasKey("Stable"))
-            stable_GO.GetComponent<BuildingController>().SetLevel(PlayerPrefs.GetInt("Stable"));
-        if (PlayerPrefs.HasKey("Home"))
+        if (PlayerPrefs.HasKey("WarehouseLvl"))
+            warehouse_GO.GetComponent<BuildingController>().SetLevel(PlayerPrefs.GetInt("WarehouseLvl"));
+        if (PlayerPrefs.HasKey("SheriffLvl"))
+            sheriff_GO.GetComponent<BuildingController>().SetLevel(PlayerPrefs.GetInt("SheriffLvl"));
+        if (PlayerPrefs.HasKey("SaloonLvl"))
+            saloon_GO.GetComponent<BuildingController>().SetLevel(PlayerPrefs.GetInt("SaloonLvl"));
+        if (PlayerPrefs.HasKey("StableLvl"))
+            stable_GO.GetComponent<BuildingController>().SetLevel(PlayerPrefs.GetInt("StableLvl"));
+        if (PlayerPrefs.HasKey("HomeLvl"))
             home_GO.GetComponent<BuildingController>().SetLevel(PlayerPrefs.GetInt("Home"));
-        if (PlayerPrefs.HasKey("Mine"))
-            mine_GO.GetComponent<BuildingController>().SetLevel(PlayerPrefs.GetInt("Mine"));
+        if (PlayerPrefs.HasKey("MineLvl"))
+            mine_GO.GetComponent<BuildingController>().SetLevel(PlayerPrefs.GetInt("MineLvl"));
     }
 
     void Update()
@@ -63,17 +63,17 @@ public class GameController : MonoBehaviour
 
     void OnApplicationQuit()
     {
-        PlayerPrefs.SetInt("Gold", goldAmount);
-        PlayerPrefs.SetInt("Silver", silverAmount);
-        PlayerPrefs.SetInt("Stone", stoneAmount);
-        PlayerPrefs.SetInt("Citizens", citizensAmount);
+        PlayerPrefs.SetInt("GoldAmount", goldAmount);
+        PlayerPrefs.SetInt("SilverAmount", silverAmount);
+        PlayerPrefs.SetInt("StoneAmount", stoneAmount);
+        PlayerPrefs.SetInt("CitizensAmount", citizensAmount);
 
-        PlayerPrefs.SetInt("Warehouse", warehouse_GO.GetComponent<BuildingController>().GetLevel());
-        PlayerPrefs.SetInt("Sheriff", sheriff_GO.GetComponent<BuildingController>().GetLevel());
-        PlayerPrefs.SetInt("Saloon", saloon_GO.GetComponent<BuildingController>().GetLevel());
-        PlayerPrefs.SetInt("Stable", stable_GO.GetComponent<BuildingController>().GetLevel());
-        PlayerPrefs.SetInt("Home", home_GO.GetComponent<BuildingController>().GetLevel());
-        PlayerPrefs.SetInt("Mine", mine_GO.GetComponent<BuildingController>().GetLevel());
+        PlayerPrefs.SetInt("WarehouseLvl", warehouse_GO.GetComponent<BuildingController>().GetLevel());
+        PlayerPrefs.SetInt("SheriffLvl", sheriff_GO.GetComponent<BuildingController>().GetLevel());
+        PlayerPrefs.SetInt("SaloonLvl", saloon_GO.GetComponent<BuildingController>().GetLevel());
+        PlayerPrefs.SetInt("StableLvl", stable_GO.GetComponent<BuildingController>().GetLevel());
+        PlayerPrefs.SetInt("HomeLvl", home_GO.GetComponent<BuildingController>().GetLevel());
+        PlayerPrefs.SetInt("MineLvl", mine_GO.GetComponent<BuildingController>().GetLevel());
     }
 
     public int GetGoldAmount()
