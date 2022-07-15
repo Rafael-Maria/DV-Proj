@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class ScenesController : MonoBehaviour
 {
-    public GameObject loading;
+    [SerializeField] private GameObject loading;
     private Sprite menuLoading;
     private Sprite cityLoading;
     private Sprite gunFightLoading;

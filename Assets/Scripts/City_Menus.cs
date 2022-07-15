@@ -5,12 +5,13 @@ using System.Collections;
 public class City_Menus: MonoBehaviour {
 
     private GameController gameController;
-    //Resources
+
+    [Header("Resources")]
     private int stone;
     private int gold;
     private int silver;
 
-    // Menus ------------------------------
+    [Header("Boards")]
     public GameObject board;
     public GameObject navigation;
     public GameObject navigation_optional;

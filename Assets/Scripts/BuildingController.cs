@@ -6,6 +6,7 @@ public class BuildingController : MonoBehaviour
 {
     [SerializeField] private int level;
     [SerializeField] private int resourcesAmount; //Quantos recursos produz
+
     void Start()
     {
         
