@@ -7,6 +7,8 @@ TagManager:
   - stone_counter
   - gold_counter
   - silver_counter
+  - highscoreTable
+  - clone
   layers:
   - Default
   - TransparentFX

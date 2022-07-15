@@ -11,7 +11,6 @@ public class ShootingMinigame : MonoBehaviour
     public Texture2D cursorTexture;
     private Vector2 cursorHotspot;
 
-
     [Header("Player")]
     public int score;
     public int bullets;
@@ -22,6 +21,7 @@ public class ShootingMinigame : MonoBehaviour
     [SerializeField] private Text bulletsText;
     [SerializeField] private Text scoreText;
     [SerializeField] private Text reloadText;
+    [SerializeField] private Text yourScoreText;
     [SerializeField] private AudioClip noAmmo;
     [SerializeField] private AudioClip gunshot;
     [SerializeField] AudioSource sfxAudioSource;
@@ -36,16 +36,36 @@ public class ShootingMinigame : MonoBehaviour
     [Header("Totem Prefabs")]
     [SerializeField] private GameObject firstTotemPrefab;
 
-    
     private bool playing;
     private bool reloading;
     private int spawnedCactus;
-    void Start()
-    {
-        cursorHotspot = new Vector2(cursorTexture.width / 2, cursorTexture.height / 2);
-        Cursor.SetCursor(cursorTexture, Vector2.zero, CursorMode.ForceSoftware);
-        InitGame();
+
+    [Header("Menus")]
+    [SerializeField] private GameObject inGame;
+    [SerializeField] private GameObject InitialMenu;
+    [SerializeField] private GameObject endMenu;
+    private HighscoreTable highscoreTable;
+
+    [Header("Countdown")]
+    [SerializeField] private int countdownTime;
+    [SerializeField] private Text countdownDisplay;
+
+    [Header("Countdown")]
+    [SerializeField] private GameObject r6;
+    [SerializeField] private GameObject r5;
+    [SerializeField] private GameObject r4;
+    [SerializeField] private GameObject r3;
+    [SerializeField] private GameObject r2;
+    [SerializeField] private GameObject r1;
+    [SerializeField] private GameObject r0;
+    [SerializeField] private GameObject red;
+
+    void Start() {
+        highscoreTable = GameObject.FindGameObjectWithTag("highscoreTable").GetComponent<HighscoreTable>();
+        endMenu.SetActive(false);
+        StartCoroutine(countdownToStart());
     }
+
     void Update()
     {
         if (playing) {
@@ -58,7 +78,6 @@ public class ShootingMinigame : MonoBehaviour
             {
                 if (!reloading && bullets >= 1)
                 {
-   
                     FireBullet();
                 }
                 else
@@ -80,9 +99,14 @@ public class ShootingMinigame : MonoBehaviour
                     Destroy(child.gameObject);
                 }
 
-                //Converter points em algo útil
-            } else
-            {
+                highscoreTable.AddHighscoreEntry(score, "Scr");
+                reloadText.gameObject.SetActive(false);
+                Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto); 
+                inGame.SetActive(false);
+                yourScoreText.text = "Score: " + score.ToString();
+                highscoreTable.sort();
+                endMenu.SetActive(true);
+            } else {
                 gameDuration -= Time.deltaTime;
 
                 int minutes = Mathf.FloorToInt(gameDuration / 60F);
@@ -91,7 +115,7 @@ public class ShootingMinigame : MonoBehaviour
             }
         } else
         {
-            countdownText.text = string.Format("{0:0}:{1:00}", 0, 0);
+            countdownText.text = string.Format("{0:0}:{1:00}", 0, 30);
         }
 
         if (Input.GetKeyDown(KeyCode.R) && bullets == 0)
@@ -116,11 +140,50 @@ public class ShootingMinigame : MonoBehaviour
             reloading = true;
             StartCoroutine(ReloadGun(2));
         }*/
+        changeRevolver();
     }
 
     public int GetBullets()
     {
         return bullets;
+    }
+
+    public void changeRevolver(){
+        switch(bullets){
+            case 6:
+                r6.SetActive(true);
+                r5.SetActive(true);
+                r4.SetActive(true);
+                r3.SetActive(true);
+                r2.SetActive(true);
+                r1.SetActive(true);
+                red.SetActive(false);
+                break;
+            case 5:
+                r6.SetActive(false);
+                break;
+            case 4:
+                r5.SetActive(false);
+                break;
+            case 3:
+                r4.SetActive(false);
+                break;
+            case 2:
+                r3.SetActive(false);
+                break;
+            case 1:
+                r2.SetActive(false);
+                break;
+            case 0:
+                r1.SetActive(false);
+                red.SetActive(true);
+                break;
+            default: break;
+        }
+    }
+
+    IEnumerator wait(float timeToWait){
+        yield return new WaitForSeconds(timeToWait);
     }
 
     public void SpawnEnemy(int type)
@@ -150,8 +213,9 @@ public class ShootingMinigame : MonoBehaviour
     {
         reloading = false;
         playing = true;
+
         score = 0;
-        bullets = 5;
+        bullets = 6;
         spawnedCactus = 0;
         gameDuration = 30;
 
@@ -166,8 +230,44 @@ public class ShootingMinigame : MonoBehaviour
     {
         bulletsText.text = "reloading...";
         yield return new WaitForSeconds(secs);
-        bullets = 5;
+        bullets = 6;
         reloading = false;
         reloadText.gameObject.SetActive(false);
+        changeRevolver();
+    }
+
+    public void restartgame(){
+        go();
+    }
+
+    private void go(){
+        cursorHotspot = new Vector2(cursorTexture.width / 2, cursorTexture.height / 2);
+        Cursor.SetCursor(cursorTexture, Vector2.zero, CursorMode.ForceSoftware);
+        inGame.SetActive(true);
+        InitialMenu.SetActive(false);
+        countdownToStart();
+        InitGame();
+    }
+
+    IEnumerator countdownToStart(){
+        score = 0;
+        scoreText.text = "Score: " + score.ToString();
+        bullets = 6;
+        bulletsText.text = "bullets: " + bullets.ToString();
+        gameDuration = 30;
+        spawnedCactus = 0;
+
+        while(countdownTime > 0){
+            countdownDisplay.text = countdownTime.ToString();
+            yield return new WaitForSeconds(1f);
+            countdownTime--;
+        }
+
+        countdownDisplay.text = "GO!";
+        yield return new WaitForSeconds(0.8f);
+        
+        go();
+
+        countdownDisplay.gameObject.SetActive(false);
     }
 }
