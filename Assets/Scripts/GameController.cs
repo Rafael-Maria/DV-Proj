@@ -18,8 +18,15 @@ public class GameController : MonoBehaviour
     [SerializeField] private GameObject home_GO;
     [SerializeField] private GameObject mine_GO;
 
+    private CapacityValues capacityValues;
+    private BuildingController buildingController;
+
     void Start()
     {
+        //buildingController = GameObject.FindGameObjectWithTag("buildingController").GetComponent<BuildingController>();
+        capacityValues = GameObject.FindGameObjectWithTag("gameController").gameObject.GetComponent<CapacityValues>();
+
+
         if (PlayerPrefs.HasKey("GoldAmount"))
             goldAmount = PlayerPrefs.GetInt("GoldAmount");
         if (PlayerPrefs.HasKey("SilverAmount"))
@@ -68,12 +75,18 @@ public class GameController : MonoBehaviour
         PlayerPrefs.SetInt("StoneAmount", stoneAmount);
         PlayerPrefs.SetInt("CitizensAmount", citizensAmount);
 
-        PlayerPrefs.SetInt("WarehouseLvl", warehouse_GO.GetComponent<BuildingController>().GetLevel());
-        PlayerPrefs.SetInt("SheriffLvl", sheriff_GO.GetComponent<BuildingController>().GetLevel());
-        PlayerPrefs.SetInt("SaloonLvl", saloon_GO.GetComponent<BuildingController>().GetLevel());
-        PlayerPrefs.SetInt("StableLvl", stable_GO.GetComponent<BuildingController>().GetLevel());
-        PlayerPrefs.SetInt("HomeLvl", home_GO.GetComponent<BuildingController>().GetLevel());
-        PlayerPrefs.SetInt("MineLvl", mine_GO.GetComponent<BuildingController>().GetLevel());
+        if (warehouse_GO != null)
+            PlayerPrefs.SetInt("WarehouseLvl", warehouse_GO.GetComponent<BuildingController>().GetLevel());
+        if (sheriff_GO != null)
+            PlayerPrefs.SetInt("SheriffLvl", sheriff_GO.GetComponent<BuildingController>().GetLevel());
+        if (saloon_GO != null)
+            PlayerPrefs.SetInt("SaloonLvl", saloon_GO.GetComponent<BuildingController>().GetLevel());
+        if (stable_GO != null)
+            PlayerPrefs.SetInt("StableLvl", stable_GO.GetComponent<BuildingController>().GetLevel());
+        if (home_GO != null)
+            PlayerPrefs.SetInt("HomeLvl", home_GO.GetComponent<BuildingController>().GetLevel());
+        if (mine_GO != null)
+            PlayerPrefs.SetInt("MineLvl", mine_GO.GetComponent<BuildingController>().GetLevel());
     }
 
     public int GetGoldAmount()
@@ -82,7 +95,9 @@ public class GameController : MonoBehaviour
     }
     public void AddGold(int amount)
     {
-        goldAmount += amount;
+        if(capacityValues.GetGoldMaxCapacity() >= (GetGoldAmount() + amount)){
+            goldAmount += amount;
+        }
     }
     public int GetSilverAmount()
     {
@@ -90,7 +105,9 @@ public class GameController : MonoBehaviour
     }
     public void AddSilver(int amount)
     {
-        silverAmount += amount;
+        if(capacityValues.GetSilverMaxCapacity() >= (GetSilverAmount() + amount)){
+            silverAmount += amount;
+        }
     }
     public int GetStoneAmount()
     {
@@ -98,7 +115,9 @@ public class GameController : MonoBehaviour
     }
     public void AddStone(int amount)
     {
-        stoneAmount += amount;
+        if(capacityValues.GetStoneMaxCapacity() >= (GetStoneAmount() + amount)){
+            stoneAmount += amount;
+        }
     }
     public int GetCitizensAmount()
     {
@@ -106,6 +125,8 @@ public class GameController : MonoBehaviour
     }
     public void AddCitizens(int amount)
     {
-        citizensAmount += amount;
+        if(capacityValues.GetCitizensMaxCapacity() >= (GetCitizensAmount() + amount)){
+            citizensAmount += amount;
+        }
     }
 }

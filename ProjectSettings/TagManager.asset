@@ -9,6 +9,8 @@ TagManager:
   - silver_counter
   - highscoreTable
   - clone
+  - capacityValues
+  - gameController
   layers:
   - Default
   - TransparentFX

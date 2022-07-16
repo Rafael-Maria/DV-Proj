@@ -8,14 +8,18 @@ public class CapacityValues : MonoBehaviour
     {
         int stoneMax = 0;
         Debug.Log("WLVL:" + PlayerPrefs.GetInt("WarehouseLvl"));
-        switch (PlayerPrefs.GetInt("WarehouseLvl")) //MUDAR OS VALORES DE CAPACIDADE PEDRA CONSOANTE O NIVEL DO WAREHOUES
+        switch (PlayerPrefs.GetInt("WarehouseLvl"))
         {
             case 0:
-                stoneMax = 9000; break;
+                stoneMax = 100; break;
             case 1:
-                stoneMax = 200; break;
+                stoneMax = 600; break;
             case 2:
-                stoneMax = 300; break;
+                stoneMax = 1600; break;
+            case 3:
+                stoneMax = 3000; break;
+            case 4:
+                stoneMax = 10000; break;
         }
 
         return stoneMax;
@@ -24,14 +28,18 @@ public class CapacityValues : MonoBehaviour
     public int GetSilverMaxCapacity()
     {
         int silverMax = 0;
-        switch (PlayerPrefs.GetInt("WarehouseLvl")) //MUDAR OS VALORES DE CAPACIDADE PEDRA CONSOANTE O NIVEL DO WAREHOUES
+        switch (PlayerPrefs.GetInt("WarehouseLvl"))
         {
             case 0:
-                silverMax = 100; break;
+                silverMax = 0; break;
             case 1:
-                silverMax = 200; break;
+                silverMax = 350; break;
             case 2:
-                silverMax = 300; break;
+                silverMax = 900; break;
+            case 3:
+                silverMax = 1600; break;
+            case 4:
+                silverMax = 5000; break;
         }
         return silverMax;
     }
@@ -39,15 +47,38 @@ public class CapacityValues : MonoBehaviour
     public int GetGoldMaxCapacity()
     {
         int goldMax = 0;
-        switch (PlayerPrefs.GetInt("WarehouseLvl")) //MUDAR OS VALORES DE CAPACIDADE PEDRA CONSOANTE O NIVEL DO WAREHOUES
+        switch (PlayerPrefs.GetInt("WarehouseLvl"))
         {
             case 0:
-                goldMax = 100; break;
+                goldMax = 0; break;
             case 1:
-                goldMax = 200; break;
+                goldMax = 0; break;
             case 2:
-                goldMax = 300; break;
+                goldMax = 0; break;
+            case 3:
+                goldMax = 900; break;
+            case 4:
+                goldMax = 2000; break;
         }
         return goldMax;
+    }
+
+    public int GetCitizensMaxCapacity()
+    {
+        int citizensMax = 0;
+        switch (PlayerPrefs.GetInt("HomeLvl"))
+        {
+            case 0:
+                citizensMax = 10; break;
+            case 1:
+                citizensMax = 20; break;
+            case 2:
+                citizensMax = 40; break;
+            case 3:
+                citizensMax = 80; break;
+            case 4:
+                citizensMax = 160; break;
+        }
+        return citizensMax;
     }
 }
