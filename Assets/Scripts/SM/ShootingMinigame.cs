@@ -38,7 +38,7 @@ public class ShootingMinigame : MonoBehaviour
 
     private bool playing;
     private bool reloading;
-    private int spawnedCactus;
+    //private int spawnedCactus;
 
     [Header("Menus")]
     [SerializeField] private GameObject inGame;
@@ -216,7 +216,7 @@ public class ShootingMinigame : MonoBehaviour
 
         score = 0;
         bullets = 6;
-        spawnedCactus = 0;
+        //spawnedCactus = 0;
         gameDuration = 30;
 
         SpawnEnemy(1);
@@ -255,7 +255,7 @@ public class ShootingMinigame : MonoBehaviour
         bullets = 6;
         bulletsText.text = "bullets: " + bullets.ToString();
         gameDuration = 30;
-        spawnedCactus = 0;
+        //spawnedCactus = 0;
 
         while(countdownTime > 0){
             countdownDisplay.text = countdownTime.ToString();
