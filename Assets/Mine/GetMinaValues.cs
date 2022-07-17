@@ -11,6 +11,7 @@ public class GetMinaValues : MonoBehaviour
     [SerializeField] private Text StoneSend;
     [SerializeField] private Text GoldSend;
     [SerializeField] private Text SilverSend;
+    [SerializeField] private Text Level;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +27,7 @@ public class GetMinaValues : MonoBehaviour
         StoneSend.text = stoneSendValue.ToString();
         GoldSend.text = silverSendValue.ToString();
         SilverSend.text = goldSendValue.ToString();
+        Level.text = "Mine Level: "+ PlayerPrefs.GetInt("MineLevel").ToString();
     }
 
     // Update is called once per frame
