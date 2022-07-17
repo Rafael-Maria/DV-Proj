@@ -38,19 +38,19 @@ public class GameController : MonoBehaviour
         if (PlayerPrefs.HasKey("CitizensAmount"))
             citizensAmount = PlayerPrefs.GetInt("CitizensAmount");
 
-        if (PlayerPrefs.HasKey("WarehouseLvl"))
+        if (PlayerPrefs.HasKey("WarehouseLvl") && warehouse_GO)
             warehouse_GO.GetComponent<BuildingController>().SetLevel(PlayerPrefs.GetInt("WarehouseLvl"));
 
-        if (PlayerPrefs.HasKey("SheriffLvl"))
+        if (PlayerPrefs.HasKey("SheriffLvl") && sheriff_GO)
            sheriff_GO.GetComponent<BuildingController>().SetLevel(PlayerPrefs.GetInt("SheriffLvl"));
 
-        if (PlayerPrefs.HasKey("SaloonLvl"))
+        if (PlayerPrefs.HasKey("SaloonLvl") && saloon_GO)
             saloon_GO.GetComponent<BuildingController>().SetLevel(PlayerPrefs.GetInt("SaloonLvl"));
 
-        if (PlayerPrefs.HasKey("StableLvl"))
+        if (PlayerPrefs.HasKey("StableLvl") && stable_GO)
             stable_GO.GetComponent<BuildingController>().SetLevel(PlayerPrefs.GetInt("StableLvl"));
 
-        if (PlayerPrefs.HasKey("HomeLvl"))
+        if (PlayerPrefs.HasKey("HomeLvl") && home_GO)
             home_GO.GetComponent<BuildingController>().SetLevel(PlayerPrefs.GetInt("HomeLvl"));
 
         if (PlayerPrefs.HasKey("MineLvl") && mine_GO)
