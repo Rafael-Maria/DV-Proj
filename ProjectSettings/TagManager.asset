@@ -17,6 +17,7 @@ TagManager:
   - stable
   - home
   - loading
+  - citizens_counter
   layers:
   - Default
   - TransparentFX

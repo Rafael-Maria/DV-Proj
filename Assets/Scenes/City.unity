@@ -438,9 +438,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6890fc42d2a7845b53190b55586d95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stoneCounter: {fileID: 0}
-  silverCounter: {fileID: 0}
-  goldCounter: {fileID: 0}
   board: {fileID: 1509104821}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
@@ -798,9 +795,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6890fc42d2a7845b53190b55586d95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stoneCounter: {fileID: 0}
-  silverCounter: {fileID: 0}
-  goldCounter: {fileID: 0}
   board: {fileID: 383090548}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
@@ -1597,9 +1591,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6890fc42d2a7845b53190b55586d95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stoneCounter: {fileID: 0}
-  silverCounter: {fileID: 0}
-  goldCounter: {fileID: 0}
   board: {fileID: 1804068243}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
@@ -2949,9 +2940,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6890fc42d2a7845b53190b55586d95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stoneCounter: {fileID: 0}
-  silverCounter: {fileID: 0}
-  goldCounter: {fileID: 0}
   board: {fileID: 1509104821}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
@@ -3551,9 +3539,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6890fc42d2a7845b53190b55586d95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stoneCounter: {fileID: 0}
-  silverCounter: {fileID: 0}
-  goldCounter: {fileID: 0}
   board: {fileID: 383090548}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
@@ -4535,10 +4520,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 455704c7307298b4ab6acd785b87e9fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goldAmount: 0
-  silverAmount: 0
-  stoneAmount: 0
-  citizensAmount: 0
   warehouse_GO: {fileID: 196092372}
   sheriff_GO: {fileID: 664618407}
   saloon_GO: {fileID: 660254771}
@@ -6061,9 +6042,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6890fc42d2a7845b53190b55586d95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stoneCounter: {fileID: 0}
-  silverCounter: {fileID: 0}
-  goldCounter: {fileID: 0}
   board: {fileID: 1040264982}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
@@ -6835,9 +6813,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6890fc42d2a7845b53190b55586d95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stoneCounter: {fileID: 0}
-  silverCounter: {fileID: 0}
-  goldCounter: {fileID: 0}
   board: {fileID: 1804068243}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
@@ -7914,9 +7889,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6890fc42d2a7845b53190b55586d95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stoneCounter: {fileID: 0}
-  silverCounter: {fileID: 0}
-  goldCounter: {fileID: 0}
   board: {fileID: 1040264982}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
@@ -10414,9 +10386,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6890fc42d2a7845b53190b55586d95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stoneCounter: {fileID: 0}
-  silverCounter: {fileID: 0}
-  goldCounter: {fileID: 0}
   board: {fileID: 1804068243}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
@@ -11717,9 +11686,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6890fc42d2a7845b53190b55586d95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stoneCounter: {fileID: 0}
-  silverCounter: {fileID: 0}
-  goldCounter: {fileID: 0}
   board: {fileID: 1509104821}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
@@ -12188,9 +12154,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6890fc42d2a7845b53190b55586d95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stoneCounter: {fileID: 0}
-  silverCounter: {fileID: 0}
-  goldCounter: {fileID: 0}
   board: {fileID: 1593500610}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
@@ -12499,9 +12462,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6890fc42d2a7845b53190b55586d95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stoneCounter: {fileID: 0}
-  silverCounter: {fileID: 0}
-  goldCounter: {fileID: 0}
   board: {fileID: 1593500610}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
@@ -12650,9 +12610,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6890fc42d2a7845b53190b55586d95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stoneCounter: {fileID: 0}
-  silverCounter: {fileID: 0}
-  goldCounter: {fileID: 0}
   board: {fileID: 1040264982}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
@@ -12963,9 +12920,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6890fc42d2a7845b53190b55586d95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stoneCounter: {fileID: 0}
-  silverCounter: {fileID: 0}
-  goldCounter: {fileID: 0}
   board: {fileID: 1593500610}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
@@ -13537,9 +13491,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6890fc42d2a7845b53190b55586d95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stoneCounter: {fileID: 0}
-  silverCounter: {fileID: 0}
-  goldCounter: {fileID: 0}
   board: {fileID: 1040264982}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
@@ -14489,9 +14440,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6890fc42d2a7845b53190b55586d95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stoneCounter: {fileID: 0}
-  silverCounter: {fileID: 0}
-  goldCounter: {fileID: 0}
   board: {fileID: 1040264982}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
@@ -14640,9 +14588,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6890fc42d2a7845b53190b55586d95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stoneCounter: {fileID: 0}
-  silverCounter: {fileID: 0}
-  goldCounter: {fileID: 0}
   board: {fileID: 1509104821}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
@@ -15107,9 +15052,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6890fc42d2a7845b53190b55586d95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stoneCounter: {fileID: 0}
-  silverCounter: {fileID: 0}
-  goldCounter: {fileID: 0}
   board: {fileID: 1804068243}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
@@ -16385,9 +16327,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6890fc42d2a7845b53190b55586d95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stoneCounter: {fileID: 0}
-  silverCounter: {fileID: 0}
-  goldCounter: {fileID: 0}
   board: {fileID: 1804068243}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
@@ -16670,9 +16609,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6890fc42d2a7845b53190b55586d95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stoneCounter: {fileID: 0}
-  silverCounter: {fileID: 0}
-  goldCounter: {fileID: 0}
   board: {fileID: 1804068243}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
@@ -16821,9 +16757,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6890fc42d2a7845b53190b55586d95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stoneCounter: {fileID: 0}
-  silverCounter: {fileID: 0}
-  goldCounter: {fileID: 0}
   board: {fileID: 1040264982}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
@@ -17771,7 +17704,7 @@ GameObject:
   - component: {fileID: 2045465330}
   m_Layer: 5
   m_Name: Citizens_Counter
-  m_TagString: silver_counter
+  m_TagString: citizens_counter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
