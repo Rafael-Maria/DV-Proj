@@ -16,6 +16,7 @@ public class Mine : MonoBehaviour
     [SerializeField] Sprite silver;
     [SerializeField] Sprite gold;
     [SerializeField] GameObject mineStorage;
+    [SerializeField] private AudioSource sfxAudioSource;
     void Awake(){
         mineLevel = 0;
         StoneLuck = 120;
@@ -59,6 +60,9 @@ public class Mine : MonoBehaviour
         //Fazer random para ver o próximo ore (alterar texture)
         //storage.addProduct(currentOre);//need to get the  of the ore
         mineStorage.GetComponent<MineStorage>().addProduct(currentOre);
+        int randomPickaxeNum = Random.Range(0, 3);
+        string pickaxeSound = "Mina/pickaxe" + randomPickaxeNum;
+        sfxAudioSource.PlayOneShot((AudioClip)Resources.Load(pickaxeSound));
         chooseOre();
     }
 
