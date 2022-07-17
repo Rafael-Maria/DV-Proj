@@ -93,6 +93,10 @@ public class GameController : MonoBehaviour
 
     void OnApplicationQuit()
     {
+        saveGame();
+    }
+
+    public void saveGame(){
         PlayerPrefs.SetInt("GoldAmount", goldAmount);
         PlayerPrefs.SetInt("SilverAmount", silverAmount);
         PlayerPrefs.SetInt("StoneAmount", stoneAmount);
@@ -137,11 +141,13 @@ public class GameController : MonoBehaviour
     {
         if(capacityValues.GetGoldMaxCapacity(getWarehouseLevel()) >= (GetGoldAmount() + amount)){
             goldAmount += amount;
+            saveGame();
             return 0;
         }else {
             //aviso
             Debug.Log("Full");
             goldAmount = capacityValues.GetGoldMaxCapacity(getWarehouseLevel());
+            saveGame();
             return (GetGoldAmount() + amount) - capacityValues.GetGoldMaxCapacity(getWarehouseLevel()); //excesso
         }
     }
@@ -153,11 +159,13 @@ public class GameController : MonoBehaviour
     {
         if(capacityValues.GetSilverMaxCapacity(getWarehouseLevel()) >= (GetSilverAmount() + amount)){
             silverAmount += amount;
+            saveGame();
             return 0;
         } else {
             //aviso
             silverAmount = capacityValues.GetSilverMaxCapacity(getWarehouseLevel());
             Debug.Log("Full");
+            saveGame();
             return (GetSilverAmount() + amount) - capacityValues.GetSilverMaxCapacity(getWarehouseLevel()); //excesso
         }
     }
@@ -169,11 +177,13 @@ public class GameController : MonoBehaviour
     {
         if(capacityValues.GetStoneMaxCapacity(getWarehouseLevel()) >= (GetStoneAmount() + amount)){
             stoneAmount += amount;
+            saveGame();
             return 0;
         } else {
             //aviso
             stoneAmount = capacityValues.GetStoneMaxCapacity(getWarehouseLevel());
             Debug.Log("Full");
+            saveGame();
             return (GetStoneAmount() + amount) - capacityValues.GetStoneMaxCapacity(getWarehouseLevel()); //excesso
         }
     }
