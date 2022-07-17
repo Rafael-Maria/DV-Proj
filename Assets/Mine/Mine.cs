@@ -81,7 +81,9 @@ public class Mine : MonoBehaviour
                 SilverLuck = 66;
                 break;
         }
+        if(mineLevel < 4){
+            mineLevel++;
+        }
         mineStorage.GetComponent<MineStorage>().upgradeMine(mineLevel);
-        mineLevel++;
     }
 }

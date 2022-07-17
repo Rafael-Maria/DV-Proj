@@ -102,7 +102,7 @@ public class MineStorage : MonoBehaviour
     }
 
     public void SendButton(){
-        Send();
+        StartCoroutine(Send());
     }
     IEnumerator Send(){
         if(amountStoneSend == 0 && amountSilverSend == 0 && amountGoldSend == 0){
