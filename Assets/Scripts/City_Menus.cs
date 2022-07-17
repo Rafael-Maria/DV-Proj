@@ -8,13 +8,13 @@ public class City_Menus: MonoBehaviour {
 
     private GameController gameController;
 
-    [Header("Resources")]
+    /*[Header("Resources")]
     private int stone;
     [SerializeField] private GameObject stoneCounter;
     private int silver;
     [SerializeField] private GameObject silverCounter;
     private int gold;
-    [SerializeField] private GameObject goldCounter;
+    [SerializeField] private GameObject goldCounter;*/
 
     [Header("Boards")]
     [SerializeField] private GameObject board;
@@ -68,8 +68,8 @@ public class City_Menus: MonoBehaviour {
             isPressed = true;
             goUp = true;
             currentTime=0;
-            //startPos2 = board.transform.position;
-            //endPos2 = board.transform.position + Vector3.up * distance;
+            startPos2 = board.transform.position;
+            endPos2 = board.transform.position + Vector3.up * distance;
             //navigation.SetActive(false);
             //navigation_optional.SetActive(true);
         }
@@ -80,6 +80,7 @@ public class City_Menus: MonoBehaviour {
         GameObject.FindWithTag("stone_counter").GetComponent<UnityEngine.UI.Text>().text = gameController.GetStoneAmount().ToString();
         GameObject.FindWithTag("gold_counter").GetComponent<UnityEngine.UI.Text>().text = gameController.GetGoldAmount().ToString(); 
         GameObject.FindWithTag("silver_counter").GetComponent<UnityEngine.UI.Text>().text = gameController.GetSilverAmount().ToString();
+        GameObject.FindWithTag("citizens_counter").GetComponent<UnityEngine.UI.Text>().text = gameController.GetCitizensAmount().ToString();
 
         // Menus ------------------------------------------------------
         if(isPressed == true && goUp == false && validation == false) {
@@ -105,6 +106,7 @@ public class City_Menus: MonoBehaviour {
                 //navigation_optional.SetActive(false);
                 //boardUpgrade.SetActive(false);
             }
+
 
             float Perc = currentTime/duration;
             board.transform.position = Vector3.Lerp(startPos2,endPos2,Perc);

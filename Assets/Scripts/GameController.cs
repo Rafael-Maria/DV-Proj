@@ -6,10 +6,10 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour
 {
     [Header("Resources")]
-    [SerializeField] private int goldAmount;
-    [SerializeField] private int silverAmount;
-    [SerializeField] private int stoneAmount;
-    [SerializeField] private int citizensAmount;
+    /*[SerializeField]*/ private int goldAmount;
+    /*[SerializeField]*/ private int silverAmount;
+    /*[SerializeField]*/ private int stoneAmount;
+    /*[SerializeField]*/ private int citizensAmount;
 
     [Header("Structures Game Objects")]
     [SerializeField] private GameObject warehouse_GO;
@@ -19,9 +19,11 @@ public class GameController : MonoBehaviour
     [SerializeField] private GameObject home_GO;
     [SerializeField] private GameObject mine_GO;
 
+    [Header("Others")]
     private CapacityValues capacityValues;
     private ScenesController scenesController;
     //private BuildingController buildingController;
+    [SerializeField] private GameObject textForNoMoreCapacity;
 
     void Start()
     {
@@ -66,7 +68,7 @@ public class GameController : MonoBehaviour
             goldAmount = 0;
             silverAmount = 0;
             stoneAmount = 0;
-            citizensAmount = 0;
+            citizensAmount = 10;
             
             if (warehouse_GO)
                 warehouse_GO.GetComponent<BuildingController>().Reset();
@@ -122,7 +124,7 @@ public class GameController : MonoBehaviour
         PlayerPrefs.SetInt("GoldAmount", 0);
         PlayerPrefs.SetInt("SilverAmount", 0);
         PlayerPrefs.SetInt("StoneAmount", 0);
-        PlayerPrefs.SetInt("CitizensAmount", 0);
+        PlayerPrefs.SetInt("CitizensAmount", 10);
 
         PlayerPrefs.SetInt("WarehouseLvl", 0);
         PlayerPrefs.SetInt("SheriffLvl", 0);
@@ -145,12 +147,27 @@ public class GameController : MonoBehaviour
             return 0;
         }else {
             //aviso
-            Debug.Log("Full");
+            StartCoroutine(ShowAndHide(textForNoMoreCapacity, 2.0f));
+            Debug.Log("Full of gold");
             goldAmount = capacityValues.GetGoldMaxCapacity(getWarehouseLevel());
             saveGame();
             return (GetGoldAmount() + amount) - capacityValues.GetGoldMaxCapacity(getWarehouseLevel()); //excesso
         }
     }
+    public bool RemoveGold(int amount)
+    {
+        if((GetGoldAmount() - amount) >= 0){
+            goldAmount -= amount;
+            saveGame();
+            return true;
+        } else {
+            //aviso
+            Debug.Log("not enough gold");
+            saveGame();
+            return false;
+        }
+    }
+
     public int GetSilverAmount()
     {
         return silverAmount;
@@ -163,12 +180,27 @@ public class GameController : MonoBehaviour
             return 0;
         } else {
             //aviso
+            StartCoroutine(ShowAndHide(textForNoMoreCapacity, 2.0f));
             silverAmount = capacityValues.GetSilverMaxCapacity(getWarehouseLevel());
-            Debug.Log("Full");
+            Debug.Log("Full of silver");
             saveGame();
             return (GetSilverAmount() + amount) - capacityValues.GetSilverMaxCapacity(getWarehouseLevel()); //excesso
         }
     }
+    public bool RemoveSilver(int amount)
+    {
+        if((GetSilverAmount() - amount) >= 0){
+            silverAmount -= amount;
+            saveGame();
+            return true;
+        } else {
+            //aviso
+            Debug.Log("not enough silver");
+            saveGame();
+            return false;
+        }
+    }
+
     public int GetStoneAmount()
     {
         return stoneAmount;
@@ -181,12 +213,27 @@ public class GameController : MonoBehaviour
             return 0;
         } else {
             //aviso
+            StartCoroutine(ShowAndHide(textForNoMoreCapacity, 2.0f));
             stoneAmount = capacityValues.GetStoneMaxCapacity(getWarehouseLevel());
-            Debug.Log("Full");
+            Debug.Log("Full of stone");
             saveGame();
             return (GetStoneAmount() + amount) - capacityValues.GetStoneMaxCapacity(getWarehouseLevel()); //excesso
         }
     }
+    public bool RemoveStone(int amount)
+    {
+        if((GetStoneAmount() - amount) >= 0){
+            silverAmount -= amount;
+            saveGame();
+            return true;
+        } else {
+            //aviso
+            Debug.Log("not enough stone");
+            saveGame();
+            return false;
+        }
+    }
+
     public int GetCitizensAmount()
     {
         return citizensAmount;
@@ -208,5 +255,11 @@ public class GameController : MonoBehaviour
         //return home_GO.GetComponent<BuildingController>().GetLevel();
         //Debug.Log(PlayerPrefs.GetInt("HomeLvl"));
         return PlayerPrefs.GetInt("HomeLvl");
+    }
+
+    IEnumerator ShowAndHide(GameObject go, float delay){
+        go.SetActive(true);
+        yield return new WaitForSeconds(delay);
+        go.SetActive(false);
     }
 }

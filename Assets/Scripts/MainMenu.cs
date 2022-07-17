@@ -71,7 +71,7 @@ public class MainMenu : MonoBehaviour
         PlayerPrefs.SetInt("GoldAmount", 0);
         PlayerPrefs.SetInt("SilverAmount", 0);
         PlayerPrefs.SetInt("StoneAmount", 0);
-        PlayerPrefs.SetInt("CitizensAmount", 0);
+        PlayerPrefs.SetInt("CitizensAmount", 10);
 
         PlayerPrefs.SetInt("WarehouseLvl", 0);
         PlayerPrefs.SetInt("SheriffLvl", 0);
