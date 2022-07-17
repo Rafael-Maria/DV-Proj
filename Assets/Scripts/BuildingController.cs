@@ -10,12 +10,27 @@ public class BuildingController : MonoBehaviour
     [SerializeField] private GameObject textForNoResources;
     private GameController gameController;
     //private CapacityValues capacityValues;
-    private string name;
+    private string objectName;
+    private ArrayList children = new ArrayList();
 
     void Start()
     {
-        name = gameObject.name;
+        objectName = gameObject.name;
+        //Debug.Log(objectName);
         gameController = GameObject.FindGameObjectWithTag("gameController").GetComponent<GameController>();
+        //gameController.AddStone(100);
+
+        if(gameObject.name != "Game Bar"){
+            foreach (Transform child in transform)
+            {
+                if(child.CompareTag(objectName.ToLower())) { 
+                    children.Add(child);
+                }
+            }
+        }
+        /*foreach(var x in children) {
+            Debug.Log(x.ToString());
+        }*/
     }
 
     // Update is called once per frame
@@ -31,11 +46,24 @@ public class BuildingController : MonoBehaviour
 
     public void SetLevel(int level)
     {
-        if(level > 0){
-            GameObject.Find((name + "_" + this.level)).SetActive(false);
+        if(gameObject.name != "Game Bar"){
+            //Debug.Log(level);
+            string fullName = "";
+            if(level > 0 && objectName != "Stable"){
+                fullName = (objectName + "_" + this.level);
+                //Debug.Log(fullName);
+                GameObject.Find(fullName).SetActive(false);
+            }
+            this.level = level;
+            fullName = (objectName + "_" + this.level);
+            Debug.Log(objectName);
+            Debug.Log(fullName);
+            GameObject.Find(fullName).SetActive(true);
+
+            //USAR A LISTA PARA DAR SetActive NOS EDIFICIOS CERTOS ----------------------------------------------------------
+
+            //this.level = level;
         }
-        this.level = level;
-        GameObject.Find((name + "_" + level)).SetActive(true);
     }
 
     public int GetResourcesAmount()
@@ -54,8 +82,18 @@ public class BuildingController : MonoBehaviour
         this.resourcesAmount = 0;
     }
 
-    public bool validateUpgrade(){
-        switch (name){
+    public void Upgrade(){
+        if(validateUpgrade()){
+            SetLevel((GetLevel()+1));
+            //Debug.Log(GetLevel());
+        } else {
+            //Debug.Log("nao entrei");
+        }
+        //aviso
+    }
+
+    private bool validateUpgrade(){
+        switch (objectName){
             case "Warehouse":
                 switch (GetLevel()){
                     case 0:

@@ -17,9 +17,12 @@ public class MinaController : MonoBehaviour
     [SerializeField] private AudioClip silver;
     [SerializeField] private AudioClip stone;
 
+    private GameController gameController;
     
     void Start()
     {
+        gameController = GameObject.FindGameObjectWithTag("gameController").GetComponent<GameController>();
+
         mineLevel = PlayerPrefs.GetInt("Mina");
         mineLevelText.text = "Mine Level: " + (mineLevel+1).ToString(); //Porque começa no 0, visualmente seria level 1
     }
@@ -46,7 +49,7 @@ public class MinaController : MonoBehaviour
         if (luckyNumber > 5) { 
             if (mineLevel == 0) //Stone
             {
-                if(currentStoneAmount < capacityValues.GetStoneMaxCapacity()) {
+                if(currentStoneAmount < capacityValues.GetStoneMaxCapacity(gameController.getWarehouseLevel())) {
                     amountAddedText.gameObject.SetActive(true);
                     currentStoneAmount += 5;
                     amountAddedText.text = "+5 Stone";
@@ -63,7 +66,7 @@ public class MinaController : MonoBehaviour
                 int opt = Random.Range(0, 10);
                 if(opt >= 5) //Stone
                 {
-                    if (currentStoneAmount < capacityValues.GetStoneMaxCapacity())
+                    if (currentStoneAmount < capacityValues.GetStoneMaxCapacity(gameController.getWarehouseLevel()))
                     {
                         amountAddedText.gameObject.SetActive(true);
                         currentStoneAmount += 15;
@@ -77,7 +80,7 @@ public class MinaController : MonoBehaviour
                     }
                 } else //Silver
                 {
-                    if(currentSilverAmount < capacityValues.GetSilverMaxCapacity()) {
+                    if(currentSilverAmount < capacityValues.GetSilverMaxCapacity(gameController.getWarehouseLevel())) {
                         amountAddedText.gameObject.SetActive(true);
                         currentSilverAmount += 15;
                         amountAddedText.text = "+15 Silver";
@@ -95,7 +98,7 @@ public class MinaController : MonoBehaviour
                 int opt = Random.Range(0, 25);
                 if (opt >= 5) //Stone
                 {
-                    if(currentStoneAmount < capacityValues.GetStoneMaxCapacity()) {
+                    if(currentStoneAmount < capacityValues.GetStoneMaxCapacity(gameController.getWarehouseLevel())) {
                         amountAddedText.gameObject.SetActive(true);
                         currentStoneAmount += 30;
                         amountAddedText.text = "+30 Stone";
@@ -109,7 +112,7 @@ public class MinaController : MonoBehaviour
                 }
                 else if(opt >= 10) //Silver
                 {
-                    if(currentSilverAmount < capacityValues.GetSilverMaxCapacity()) {
+                    if(currentSilverAmount < capacityValues.GetSilverMaxCapacity(gameController.getWarehouseLevel())) {
                         amountAddedText.gameObject.SetActive(true);
                         currentSilverAmount += 25;
                         amountAddedText.text = "+25 Silver";
@@ -122,7 +125,7 @@ public class MinaController : MonoBehaviour
                     }
                 } else //Gold
                 {
-                    if(currentGoldAmount < capacityValues.GetGoldMaxCapacity()) {
+                    if(currentGoldAmount < capacityValues.GetGoldMaxCapacity(gameController.getWarehouseLevel())) {
                         amountAddedText.gameObject.SetActive(true);
                         currentGoldAmount += 20;
                         amountAddedText.text = "+20 Gold";

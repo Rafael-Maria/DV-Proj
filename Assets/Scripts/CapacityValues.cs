@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class CapacityValues : MonoBehaviour
 {
-    public int GetStoneMaxCapacity()
+    public int GetStoneMaxCapacity(int lvl)
     {
         int stoneMax = 0;
         Debug.Log("WLVL:" + PlayerPrefs.GetInt("WarehouseLvl"));
-        switch (PlayerPrefs.GetInt("WarehouseLvl"))
+        switch (lvl)
         {
             case 0:
                 stoneMax = 100; break;
@@ -25,10 +25,10 @@ public class CapacityValues : MonoBehaviour
         return stoneMax;
     }
 
-    public int GetSilverMaxCapacity()
+    public int GetSilverMaxCapacity(int lvl)
     {
         int silverMax = 0;
-        switch (PlayerPrefs.GetInt("WarehouseLvl"))
+        switch (lvl)
         {
             case 0:
                 silverMax = 0; break;
@@ -44,10 +44,10 @@ public class CapacityValues : MonoBehaviour
         return silverMax;
     }
     
-    public int GetGoldMaxCapacity()
+    public int GetGoldMaxCapacity(int lvl)
     {
         int goldMax = 0;
-        switch (PlayerPrefs.GetInt("WarehouseLvl"))
+        switch (lvl)
         {
             case 0:
                 goldMax = 0; break;
@@ -63,10 +63,10 @@ public class CapacityValues : MonoBehaviour
         return goldMax;
     }
 
-    public int GetCitizensMaxCapacity()
+    public int GetCitizensMaxCapacity(int lvl)
     {
         int citizensMax = 0;
-        switch (PlayerPrefs.GetInt("HomeLvl"))
+        switch (lvl)
         {
             case 0:
                 citizensMax = 10; break;

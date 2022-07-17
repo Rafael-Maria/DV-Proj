@@ -132,6 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 12903859}
+  - component: {fileID: 12903860}
   m_Layer: 5
   m_Name: Confirm Button
   m_TagString: Untagged
@@ -160,6 +161,62 @@ RectTransform:
   m_AnchoredPosition: {x: 596.6, y: -2414.2}
   m_SizeDelta: {x: 500, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &12903860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 12903858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 0}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: BuildingController, Assembly-CSharp
+        m_MethodName: Upgrade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &15213569
 GameObject:
   m_ObjectHideFlags: 0
@@ -307,7 +364,7 @@ GameObject:
   - component: {fileID: 33890459}
   m_Layer: 5
   m_Name: Saloon_2
-  m_TagString: Untagged
+  m_TagString: saloon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -381,10 +438,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6890fc42d2a7845b53190b55586d95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stoneCounter: {fileID: 0}
+  silverCounter: {fileID: 0}
+  goldCounter: {fileID: 0}
   board: {fileID: 1509104821}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
-  boardUpgrade: {fileID: 1044798558}
+  level: {fileID: 0}
 --- !u!114 &33890459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -664,7 +724,7 @@ GameObject:
   - component: {fileID: 63225961}
   - component: {fileID: 63225962}
   m_Layer: 5
-  m_Name: Stable
+  m_Name: Img
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -739,10 +799,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6890fc42d2a7845b53190b55586d95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stoneCounter: {fileID: 0}
+  silverCounter: {fileID: 0}
+  goldCounter: {fileID: 0}
   board: {fileID: 383090548}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
-  boardUpgrade: {fileID: 1801121046}
+  level: {fileID: 0}
 --- !u!114 &63225962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1462,7 +1525,7 @@ GameObject:
   - component: {fileID: 189397314}
   m_Layer: 5
   m_Name: Home_3
-  m_TagString: Untagged
+  m_TagString: home
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1536,10 +1599,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6890fc42d2a7845b53190b55586d95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stoneCounter: {fileID: 0}
+  silverCounter: {fileID: 0}
+  goldCounter: {fileID: 0}
   board: {fileID: 1804068243}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
-  boardUpgrade: {fileID: 1198035931}
+  level: {fileID: 0}
 --- !u!114 &189397314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1793,7 +1859,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 196092372}
   m_LocalRotation: {x: 0.22495107, y: 0, z: 0, w: 0.9743701}
-  m_LocalPosition: {x: 0, y: 0, z: -9}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 1572134132}
@@ -1806,7 +1872,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 26, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -774, y: -220.99997}
+  m_AnchoredPosition: {x: -774, y: -235.00002}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &196092374
@@ -2316,7 +2382,7 @@ GameObject:
   - component: {fileID: 276516422}
   m_Layer: 5
   m_Name: Stable_3
-  m_TagString: Untagged
+  m_TagString: stable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2811,7 +2877,7 @@ GameObject:
   - component: {fileID: 311255747}
   m_Layer: 5
   m_Name: Saloon_0
-  m_TagString: Untagged
+  m_TagString: saloon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2832,7 +2898,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1, y: -110.29002}
+  m_AnchoredPosition: {x: -1, y: -114}
   m_SizeDelta: {x: 461.453, y: 347.871}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &311255744
@@ -2885,10 +2951,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6890fc42d2a7845b53190b55586d95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stoneCounter: {fileID: 0}
+  silverCounter: {fileID: 0}
+  goldCounter: {fileID: 0}
   board: {fileID: 1509104821}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
-  boardUpgrade: {fileID: 1044798558}
+  level: {fileID: 0}
 --- !u!114 &311255747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3178,7 +3247,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 762, y: -202.99997}
+  m_AnchoredPosition: {x: 762, y: -217}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &322713957
@@ -3484,10 +3553,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6890fc42d2a7845b53190b55586d95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stoneCounter: {fileID: 0}
+  silverCounter: {fileID: 0}
+  goldCounter: {fileID: 0}
   board: {fileID: 383090548}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
-  boardUpgrade: {fileID: 0}
+  level: {fileID: 279305425}
 --- !u!114 &383090551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3865,8 +3937,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2574, y: 1346.6997}
-  m_SizeDelta: {x: 99.55, y: 50.769}
+  m_AnchoredPosition: {x: -2569, y: 1347}
+  m_SizeDelta: {x: 123, y: 51}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &417460653
 MonoBehaviour:
@@ -4717,7 +4789,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -2807.6, y: 1346.9999}
+  m_AnchoredPosition: {x: -2807.6, y: 1331}
   m_SizeDelta: {x: 552.4481, y: 568.446}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &541577179
@@ -4933,6 +5005,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 577837151}
+  - component: {fileID: 577837152}
   m_Layer: 5
   m_Name: Confirm Button
   m_TagString: Untagged
@@ -4961,6 +5034,62 @@ RectTransform:
   m_AnchoredPosition: {x: 596.6, y: -2414.2}
   m_SizeDelta: {x: 500, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &577837152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 577837150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 0}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: BuildingController, Assembly-CSharp
+        m_MethodName: Upgrade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &579190201
 GameObject:
   m_ObjectHideFlags: 0
@@ -5309,7 +5438,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -23, y: -202.99997}
+  m_AnchoredPosition: {x: -23, y: -217.00002}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &660254773
@@ -5352,7 +5481,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 664618407}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.49999997, z: 1}
   m_Children:
   - {fileID: 1553570323}
@@ -5362,7 +5491,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -407, y: -203}
+  m_AnchoredPosition: {x: -407, y: -217.00005}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &664618409
@@ -5858,7 +5987,7 @@ GameObject:
   - component: {fileID: 808808726}
   m_Layer: 5
   m_Name: Warehouse_4
-  m_TagString: Untagged
+  m_TagString: warehouse
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5932,10 +6061,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6890fc42d2a7845b53190b55586d95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stoneCounter: {fileID: 0}
+  silverCounter: {fileID: 0}
+  goldCounter: {fileID: 0}
   board: {fileID: 1040264982}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
-  boardUpgrade: {fileID: 544109897}
+  level: {fileID: 0}
 --- !u!114 &808808726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6120,8 +6252,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -3079, y: 1347}
-  m_SizeDelta: {x: 99.612, y: 51.331}
+  m_AnchoredPosition: {x: -3075, y: 1347}
+  m_SizeDelta: {x: 123, y: 51}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &853611868
 MonoBehaviour:
@@ -6630,7 +6762,7 @@ GameObject:
   - component: {fileID: 940117231}
   m_Layer: 5
   m_Name: Home_4
-  m_TagString: Untagged
+  m_TagString: home
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6704,10 +6836,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6890fc42d2a7845b53190b55586d95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stoneCounter: {fileID: 0}
+  silverCounter: {fileID: 0}
+  goldCounter: {fileID: 0}
   board: {fileID: 1804068243}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
-  boardUpgrade: {fileID: 1198035931}
+  level: {fileID: 0}
 --- !u!114 &940117231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7430,6 +7565,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1008914702}
+  - component: {fileID: 1008914703}
   m_Layer: 5
   m_Name: Confirm Button
   m_TagString: Untagged
@@ -7458,6 +7594,62 @@ RectTransform:
   m_AnchoredPosition: {x: 596.6, y: -2414.2}
   m_SizeDelta: {x: 500, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1008914703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1008914701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 0}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: BuildingController, Assembly-CSharp
+        m_MethodName: Upgrade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1009640073
 GameObject:
   m_ObjectHideFlags: 0
@@ -7724,10 +7916,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6890fc42d2a7845b53190b55586d95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stoneCounter: {fileID: 0}
+  silverCounter: {fileID: 0}
+  goldCounter: {fileID: 0}
   board: {fileID: 1040264982}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
-  boardUpgrade: {fileID: 0}
+  level: {fileID: 966648475}
 --- !u!1 &1044798558
 GameObject:
   m_ObjectHideFlags: 0
@@ -8144,7 +8339,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 353.03094, y: -195}
+  m_AnchoredPosition: {x: 353.03094, y: -209.00005}
   m_SizeDelta: {x: 847.8561, y: 929.2287}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1072150403
@@ -8246,6 +8441,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1078809978}
+  - component: {fileID: 1078809979}
   m_Layer: 5
   m_Name: Confirm Button
   m_TagString: Untagged
@@ -8274,6 +8470,62 @@ RectTransform:
   m_AnchoredPosition: {x: 596.6, y: -2414.2}
   m_SizeDelta: {x: 500, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1078809979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1078809977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 0}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 196092374}
+        m_TargetAssemblyTypeName: BuildingController, Assembly-CSharp
+        m_MethodName: Upgrade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1086108368
 GameObject:
   m_ObjectHideFlags: 0
@@ -10088,7 +10340,7 @@ GameObject:
   - component: {fileID: 1367004097}
   m_Layer: 5
   m_Name: Home_2
-  m_TagString: Untagged
+  m_TagString: home
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10162,10 +10414,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6890fc42d2a7845b53190b55586d95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stoneCounter: {fileID: 0}
+  silverCounter: {fileID: 0}
+  goldCounter: {fileID: 0}
   board: {fileID: 1804068243}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
-  boardUpgrade: {fileID: 1198035931}
+  level: {fileID: 0}
 --- !u!114 &1367004097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10671,7 +10926,7 @@ GameObject:
   - component: {fileID: 1407689389}
   m_Layer: 5
   m_Name: Stable_2
-  m_TagString: Untagged
+  m_TagString: stable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11150,7 +11405,7 @@ GameObject:
   - component: {fileID: 1469488579}
   m_Layer: 5
   m_Name: Stable_1
-  m_TagString: Untagged
+  m_TagString: stable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11463,10 +11718,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6890fc42d2a7845b53190b55586d95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stoneCounter: {fileID: 0}
+  silverCounter: {fileID: 0}
+  goldCounter: {fileID: 0}
   board: {fileID: 1509104821}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
-  boardUpgrade: {fileID: 0}
+  level: {fileID: 1801755302}
 --- !u!114 &1509104824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11781,7 +12039,7 @@ GameObject:
   - component: {fileID: 1544568116}
   m_Layer: 5
   m_Name: Stable_0
-  m_TagString: Untagged
+  m_TagString: stable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11858,7 +12116,7 @@ GameObject:
   - component: {fileID: 1553570327}
   m_Layer: 5
   m_Name: Sheriff_0
-  m_TagString: Untagged
+  m_TagString: sheriff
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11932,10 +12190,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6890fc42d2a7845b53190b55586d95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stoneCounter: {fileID: 0}
+  silverCounter: {fileID: 0}
+  goldCounter: {fileID: 0}
   board: {fileID: 1593500610}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
-  boardUpgrade: {fileID: 1902707803}
+  level: {fileID: 0}
 --- !u!114 &1553570327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12001,6 +12262,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1560388304}
+  - component: {fileID: 1560388305}
   m_Layer: 5
   m_Name: Confirm Button
   m_TagString: Untagged
@@ -12029,6 +12291,62 @@ RectTransform:
   m_AnchoredPosition: {x: 596.6, y: -2414.2}
   m_SizeDelta: {x: 500, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1560388305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1560388303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 0}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 322713957}
+        m_TargetAssemblyTypeName: BuildingController, Assembly-CSharp
+        m_MethodName: Upgrade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1567512374
 GameObject:
   m_ObjectHideFlags: 0
@@ -12110,7 +12428,7 @@ GameObject:
   - component: {fileID: 1571161616}
   m_Layer: 5
   m_Name: Sheriff_1
-  m_TagString: Untagged
+  m_TagString: sheriff
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12184,10 +12502,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6890fc42d2a7845b53190b55586d95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stoneCounter: {fileID: 0}
+  silverCounter: {fileID: 0}
+  goldCounter: {fileID: 0}
   board: {fileID: 1593500610}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
-  boardUpgrade: {fileID: 1902707803}
+  level: {fileID: 0}
 --- !u!114 &1571161616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12259,7 +12580,7 @@ GameObject:
   - component: {fileID: 1572134136}
   m_Layer: 5
   m_Name: Warehouse_0
-  m_TagString: Untagged
+  m_TagString: warehouse
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12333,10 +12654,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6890fc42d2a7845b53190b55586d95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stoneCounter: {fileID: 0}
+  silverCounter: {fileID: 0}
+  goldCounter: {fileID: 0}
   board: {fileID: 1040264982}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
-  boardUpgrade: {fileID: 544109897}
+  level: {fileID: 0}
 --- !u!114 &1572134136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12644,10 +12968,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6890fc42d2a7845b53190b55586d95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stoneCounter: {fileID: 0}
+  silverCounter: {fileID: 0}
+  goldCounter: {fileID: 0}
   board: {fileID: 1593500610}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
-  boardUpgrade: {fileID: 0}
+  level: {fileID: 1760208274}
 --- !u!114 &1593500613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13008,7 +13335,7 @@ GameObject:
   - component: {fileID: 1646843202}
   m_Layer: 5
   m_Name: Warehouse_2
-  m_TagString: Untagged
+  m_TagString: warehouse
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13082,10 +13409,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6890fc42d2a7845b53190b55586d95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stoneCounter: {fileID: 0}
+  silverCounter: {fileID: 0}
+  goldCounter: {fileID: 0}
   board: {fileID: 1040264982}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
-  boardUpgrade: {fileID: 544109897}
+  level: {fileID: 0}
 --- !u!114 &1646843202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13958,7 +14288,7 @@ GameObject:
   - component: {fileID: 1772489672}
   m_Layer: 5
   m_Name: Warehouse_3
-  m_TagString: Untagged
+  m_TagString: warehouse
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14032,10 +14362,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6890fc42d2a7845b53190b55586d95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stoneCounter: {fileID: 0}
+  silverCounter: {fileID: 0}
+  goldCounter: {fileID: 0}
   board: {fileID: 1040264982}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
-  boardUpgrade: {fileID: 544109897}
+  level: {fileID: 0}
 --- !u!114 &1772489672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14107,7 +14440,7 @@ GameObject:
   - component: {fileID: 1779902051}
   m_Layer: 5
   m_Name: Saloon_1
-  m_TagString: Untagged
+  m_TagString: saloon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14181,10 +14514,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6890fc42d2a7845b53190b55586d95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stoneCounter: {fileID: 0}
+  silverCounter: {fileID: 0}
+  goldCounter: {fileID: 0}
   board: {fileID: 1509104821}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
-  boardUpgrade: {fileID: 1044798558}
+  level: {fileID: 0}
 --- !u!114 &1779902051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14646,10 +14982,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6890fc42d2a7845b53190b55586d95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stoneCounter: {fileID: 0}
+  silverCounter: {fileID: 0}
+  goldCounter: {fileID: 0}
   board: {fileID: 1804068243}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
-  boardUpgrade: {fileID: 0}
+  level: {fileID: 255542076}
 --- !u!114 &1804068246
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15848,7 +16187,7 @@ GameObject:
   - component: {fileID: 1921793912}
   m_Layer: 5
   m_Name: Home_1
-  m_TagString: Untagged
+  m_TagString: home
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15922,10 +16261,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6890fc42d2a7845b53190b55586d95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stoneCounter: {fileID: 0}
+  silverCounter: {fileID: 0}
+  goldCounter: {fileID: 0}
   board: {fileID: 1804068243}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
-  boardUpgrade: {fileID: 1198035931}
+  level: {fileID: 0}
 --- !u!114 &1921793912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16131,7 +16473,7 @@ GameObject:
   - component: {fileID: 1940353867}
   m_Layer: 5
   m_Name: Home_0
-  m_TagString: Untagged
+  m_TagString: home
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16205,10 +16547,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6890fc42d2a7845b53190b55586d95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stoneCounter: {fileID: 0}
+  silverCounter: {fileID: 0}
+  goldCounter: {fileID: 0}
   board: {fileID: 1804068243}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
-  boardUpgrade: {fileID: 1198035931}
+  level: {fileID: 0}
 --- !u!114 &1940353867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16279,8 +16624,8 @@ GameObject:
   - component: {fileID: 1952818827}
   - component: {fileID: 1952818828}
   m_Layer: 5
-  m_Name: Warehouse_1
-  m_TagString: Untagged
+  m_Name: Warehouse1
+  m_TagString: warehouse
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16354,10 +16699,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6890fc42d2a7845b53190b55586d95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stoneCounter: {fileID: 0}
+  silverCounter: {fileID: 0}
+  goldCounter: {fileID: 0}
   board: {fileID: 1040264982}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
-  boardUpgrade: {fileID: 544109897}
+  level: {fileID: 0}
 --- !u!114 &1952818828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16652,7 +17000,7 @@ GameObject:
   - component: {fileID: 2004694059}
   m_Layer: 5
   m_Name: Stable_4
-  m_TagString: Untagged
+  m_TagString: stable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17247,8 +17595,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1580, y: 1336}
-  m_SizeDelta: {x: 99.55, y: 50.769}
+  m_AnchoredPosition: {x: -1577, y: 1347}
+  m_SizeDelta: {x: 123, y: 51}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2045465330
 MonoBehaviour:
@@ -17326,8 +17674,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2080, y: 1346.6998}
-  m_SizeDelta: {x: 99.55, y: 50.769}
+  m_AnchoredPosition: {x: -2083, y: 1347}
+  m_SizeDelta: {x: 123, y: 51}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2046032057
 MonoBehaviour:
