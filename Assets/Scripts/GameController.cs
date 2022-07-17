@@ -56,7 +56,7 @@ public class GameController : MonoBehaviour
         if (PlayerPrefs.HasKey("MineLvl") && mine_GO)
             mine_GO.GetComponent<BuildingController>().SetLevel(PlayerPrefs.GetInt("MineLvl"));
 
-        //AddStone(100);
+        AddStone(100);
     } 
 
     void Update()
@@ -174,10 +174,14 @@ public class GameController : MonoBehaviour
     }
 
     public int getWarehouseLevel(){
-        return warehouse_GO.GetComponent<BuildingController>().GetLevel();
+        //return warehouse_GO.GetComponent<BuildingController>().GetLevel();
+        Debug.Log(PlayerPrefs.GetInt("WarehouseLvl"));
+        return PlayerPrefs.GetInt("WarehouseLvl");
     }
 
     public int getHomeLevel(){
-        return home_GO.GetComponent<BuildingController>().GetLevel();
+        //return home_GO.GetComponent<BuildingController>().GetLevel();
+        Debug.Log(PlayerPrefs.GetInt("HomeLvl"));
+        return PlayerPrefs.GetInt("HomeLvl");
     }
 }
