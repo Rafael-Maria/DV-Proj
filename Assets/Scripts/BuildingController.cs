@@ -11,14 +11,13 @@ public class BuildingController : MonoBehaviour
     private GameController gameController;
     //private CapacityValues capacityValues;
     private string objectName;
-    private ArrayList children = new ArrayList();
+    private List<Transform> children = new List<Transform>();
 
     void Start()
     {
         objectName = gameObject.name;
         //Debug.Log(objectName);
         gameController = GameObject.FindGameObjectWithTag("gameController").GetComponent<GameController>();
-        //gameController.AddStone(100);
 
         if(gameObject.name != "Game Bar"){
             foreach (Transform child in transform)
@@ -47,22 +46,33 @@ public class BuildingController : MonoBehaviour
     public void SetLevel(int level)
     {
         if(gameObject.name != "Game Bar"){
-            //Debug.Log(level);
+            //Debug.Log("level: " + level);
             string fullName = "";
             if(level > 0 && objectName != "Stable"){
                 fullName = (objectName + "_" + this.level);
-                //Debug.Log(fullName);
-                GameObject.Find(fullName).SetActive(false);
+                foreach(Transform x in children) {
+                    if(fullName.Equals(x.name)){
+                        x.gameObject.SetActive(false);
+                        break;
+                    }
+                }
             }
+            
             this.level = level;
             fullName = (objectName + "_" + this.level);
-            Debug.Log(objectName);
-            Debug.Log(fullName);
-            GameObject.Find(fullName).SetActive(true);
-
-            //USAR A LISTA PARA DAR SetActive NOS EDIFICIOS CERTOS ----------------------------------------------------------
-
-            //this.level = level;
+            //Debug.Log(gameObject.name);
+            //Debug.Log(objectName);
+            Debug.Log("fullname: " + fullName);
+            
+            foreach(Transform x in children) {
+                //Debug.Log("fullname2: " + fullName);
+                //Debug.Log("name: " + x.name);
+                if(fullName.Equals(x.name)){
+                    //Debug.Log("entrei");
+                    x.gameObject.SetActive(true);
+                    break;
+                }
+            }
         }
     }
 
@@ -84,8 +94,8 @@ public class BuildingController : MonoBehaviour
 
     public void Upgrade(){
         if(validateUpgrade()){
+            //Debug.Log("validate level: " + GetLevel());
             SetLevel((GetLevel()+1));
-            //Debug.Log(GetLevel());
         } else {
             //Debug.Log("nao entrei");
         }
@@ -93,11 +103,16 @@ public class BuildingController : MonoBehaviour
     }
 
     private bool validateUpgrade(){
-        switch (objectName){
+        //Debug.Log("name: " + objectName.ToString());
+        switch (objectName.ToString()){
             case "Warehouse":
+                //Debug.Log("aquiiiiiiiii");
+                //Debug.Log("level: " + GetLevel());
                 switch (GetLevel()){
                     case 0:
+                        //Debug.Log("stone: " + gameController.GetStoneAmount());
                         if(gameController.GetStoneAmount() >= 90 && gameController.GetSilverAmount() == 0 && gameController.GetGoldAmount() == 0)
+                            //Debug.Log("NICEEE");
                             return true;
                         break;
                     case 1:

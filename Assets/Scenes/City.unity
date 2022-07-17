@@ -4296,7 +4296,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1194348573}
         m_TargetAssemblyTypeName: ScenesController, Assembly-CSharp
-        m_MethodName: loudMenu
+        m_MethodName: loadMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7546,7 +7546,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1194348573}
         m_TargetAssemblyTypeName: ScenesController, Assembly-CSharp
-        m_MethodName: loudMine
+        m_MethodName: loadMine
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9206,7 +9206,7 @@ GameObject:
   - component: {fileID: 1194348573}
   m_Layer: 5
   m_Name: Game Bar
-  m_TagString: Untagged
+  m_TagString: loading
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9280,7 +9280,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 0
 --- !u!224 &1194841918
 RectTransform:
@@ -16624,7 +16624,7 @@ GameObject:
   - component: {fileID: 1952818827}
   - component: {fileID: 1952818828}
   m_Layer: 5
-  m_Name: Warehouse1
+  m_Name: Warehouse_1
   m_TagString: warehouse
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
+using UnityEngine.EventSystems;
+using TMPro;
 
 public class MainMenu : MonoBehaviour
 {
@@ -10,8 +13,18 @@ public class MainMenu : MonoBehaviour
     private Sprite menuLoading;
     private Sprite cityLoading;
 
+    [SerializeField] private GameObject playButton;
+    [SerializeField] private GameObject playButtonFake;
+
     public void NewGame(){
         //reset
+        if(PlayerPrefs.HasKey("new")){
+            PlayerPrefs.DeleteAll();
+            Debug.Log("PlayerPrefs reseted");
+        }
+        initiatePlayerPrefs();
+        PlayerPrefs.SetInt("new", 0);
+        PlayerPrefs.Save();
 
         loading.GetComponent<UnityEngine.UI.Image>().sprite = cityLoading;
         StartCoroutine(ShowAndHide(loading, 2.0f)); // 2 second
@@ -33,7 +46,13 @@ public class MainMenu : MonoBehaviour
     void Start()
     {
         menuLoading = Resources.Load<Sprite>("Loading_Initial");
-        cityLoading = Resources.Load<Sprite>("Loading_city");    
+        cityLoading = Resources.Load<Sprite>("Loading_city"); 
+
+        
+        if(PlayerPrefs.HasKey("new")){
+            playButton.SetActive(true);
+            playButtonFake.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -46,5 +65,19 @@ public class MainMenu : MonoBehaviour
         go.SetActive(true);
         yield return new WaitForSeconds(delay);
         go.SetActive(false);
+    }
+
+    private void initiatePlayerPrefs(){
+        PlayerPrefs.SetInt("GoldAmount", 0);
+        PlayerPrefs.SetInt("SilverAmount", 0);
+        PlayerPrefs.SetInt("StoneAmount", 0);
+        PlayerPrefs.SetInt("CitizensAmount", 0);
+
+        PlayerPrefs.SetInt("WarehouseLvl", 0);
+        PlayerPrefs.SetInt("SheriffLvl", 0);
+        PlayerPrefs.SetInt("SaloonLvl", 0);
+        PlayerPrefs.SetInt("StableLvl", 0);
+        PlayerPrefs.SetInt("HomeLvl", 0);
+        PlayerPrefs.SetInt("MineLvl", 0);
     }
 }
