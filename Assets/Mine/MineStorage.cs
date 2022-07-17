@@ -1,27 +1,49 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MineStorage : MonoBehaviour
 {
     //In add product Add time it takes to send - more material -> more Time
     //calc to Send
     //Plan since we don't know the amount of ores of each type
-    private float storageSpaceAvailable; //Storage mine itself
-    private float storageSpaceOcupy;
-    private float amountStone;
-    private float amountSilver;
-    private float amountGold;
-    private float amountStoneSend;
-    private float amountSilverSend;
-    private float amountGoldSend;
-    private float maxAmountToSend;  //Storage transport
-    private float actualAmountToSend;
+    private int transpLevel;
+    private int storageSpaceAvailable; //Storage mine itself
+    private int storageSpaceOcupy;
+    private int amountStone;
+    private int amountSilver;
+    private int amountGold;
+    private int amountStoneSend;
+    private int amountSilverSend;
+    private int amountGoldSend;
+    private int maxAmountToSend;  //Storage transport
+    private int actualAmountToSend;
     //Time to send
     private float timeTakes; //in seconds
     private bool sending;
+
+    //Text fields
+    [SerializeField] private Text StoneMine;
+    [SerializeField] private Text GoldMine;
+    [SerializeField] private Text SilverMine;
+    [SerializeField] private Text StoneSend;
+    [SerializeField] private Text GoldSend;
+    [SerializeField] private Text SilverSend;
+    [SerializeField] private Text MaxStorage;
+    [SerializeField] private Text MaxTransp;
+
+    //buttons
+    [SerializeField] private Button SendResources;
+    [SerializeField] private Button SendGold;
+    [SerializeField] private Button SendSilver;
+    [SerializeField] private Button SendStone;
+    [SerializeField] private Button upgradingButton;
+    [SerializeField] private Text timeLeft;
+
      void Awake(){
         sending = false;
+        transpLevel=0;
         storageSpaceAvailable = 10;
         storageSpaceOcupy = 0;
         amountStone = 0;
@@ -39,21 +61,17 @@ public class MineStorage : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        //max amount to send and storageSpaceAvailable
+        MaxStorage.text = "Max Capacity: " + storageSpaceAvailable.ToString();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(timeTakes <= 0 && sending){
-            //Do the delivery
-            timeTakes = 0;
-            amountGoldSend=0;
-            amountSilverSend=0;
-            amountStoneSend=0;
-            sending = false;
-        }else{
-            timeTakes -= Time.deltaTime; 
+        if(sending && timeTakes > 0){
+            timeTakes -= Time.deltaTime;
+            timeLeft.text = timeTakes.ToString();
+            //update button telling time
         }
     }
 
@@ -65,29 +83,80 @@ public class MineStorage : MonoBehaviour
         switch (codeOre){
             case 1:
                 amountStone++;
+                StoneMine.text = amountStone.ToString();
+                PlayerPrefs.SetInt("StoneMine", amountStone);
                 break;
             case 2:
                 amountSilver++;
+                SilverMine.text = amountSilver.ToString();
+                PlayerPrefs.SetInt("SilverMine", amountSilver);
                 break;
             case 3:
                 amountGold++;
+                GoldMine.text = amountGold.ToString();
+                PlayerPrefs.SetInt("GoldMine", amountGold);
                 break;
             default:
                 break;
         }
     }
 
-    void Send(){
+    public void SendButton(){
+        Send();
+    }
+    IEnumerator Send(){
         if(amountStoneSend == 0 && amountSilverSend == 0 && amountGoldSend == 0){
-            return;
+        }else{
+
+            //block send buttons
+            SendResources.interactable = false;
+            SendGold.interactable = false;
+            SendSilver.interactable = false;
+            SendStone.interactable = false;
+            upgradingButton.interactable = false;
+            sending = true;
+            yield return new WaitForSeconds(timeTakes);
+            storageSpaceOcupy = storageSpaceOcupy - amountGoldSend - amountSilverSend - amountStoneSend;
+            //Gold
+            amountGold -= amountGoldSend;
+            amountGoldSend = 0;
+            PlayerPrefs.SetInt("GoldSend",amountGoldSend);
+            GoldSend.text = amountGoldSend.ToString();
+            PlayerPrefs.SetInt("GoldMine", amountGold);
+            GoldMine.text = amountGold.ToString();
+
+        //Silver
+            amountSilver -= amountSilverSend;
+            amountSilverSend = 0;
+            PlayerPrefs.SetInt("SilverSend",amountSilverSend);
+            SilverSend.text = amountSilverSend.ToString();
+            PlayerPrefs.SetInt("SilverMine", amountSilver);
+            SilverMine.text = amountSilver.ToString();
+
+        //Stone
+            amountStone -= amountStoneSend;
+            amountStoneSend = 0;
+            PlayerPrefs.SetInt("StoneSend",amountStoneSend);
+            StoneSend.text = amountStoneSend.ToString();
+            PlayerPrefs.SetInt("StoneMine", amountStone);
+            StoneMine.text = amountStone.ToString();
+
+        //other parts of storage    
+            sending = false;
+            actualAmountToSend = 0;
+            timeTakes=0;
+
+            //unlock send buttons
+            SendResources.interactable = true;
+            SendGold.interactable = true;
+            SendSilver.interactable = true;
+            SendStone.interactable = true;
+            upgradingButton.interactable = true;
+            timeLeft.text = "Send Resources";
         }
-        sending = true;
-        amountGold -= amountGoldSend;
-        amountSilver -= amountSilverSend;
-        amountStone -= amountStoneSend;
     }
 
-    void addStoneToSend(){
+    public void addStoneToSend(){
         if(sending){
             return;
         }
@@ -98,9 +167,13 @@ public class MineStorage : MonoBehaviour
             return;
         }
         amountStoneSend++;
+        timeTakes += 5;
+        StoneSend.text = amountStoneSend.ToString();
+        PlayerPrefs.SetInt("StoneSend",amountStoneSend);
+	    int goldSendValue =PlayerPrefs.GetInt("GoldSend");
     }
 
-    void addSilverToSend(){
+    public void addSilverToSend(){
         if(sending){
             return;
         }
@@ -111,9 +184,12 @@ public class MineStorage : MonoBehaviour
             return;
         }
         amountSilverSend++;
+        timeTakes += 10;
+        SilverSend.text = amountSilverSend.ToString();
+        PlayerPrefs.SetInt("SilverSend",amountSilverSend);
     }
 
-    void addGoldToSend(){
+    public void addGoldToSend(){
         if(sending){
             return;
         }
@@ -124,6 +200,50 @@ public class MineStorage : MonoBehaviour
             return;
         }
         amountGoldSend++;
+        timeTakes += 15;
+        GoldSend.text = amountGoldSend.ToString();
+        PlayerPrefs.SetInt("GoldSend",amountGoldSend);
+    }
+
+    public void upgrade(){
+        switch(transpLevel){
+            case 0:
+                transpLevel = 1;
+                maxAmountToSend = 20;
+                break;
+            case 1:
+                transpLevel = 2;
+                maxAmountToSend = 50;
+                break;
+            case 2:
+                transpLevel = 3;
+                maxAmountToSend = 80;
+                break;
+            case 3:
+                transpLevel = 4;
+                maxAmountToSend = 100;
+                break;
+        }
+        MaxTransp.text = "Max Trasnport:" + maxAmountToSend.ToString();
+    }
+
+    public void upgradeMine(int mineLevel){
+        switch(mineLevel){
+            case 0:
+                storageSpaceAvailable = 20;
+                break;
+            case 1:
+                storageSpaceAvailable = 80;
+                break;
+            case 2:
+                storageSpaceAvailable = 100;
+                break;
+            case 3:
+                storageSpaceAvailable = 150;
+                break;
+        }
+        gameObject.GetComponent<Text>().text = "Mine Level: "+ mineLevel.ToString();
+        MaxStorage.text = "Max Capacity: " + storageSpaceAvailable.ToString();
     }
 
 }

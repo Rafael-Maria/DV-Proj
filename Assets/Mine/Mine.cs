@@ -1,24 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 /*
 *Missing change the material of the mine clicker
 */
 public class Mine : MonoBehaviour
 {
-    [SerializeField] MineStorage storage;
-    float mineLevel;
+    int mineLevel;
     float StoneLuck; 
     float SilverLuck;
     int random;
     int currentOre; // 1-Stone; 2-Silver; 3 - Gold
-    [SerializeField] Material stone;
-    [SerializeField] Material silver;
-    [SerializeField] Material gold;
-
+    [SerializeField] Sprite stone;
+    [SerializeField] Sprite silver;
+    [SerializeField] Sprite gold;
+    [SerializeField] GameObject mineStorage;
     void Awake(){
         mineLevel = 0;
-        StoneLuck = 100;
+        StoneLuck = 120;
         SilverLuck = 200;
         chooseOre();
         DontDestroyOnLoad(this.gameObject);
@@ -40,12 +40,15 @@ public class Mine : MonoBehaviour
         if(random <= StoneLuck){
             currentOre=1;
             //put Stone texture
+            //this.image.sprite = stone;
         }else if(random <= SilverLuck){
             currentOre=2;
             //put Silver texture
+            //this.image.sprite = silver;
         }else{
             currentOre=3;
             //put Gold texture
+            //this.image.sprite = gold;
         }
     }
 
@@ -54,7 +57,31 @@ public class Mine : MonoBehaviour
         //adicionar ao Storage +1, se o Storage ainda estiver espaço;
         //adicionar ao storage o valor do ore, se o Storage ainda estiver espaço;
         //Fazer random para ver o próximo ore (alterar texture)
-        storage.addProduct(currentOre);//need to get the  of the ore
+        //storage.addProduct(currentOre);//need to get the  of the ore
+        mineStorage.GetComponent<MineStorage>().addProduct(currentOre);
         chooseOre();
+    }
+
+    public void upgrade(){
+        switch(mineLevel){
+            case 0:
+                StoneLuck = 80;
+                SilverLuck = 140;
+                break;
+            case 1:
+                StoneLuck = 60;
+                SilverLuck = 120;
+                break;
+            case 2:
+                StoneLuck = 50;
+                SilverLuck = 80;
+                break;
+            case 3:
+                StoneLuck = 33;
+                SilverLuck = 66;
+                break;
+        }
+        mineStorage.GetComponent<MineStorage>().upgradeMine(mineLevel);
+        mineLevel++;
     }
 }

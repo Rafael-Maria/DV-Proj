@@ -4,6 +4,26 @@ using UnityEngine;
 
 public class CapacityValues : MonoBehaviour
 {
+    public int GetMineCapacity(int lvl)
+    {
+        int mineMax = 0;
+        switch (lvl)
+        {
+            case 0:
+                mineMax = 10; break;
+            case 1:
+                mineMax = 60; break;
+            case 2:
+                mineMax = 160; break;
+            case 3:
+                mineMax = 300; break;
+            case 4:
+                mineMax = 1000; break;
+        }
+
+        return mineMax;
+    }
+
     public int GetStoneMaxCapacity(int lvl)
     {
         int stoneMax = 0;
