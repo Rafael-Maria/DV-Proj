@@ -20,7 +20,6 @@ public class City_Menus: MonoBehaviour {
     [SerializeField] private GameObject board;
     [SerializeField] private GameObject navigation;
     [SerializeField] private GameObject navigation_optional;
-    [SerializeField] private GameObject level;
     private Vector3 startPos;
     private Vector3 endPos;
     private Vector3 startPos2;
@@ -31,8 +30,6 @@ public class City_Menus: MonoBehaviour {
     private bool isPressed;
     private bool goUp;
     private bool validation;
-    
-    private string aux;
 
     void Start(){
         //Resources
@@ -112,11 +109,5 @@ public class City_Menus: MonoBehaviour {
             float Perc = currentTime/duration;
             board.transform.position = Vector3.Lerp(startPos2,endPos2,Perc);
         }
-    }
-
-    public void changeLevel(int lvl){
-        aux = level.GetComponent<TextMeshProUGUI>().text;
-        aux = aux.Substring(0, aux.Length - 1);
-        level.GetComponent<TextMeshProUGUI>().text = (aux + lvl);
     }
 }

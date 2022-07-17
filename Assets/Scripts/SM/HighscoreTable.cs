@@ -121,7 +121,7 @@ public class HighscoreTable : MonoBehaviour {
     }
 
     public void AddHighscoreEntry(int score, string name) {
-        if(score != 0){
+        //if(score != 0){
             // Create HighscoreEntry
             HighscoreEntry highscoreEntry = new HighscoreEntry { score = score, name = name };
         
@@ -143,7 +143,7 @@ public class HighscoreTable : MonoBehaviour {
             string json = JsonUtility.ToJson(highscores);
             PlayerPrefs.SetString("highscoreTable", json);
             PlayerPrefs.Save();
-        }
+        //} 
     }
 
     private class Highscores {

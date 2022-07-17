@@ -8,7 +8,7 @@ public class CapacityValues : MonoBehaviour
     public int GetStoneMaxCapacity(int lvl)
     {
         int stoneMax = 0;
-        Debug.Log("WLVL:" + PlayerPrefs.GetInt("WarehouseLvl"));
+        //Debug.Log("WLVL:" + PlayerPrefs.GetInt("WarehouseLvl"));
         switch (lvl)
         {
             case 0:

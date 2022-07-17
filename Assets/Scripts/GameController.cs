@@ -200,13 +200,13 @@ public class GameController : MonoBehaviour
 
     public int getWarehouseLevel(){
         //return warehouse_GO.GetComponent<BuildingController>().GetLevel();
-        Debug.Log(PlayerPrefs.GetInt("WarehouseLvl"));
+        //Debug.Log(PlayerPrefs.GetInt("WarehouseLvl"));
         return PlayerPrefs.GetInt("WarehouseLvl");
     }
 
     public int getHomeLevel(){
         //return home_GO.GetComponent<BuildingController>().GetLevel();
-        Debug.Log(PlayerPrefs.GetInt("HomeLvl"));
+        //Debug.Log(PlayerPrefs.GetInt("HomeLvl"));
         return PlayerPrefs.GetInt("HomeLvl");
     }
 }

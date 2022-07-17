@@ -444,7 +444,6 @@ MonoBehaviour:
   board: {fileID: 1509104821}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
-  level: {fileID: 0}
 --- !u!114 &33890459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -805,7 +804,6 @@ MonoBehaviour:
   board: {fileID: 383090548}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
-  level: {fileID: 0}
 --- !u!114 &63225962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1605,7 +1603,6 @@ MonoBehaviour:
   board: {fileID: 1804068243}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
-  level: {fileID: 0}
 --- !u!114 &189397314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1890,6 +1887,7 @@ MonoBehaviour:
   level: 0
   resourcesAmount: 0
   textForNoResources: {fileID: 1669914778}
+  levelTxt: {fileID: 966648475}
 --- !u!1 &197825737
 GameObject:
   m_ObjectHideFlags: 0
@@ -2957,7 +2955,6 @@ MonoBehaviour:
   board: {fileID: 1509104821}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
-  level: {fileID: 0}
 --- !u!114 &311255747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3265,6 +3262,7 @@ MonoBehaviour:
   level: 0
   resourcesAmount: 0
   textForNoResources: {fileID: 1669914778}
+  levelTxt: {fileID: 255542076}
 --- !u!1 &325747694
 GameObject:
   m_ObjectHideFlags: 0
@@ -3559,7 +3557,6 @@ MonoBehaviour:
   board: {fileID: 383090548}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
-  level: {fileID: 279305425}
 --- !u!114 &383090551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5456,6 +5453,7 @@ MonoBehaviour:
   level: 0
   resourcesAmount: 0
   textForNoResources: {fileID: 1669914778}
+  levelTxt: {fileID: 1801755302}
 --- !u!1 &664618407
 GameObject:
   m_ObjectHideFlags: 0
@@ -5509,6 +5507,7 @@ MonoBehaviour:
   level: 0
   resourcesAmount: 0
   textForNoResources: {fileID: 1669914778}
+  levelTxt: {fileID: 1760208274}
 --- !u!1 &675352389
 GameObject:
   m_ObjectHideFlags: 0
@@ -6067,7 +6066,6 @@ MonoBehaviour:
   board: {fileID: 1040264982}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
-  level: {fileID: 0}
 --- !u!114 &808808726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6842,7 +6840,6 @@ MonoBehaviour:
   board: {fileID: 1804068243}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
-  level: {fileID: 0}
 --- !u!114 &940117231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7922,7 +7919,6 @@ MonoBehaviour:
   board: {fileID: 1040264982}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
-  level: {fileID: 966648475}
 --- !u!1 &1044798558
 GameObject:
   m_ObjectHideFlags: 0
@@ -8357,6 +8353,7 @@ MonoBehaviour:
   level: 0
   resourcesAmount: 0
   textForNoResources: {fileID: 1669914778}
+  levelTxt: {fileID: 279305425}
 --- !u!1 &1073047910
 GameObject:
   m_ObjectHideFlags: 0
@@ -9264,6 +9261,7 @@ MonoBehaviour:
   level: 0
   resourcesAmount: 0
   textForNoResources: {fileID: 0}
+  levelTxt: {fileID: 0}
 --- !u!1 &1194841917
 GameObject:
   m_ObjectHideFlags: 0
@@ -10420,7 +10418,6 @@ MonoBehaviour:
   board: {fileID: 1804068243}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
-  level: {fileID: 0}
 --- !u!114 &1367004097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11724,7 +11721,6 @@ MonoBehaviour:
   board: {fileID: 1509104821}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
-  level: {fileID: 1801755302}
 --- !u!114 &1509104824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12196,7 +12192,6 @@ MonoBehaviour:
   board: {fileID: 1593500610}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
-  level: {fileID: 0}
 --- !u!114 &1553570327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12508,7 +12503,6 @@ MonoBehaviour:
   board: {fileID: 1593500610}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
-  level: {fileID: 0}
 --- !u!114 &1571161616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12660,7 +12654,6 @@ MonoBehaviour:
   board: {fileID: 1040264982}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
-  level: {fileID: 0}
 --- !u!114 &1572134136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12974,7 +12967,6 @@ MonoBehaviour:
   board: {fileID: 1593500610}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
-  level: {fileID: 1760208274}
 --- !u!114 &1593500613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13415,7 +13407,6 @@ MonoBehaviour:
   board: {fileID: 1040264982}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
-  level: {fileID: 0}
 --- !u!114 &1646843202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14368,7 +14359,6 @@ MonoBehaviour:
   board: {fileID: 1040264982}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
-  level: {fileID: 0}
 --- !u!114 &1772489672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14520,7 +14510,6 @@ MonoBehaviour:
   board: {fileID: 1509104821}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
-  level: {fileID: 0}
 --- !u!114 &1779902051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14988,7 +14977,6 @@ MonoBehaviour:
   board: {fileID: 1804068243}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
-  level: {fileID: 255542076}
 --- !u!114 &1804068246
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16267,7 +16255,6 @@ MonoBehaviour:
   board: {fileID: 1804068243}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
-  level: {fileID: 0}
 --- !u!114 &1921793912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16553,7 +16540,6 @@ MonoBehaviour:
   board: {fileID: 1804068243}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
-  level: {fileID: 0}
 --- !u!114 &1940353867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16705,7 +16691,6 @@ MonoBehaviour:
   board: {fileID: 1040264982}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
-  level: {fileID: 0}
 --- !u!114 &1952818828
 MonoBehaviour:
   m_ObjectHideFlags: 0
