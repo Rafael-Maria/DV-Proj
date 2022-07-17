@@ -133,33 +133,48 @@ public class GameController : MonoBehaviour
     {
         return goldAmount;
     }
-    public void AddGold(int amount)
+    public int AddGold(int amount)
     {
         if(capacityValues.GetGoldMaxCapacity(getWarehouseLevel()) >= (GetGoldAmount() + amount)){
             goldAmount += amount;
+            return 0;
+        }else {
+            //aviso
+            Debug.Log("Full");
+            goldAmount = capacityValues.GetGoldMaxCapacity(getWarehouseLevel());
+            return (GetGoldAmount() + amount) - capacityValues.GetGoldMaxCapacity(getWarehouseLevel()); //excesso
         }
     }
     public int GetSilverAmount()
     {
         return silverAmount;
     }
-    public void AddSilver(int amount)
+    public int AddSilver(int amount)
     {
         if(capacityValues.GetSilverMaxCapacity(getWarehouseLevel()) >= (GetSilverAmount() + amount)){
             silverAmount += amount;
+            return 0;
+        } else {
+            //aviso
+            silverAmount = capacityValues.GetSilverMaxCapacity(getWarehouseLevel());
+            Debug.Log("Full");
+            return (GetSilverAmount() + amount) - capacityValues.GetSilverMaxCapacity(getWarehouseLevel()); //excesso
         }
     }
     public int GetStoneAmount()
     {
         return stoneAmount;
     }
-    public void AddStone(int amount)
+    public int AddStone(int amount)
     {
         if(capacityValues.GetStoneMaxCapacity(getWarehouseLevel()) >= (GetStoneAmount() + amount)){
             stoneAmount += amount;
+            return 0;
         } else {
             //aviso
-            Debug.Log("TA CHEIO");
+            stoneAmount = capacityValues.GetStoneMaxCapacity(getWarehouseLevel());
+            Debug.Log("Full");
+            return (GetStoneAmount() + amount) - capacityValues.GetStoneMaxCapacity(getWarehouseLevel()); //excesso
         }
     }
     public int GetCitizensAmount()
