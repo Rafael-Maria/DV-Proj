@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class BuildingController : MonoBehaviour
 {
@@ -11,6 +13,8 @@ public class BuildingController : MonoBehaviour
     private GameController gameController;
     //private CapacityValues capacityValues;
     private List<Transform> children = new List<Transform>();
+
+    [SerializeField] private GameObject levelTxt;
 
     void Start()
     {
@@ -59,7 +63,7 @@ public class BuildingController : MonoBehaviour
             fullName = (name + "_" + this.level);
             //Debug.Log(gameObject.name);
             //Debug.Log(name);
-            Debug.Log("fullname: " + fullName);
+            //Debug.Log("fullname: " + fullName);
             
             foreach(Transform x in children) {
                 //Debug.Log("fullname2: " + fullName);
@@ -93,11 +97,22 @@ public class BuildingController : MonoBehaviour
         if(validateUpgrade()){
             //Debug.Log("validate level: " + GetLevel());
             SetLevel((GetLevel()+1));
+            changeLevel(GetLevel());
             gameController.saveGame();
         } else {
             //Debug.Log("nao entrei");
         }
         //aviso
+    }
+
+    public void changeLevel(int lvl){
+        string aux = "";
+        aux = levelTxt.GetComponent<TextMeshProUGUI>().text;
+        Debug.Log("before: " + aux);
+        aux = aux.Substring(0, aux.Length - 1);
+        aux = aux + (lvl+1);
+        Debug.Log("after: " + aux);
+        levelTxt.GetComponent<TextMeshProUGUI>().text = aux;
     }
 
     private bool validateUpgrade(){
