@@ -20,7 +20,7 @@ public class ScenesController : MonoBehaviour
         mineLoading = Resources.Load<Sprite>("Loading_mine");
     }
 
-    public void loudMenu(){
+    public void loadMenu(){
         //save
 
         loading.GetComponent<UnityEngine.UI.Image>().sprite = menuLoading; 
@@ -28,7 +28,7 @@ public class ScenesController : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-    public void loudCity(){
+    public void loadCity(){
         //save
 
         loading.GetComponent<UnityEngine.UI.Image>().sprite = cityLoading;
@@ -36,7 +36,7 @@ public class ScenesController : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
-    public void loudMine(){
+    public void loadMine(){
         //save
 
         loading.GetComponent<UnityEngine.UI.Image>().sprite = mineLoading;

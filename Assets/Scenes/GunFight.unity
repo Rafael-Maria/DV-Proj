@@ -386,7 +386,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 109.100006, y: -45.5}
+  m_AnchoredPosition: {x: 109.100006, y: -57}
   m_SizeDelta: {x: 200, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &77596896
@@ -1009,7 +1009,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 109.1, y: -85.5}
+  m_AnchoredPosition: {x: 109.100006, y: -97}
   m_SizeDelta: {x: 200, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &332916619
@@ -2899,7 +2899,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 376871816}
         m_TargetAssemblyTypeName: ScenesController, Assembly-CSharp
-        m_MethodName: loudCity
+        m_MethodName: loadCity
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3809,7 +3809,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f281e6fa0c3c89947a22aac9de1bc66d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootingMinigame: {fileID: 0}
   entryContainer: {fileID: 335288015}
   entryTemplate: {fileID: 860937226}
 --- !u!222 &1595732005
