@@ -10,19 +10,16 @@ public class BuildingController : MonoBehaviour
     [SerializeField] private GameObject textForNoResources;
     private GameController gameController;
     //private CapacityValues capacityValues;
-    private string objectName;
     private List<Transform> children = new List<Transform>();
 
     void Start()
     {
-        objectName = gameObject.name;
-        //Debug.Log(objectName);
         gameController = GameObject.FindGameObjectWithTag("gameController").GetComponent<GameController>();
 
-        if(gameObject.name != "Game Bar"){
+        if(name != "Game Bar"){
             foreach (Transform child in transform)
             {
-                if(child.CompareTag(objectName.ToLower())) { 
+                if(child.CompareTag(name.ToLower())) { 
                     children.Add(child);
                 }
             }
@@ -45,11 +42,11 @@ public class BuildingController : MonoBehaviour
 
     public void SetLevel(int level)
     {
-        if(gameObject.name != "Game Bar"){
+        if(name != "Game Bar"){
             //Debug.Log("level: " + level);
             string fullName = "";
-            if(level > 0 && objectName != "Stable"){
-                fullName = (objectName + "_" + this.level);
+            if(level > 0 && name != "Stable"){
+                fullName = (name + "_" + this.level);
                 foreach(Transform x in children) {
                     if(fullName.Equals(x.name)){
                         x.gameObject.SetActive(false);
@@ -59,9 +56,9 @@ public class BuildingController : MonoBehaviour
             }
             
             this.level = level;
-            fullName = (objectName + "_" + this.level);
+            fullName = (name + "_" + this.level);
             //Debug.Log(gameObject.name);
-            //Debug.Log(objectName);
+            //Debug.Log(name);
             Debug.Log("fullname: " + fullName);
             
             foreach(Transform x in children) {
@@ -103,8 +100,8 @@ public class BuildingController : MonoBehaviour
     }
 
     private bool validateUpgrade(){
-        //Debug.Log("name: " + objectName.ToString());
-        switch (objectName.ToString()){
+        //Debug.Log("name: " + name.ToString());
+        switch (name.ToString()){
             case "Warehouse":
                 //Debug.Log("aquiiiiiiiii");
                 //Debug.Log("level: " + GetLevel());
