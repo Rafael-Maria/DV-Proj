@@ -72,7 +72,7 @@ public class MineStorage : MonoBehaviour
     {
         if(sending && timeTakes > 0){
             timeTakes -= Time.deltaTime;
-            timeLeft.text = timeTakes.ToString();
+            timeLeft.text = timeTakes.ToString("F2");
             //update button telling time
         }
     }
@@ -122,24 +122,27 @@ public class MineStorage : MonoBehaviour
             
             GameController main = controller.GetComponent<GameController>();
         //Gold
-            amountGold -= amountGoldSend;
-            amountGoldSend = 0;
+            int goldExc = main.AddGold(amountGoldSend);
+            amountGold -= (amountGoldSend + goldExc);
+            amountGoldSend = goldExc;
             PlayerPrefs.SetInt("GoldSend",amountGoldSend);
             GoldSend.text = amountGoldSend.ToString();
             PlayerPrefs.SetInt("GoldMine", amountGold);
             GoldMine.text = amountGold.ToString();
 
         //Silver
-            amountSilver -= amountSilverSend;
-            amountSilverSend = 0;
+            int silverExc = main.AddSilver(amountSilverSend);
+            amountSilver -= (amountSilverSend + silverExc);
+            amountSilverSend = silverExc;
             PlayerPrefs.SetInt("SilverSend",amountSilverSend);
             SilverSend.text = amountSilverSend.ToString();
             PlayerPrefs.SetInt("SilverMine", amountSilver);
             SilverMine.text = amountSilver.ToString();
 
         //Stone
-            amountStone -= amountStoneSend;
-            amountStoneSend = 0;
+            int stoneExc = main.AddStone(amountStoneSend);
+            amountStone -= (amountStoneSend + stoneExc);
+            amountStoneSend = stoneExc;
             PlayerPrefs.SetInt("StoneSend",amountStoneSend);
             StoneSend.text = amountStoneSend.ToString();
             PlayerPrefs.SetInt("StoneMine", amountStone);
