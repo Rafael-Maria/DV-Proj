@@ -93,6 +93,7 @@ public class BuildingController : MonoBehaviour
         if(validateUpgrade()){
             //Debug.Log("validate level: " + GetLevel());
             SetLevel((GetLevel()+1));
+            gameController.saveGame();
         } else {
             //Debug.Log("nao entrei");
         }
