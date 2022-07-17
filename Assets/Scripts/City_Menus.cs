@@ -1,6 +1,8 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
+using TMPro;
 
 public class City_Menus: MonoBehaviour {
 
@@ -8,14 +10,17 @@ public class City_Menus: MonoBehaviour {
 
     [Header("Resources")]
     private int stone;
-    private int gold;
+    [SerializeField] private GameObject stoneCounter;
     private int silver;
+    [SerializeField] private GameObject silverCounter;
+    private int gold;
+    [SerializeField] private GameObject goldCounter;
 
     [Header("Boards")]
-    public GameObject board;
-    public GameObject navigation;
-    public GameObject navigation_optional;
-    public GameObject boardUpgrade;
+    [SerializeField] private GameObject board;
+    [SerializeField] private GameObject navigation;
+    [SerializeField] private GameObject navigation_optional;
+    [SerializeField] private GameObject level;
     private Vector3 startPos;
     private Vector3 endPos;
     private Vector3 startPos2;
@@ -27,6 +32,7 @@ public class City_Menus: MonoBehaviour {
     private bool goUp;
     private bool validation;
     
+    private string aux;
 
     void Start(){
         //Resources
@@ -60,13 +66,13 @@ public class City_Menus: MonoBehaviour {
     }
 
     public void close(){
-        if(validation == true){
+        if(validation == true && goUp == false){
             validation = false;
             isPressed = true;
             goUp = true;
             currentTime=0;
-            startPos2 = board.transform.position;
-            endPos2 = board.transform.position + Vector3.up * distance;
+            //startPos2 = board.transform.position;
+            //endPos2 = board.transform.position + Vector3.up * distance;
             //navigation.SetActive(false);
             //navigation_optional.SetActive(true);
         }
@@ -74,9 +80,9 @@ public class City_Menus: MonoBehaviour {
 
     void Update(){
         //Resources
-        GameObject.FindWithTag("stone_counter").GetComponent<Text>().text = gameController.GetStoneAmount().ToString();
-        GameObject.FindWithTag("gold_counter").GetComponent<Text>().text = gameController.GetGoldAmount().ToString(); 
-        GameObject.FindWithTag("silver_counter").GetComponent<Text>().text = gameController.GetSilverAmount().ToString(); 
+        GameObject.FindWithTag("stone_counter").GetComponent<UnityEngine.UI.Text>().text = gameController.GetStoneAmount().ToString();
+        GameObject.FindWithTag("gold_counter").GetComponent<UnityEngine.UI.Text>().text = gameController.GetGoldAmount().ToString(); 
+        GameObject.FindWithTag("silver_counter").GetComponent<UnityEngine.UI.Text>().text = gameController.GetSilverAmount().ToString();
 
         // Menus ------------------------------------------------------
         if(isPressed == true && goUp == false && validation == false) {
@@ -100,11 +106,17 @@ public class City_Menus: MonoBehaviour {
                 validation = true;
                 //navigation.SetActive(true);
                 //navigation_optional.SetActive(false);
-                boardUpgrade.SetActive(false);
+                //boardUpgrade.SetActive(false);
             }
 
             float Perc = currentTime/duration;
             board.transform.position = Vector3.Lerp(startPos2,endPos2,Perc);
         }
+    }
+
+    public void changeLevel(int lvl){
+        aux = level.GetComponent<TextMeshProUGUI>().text;
+        aux = aux.Substring(0, aux.Length - 1);
+        level.GetComponent<TextMeshProUGUI>().text = (aux + lvl);
     }
 }

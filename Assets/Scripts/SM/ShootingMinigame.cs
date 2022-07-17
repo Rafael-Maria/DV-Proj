@@ -216,9 +216,10 @@ public class ShootingMinigame : MonoBehaviour
 
         score = 0;
         bullets = 6;
+        changeRevolver();
+        
         //spawnedCactus = 0;
         gameDuration = 30;
-
         SpawnEnemy(1);
         SpawnEnemy(2);
         SpawnEnemy(3);

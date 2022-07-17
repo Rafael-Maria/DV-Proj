@@ -11,6 +11,11 @@ TagManager:
   - clone
   - capacityValues
   - gameController
+  - warehouse
+  - sheriff
+  - saloon
+  - stable
+  - home
   layers:
   - Default
   - TransparentFX
