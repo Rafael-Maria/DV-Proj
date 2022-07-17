@@ -65,6 +65,17 @@ public class MineStorage : MonoBehaviour
     {
         //max amount to send and storageSpaceAvailable
         MaxStorage.text = "Max Capacity: " + storageSpaceAvailable.ToString();
+        setTrans(PlayerPrefs.GetInt("TranspLevel"));
+        sending = false;
+        amountStone = PlayerPrefs.GetInt("StoneMine");
+        amountSilver = PlayerPrefs.GetInt("SilverMine");
+        amountGold = PlayerPrefs.GetInt("GoldMine");
+        amountStoneSend = PlayerPrefs.GetInt("StoneSend");
+        amountSilverSend = PlayerPrefs.GetInt("SilverSend");
+        amountGoldSend = PlayerPrefs.GetInt("GoldSend");
+        storageSpaceOcupy = (amountStone + amountSilver + amountGold);
+        actualAmountToSend = (amountStoneSend + amountSilverSend + amountGoldSend);
+        timeTakes = ((5 * amountStoneSend) + (10 * amountSilverSend) + (15 * amountGoldSend));
     }
 
     // Update is called once per frame
@@ -231,6 +242,7 @@ public class MineStorage : MonoBehaviour
                 maxAmountToSend = 100;
                 break;
         }
+        PlayerPrefs.SetInt("TranspLevel",transpLevel);
         MaxTransp.text = "Max Trasnport:" + maxAmountToSend.ToString();
     }
 
@@ -251,6 +263,49 @@ public class MineStorage : MonoBehaviour
         }
         gameObject.GetComponent<Text>().text = "Mine Level: "+ mineLevel.ToString();
         MaxStorage.text = "Max Capacity: " + storageSpaceAvailable.ToString();
+    }
+
+    public void setMine(int mineLevel){
+        switch(mineLevel){
+            case 0:
+                storageSpaceAvailable = 10;
+                break;
+            case 1:
+                storageSpaceAvailable = 20;
+                break;
+            case 2:
+                storageSpaceAvailable = 80;
+                break;
+            case 3:
+                storageSpaceAvailable = 100;
+                break;
+            case 4:
+                storageSpaceAvailable = 150;
+                break;
+        }
+        gameObject.GetComponent<Text>().text = "Mine Level: "+ mineLevel.ToString();
+        MaxStorage.text = "Max Capacity: " + storageSpaceAvailable.ToString();
+    }
+
+    public void setTrans(int transpLevel){
+        switch(transpLevel){
+            case 0:
+                maxAmountToSend = 10;
+                break;
+            case 1:
+                maxAmountToSend = 20;
+                break;
+            case 2:
+                maxAmountToSend = 50;
+                break;
+            case 3:
+                maxAmountToSend = 80;
+                break;
+            case 4:
+                maxAmountToSend = 100;
+                break;
+        }
+        MaxTransp.text = "Max Trasnport:" + maxAmountToSend.ToString();
     }
 
 }

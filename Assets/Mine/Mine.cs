@@ -27,7 +27,7 @@ public class Mine : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        setLuck(PlayerPrefs.GetInt("MineLevel"));
     }
 
     // Update is called once per frame
@@ -88,6 +88,34 @@ public class Mine : MonoBehaviour
         if(mineLevel < 4){
             mineLevel++;
         }
+        PlayerPrefs.SetInt("MineLevel",mineLevel);
         mineStorage.GetComponent<MineStorage>().upgradeMine(mineLevel);
+    }
+
+    void setLuck(int mineLevel){
+        this.mineLevel = mineLevel;
+        switch(mineLevel){
+            case 0:
+                StoneLuck = 120;
+                SilverLuck = 200;
+                break;
+            case 1:
+                StoneLuck = 80;
+                SilverLuck = 140;
+                break;
+            case 2:
+                StoneLuck = 60;
+                SilverLuck = 120;
+                break;
+            case 3:
+                StoneLuck = 50;
+                SilverLuck = 80;
+                break;
+            case 4:
+                StoneLuck = 33;
+                SilverLuck = 66;
+                break;
+        }
+        mineStorage.GetComponent<MineStorage>().setMine(mineLevel);
     }
 }
