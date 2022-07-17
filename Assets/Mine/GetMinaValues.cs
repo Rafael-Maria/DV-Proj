@@ -19,14 +19,14 @@ public class GetMinaValues : MonoBehaviour
 	    int silverMineValue = PlayerPrefs.GetInt("SilverMine");
 	    int goldMineValue =PlayerPrefs.GetInt("GoldMine");
         StoneMine.text = stoneMineValue.ToString();
-        GoldMine.text = silverMineValue.ToString();
-        SilverMine.text = goldMineValue.ToString();
+        GoldMine.text = goldMineValue.ToString();
+        SilverMine.text = silverMineValue.ToString();
         int stoneSendValue = PlayerPrefs.GetInt("StoneSend");
 	    int silverSendValue = PlayerPrefs.GetInt("SilverSend");
 	    int goldSendValue =PlayerPrefs.GetInt("GoldSend");
         StoneSend.text = stoneSendValue.ToString();
-        GoldSend.text = silverSendValue.ToString();
-        SilverSend.text = goldSendValue.ToString();
+        GoldSend.text = goldSendValue.ToString();
+        SilverSend.text = silverSendValue.ToString();
         Level.text = "Mine Level: "+ PlayerPrefs.GetInt("MineLevel").ToString();
     }
 

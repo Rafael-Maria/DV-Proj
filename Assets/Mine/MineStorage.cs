@@ -83,7 +83,11 @@ public class MineStorage : MonoBehaviour
     {
         if(sending && timeTakes > 0){
             timeTakes -= Time.deltaTime;
-            timeLeft.text = timeTakes.ToString("F2");
+            if(timeTakes > 60){
+            timeLeft.text = Mathf.Floor((timeTakes / 60)).ToString() + ":" + (timeTakes - ( Mathf.Floor((timeTakes / 60)) * 60) );
+            }else{
+                timeLeft.text = timeTakes.ToString("F0");
+            }
             //update button telling time
         }
     }
@@ -188,7 +192,19 @@ public class MineStorage : MonoBehaviour
         timeTakes += 5;
         StoneSend.text = amountStoneSend.ToString();
         PlayerPrefs.SetInt("StoneSend",amountStoneSend);
-	    int goldSendValue =PlayerPrefs.GetInt("GoldSend");
+    }
+
+    public void removeStoneToSend(){
+        if(sending){
+            return;
+        }
+        if(amountStoneSend <= 0){
+            return;
+        }
+        amountStoneSend--;
+        timeTakes -= 5;
+        StoneSend.text = amountStoneSend.ToString();
+        PlayerPrefs.SetInt("StoneSend",amountStoneSend);
     }
 
     public void addSilverToSend(){
@@ -207,6 +223,19 @@ public class MineStorage : MonoBehaviour
         PlayerPrefs.SetInt("SilverSend",amountSilverSend);
     }
 
+    public void removeSilverToSend(){
+        if(sending){
+            return;
+        }
+        if(amountSilverSend <= 0){
+            return;
+        }
+        amountSilverSend--;
+        timeTakes -= 10;
+        SilverSend.text = amountSilverSend.ToString();
+        PlayerPrefs.SetInt("SilverSend",amountSilverSend);
+    }
+
     public void addGoldToSend(){
         if(sending){
             return;
@@ -219,6 +248,19 @@ public class MineStorage : MonoBehaviour
         }
         amountGoldSend++;
         timeTakes += 15;
+        GoldSend.text = amountGoldSend.ToString();
+        PlayerPrefs.SetInt("GoldSend",amountGoldSend);
+    }
+
+    public void removeGoldToSend(){
+        if(sending){
+            return;
+        }
+        if(amountGoldSend <= 0){
+            return;
+        }
+        amountGoldSend--;
+        timeTakes -= 15;
         GoldSend.text = amountGoldSend.ToString();
         PlayerPrefs.SetInt("GoldSend",amountGoldSend);
     }
