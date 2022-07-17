@@ -41,6 +41,8 @@ public class MineStorage : MonoBehaviour
     [SerializeField] private Button upgradingButton;
     [SerializeField] private Text timeLeft;
 
+    [SerializeField] GameObject controller;
+
      void Awake(){
         sending = false;
         transpLevel=0;
@@ -117,7 +119,9 @@ public class MineStorage : MonoBehaviour
             sending = true;
             yield return new WaitForSeconds(timeTakes);
             storageSpaceOcupy = storageSpaceOcupy - amountGoldSend - amountSilverSend - amountStoneSend;
-            //Gold
+            
+            GameController main = controller.GetComponent<GameController>();
+        //Gold
             amountGold -= amountGoldSend;
             amountGoldSend = 0;
             PlayerPrefs.SetInt("GoldSend",amountGoldSend);
