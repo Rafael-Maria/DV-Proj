@@ -47,6 +47,7 @@ public class MineStorage : MonoBehaviour
 
     [SerializeField] GameObject controller;
     [SerializeField] GameObject city;
+    [SerializeField] GameObject robbedMsg;
 
     [SerializeField] private GameObject textForNoCapacity;
 
@@ -166,7 +167,7 @@ public class MineStorage : MonoBehaviour
             bool assault = false;
             int randomAssault = Random.Range(0, 25);
             if(PlayerPrefs.GetInt("SheriffLvl") == 2){
-                int randomAssault = Random.Range(0, 60);
+                randomAssault = Random.Range(0, 60);
             }
             if(randomAssault == 12){
                 assault = true;
@@ -175,10 +176,11 @@ public class MineStorage : MonoBehaviour
             
             GameController main = controller.GetComponent<GameController>();
         //Gold
+            int goldExc;
             if(assault && amountGoldSend>1){
-                int goldExc = main.AddGold(Mathf.FloorToInt(amountGoldSend/2));
+                goldExc = main.AddGold(Mathf.FloorToInt(amountGoldSend/2));
             }else{
-                int goldExc = main.AddGold(amountGoldSend);
+                goldExc = main.AddGold(amountGoldSend);
             }
             amountGold -= (amountGoldSend + goldExc);
             amountGoldSend = goldExc;
@@ -188,10 +190,11 @@ public class MineStorage : MonoBehaviour
             GoldMine.text = amountGold.ToString();
 
         //Silver
+        int silverExc;
             if(assault && amountSilverSend>1){
-                int silverExc = main.AddSilver(Mathf.FloorToInt(amountSilverSend/2));
+                silverExc = main.AddSilver(Mathf.FloorToInt(amountSilverSend/2));
             }else{
-                int silverExc = main.AddSilver(amountSilverSend);
+                silverExc = main.AddSilver(amountSilverSend);
             }
             amountSilver -= (amountSilverSend + silverExc);
             amountSilverSend = silverExc;
@@ -201,10 +204,11 @@ public class MineStorage : MonoBehaviour
             SilverMine.text = amountSilver.ToString();
 
         //Stone
+        int stoneExc;
             if(assault && amountStoneSend>1){
-                int stoneExc = main.AddStone(Mathf.FloorToInt(amountStoneSend/2));
+                 stoneExc = main.AddStone(Mathf.FloorToInt(amountStoneSend/2));
             }else{
-                int stoneExc = main.AddStone(amountStoneSend);
+                 stoneExc = main.AddStone(amountStoneSend);
             }
             amountStone -= (amountStoneSend + stoneExc);
             amountStoneSend = stoneExc;
@@ -217,9 +221,10 @@ public class MineStorage : MonoBehaviour
             sending = false;
             PlayerPrefs.SetInt("TimeMine",0);
             actualAmountToSend = (amountStoneSend + amountSilverSend + amountGoldSend);
-            timeTakes = ((5 * amountStoneSend) + (10 * amountSilverSend) + (15 * amountGoldSend));~
+            timeTakes = ((5 * amountStoneSend) + (10 * amountSilverSend) + (15 * amountGoldSend));
             if(assault){
                 //Mesage telling the cargo got robbed
+                StartCoroutine(ShowAndHide(robbedMsg, 2.0f));
             }
             assault = false;
 

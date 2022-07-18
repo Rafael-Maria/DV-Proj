@@ -263,4 +263,12 @@ public class GameController : MonoBehaviour
         yield return new WaitForSeconds(delay);
         go.SetActive(false);
     }
+
+    public void SetLevel(string key, int level)
+    {
+        if (PlayerPrefs.HasKey(key))
+        {
+            PlayerPrefs.SetInt(key, level);
+        }
+    }
 }
