@@ -93,12 +93,6 @@ public class MineStorage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(PlayerPrefs.GetInt("TimeMine") > 0){
-            timeTakes = PlayerPrefs.GetInt("TimeMine");
-            PlayerPrefs.SetInt("TimeMine",0);
-            leavebool = false;
-            StartCoroutine(Send());
-        }
 
         if(sending && timeTakes > 0){
             timeTakes -= Time.deltaTime;
