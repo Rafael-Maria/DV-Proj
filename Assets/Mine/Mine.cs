@@ -95,7 +95,7 @@ public class Mine : MonoBehaviour
         mineStorage.GetComponent<MineStorage>().upgradeMine(mineLevel);
     }
 
-    private bool validateUpgrade(){
+    /*private bool validateUpgrade(){
         switch (GetLevel()){
             case 0:
                 //Debug.Log("stone: " + gameController.GetStoneAmount());
@@ -133,7 +133,7 @@ public class Mine : MonoBehaviour
                 break;
         }
         break;
-    }
+    }*/
 
     void setLuck(int mineLevel){
         this.mineLevel = mineLevel;
