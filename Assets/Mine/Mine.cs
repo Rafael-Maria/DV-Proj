@@ -80,7 +80,7 @@ public class Mine : MonoBehaviour
 
     public void upgrade(){
         if(validateUpgrade()){
-            //gameController.SetLevel("MineLvl", (PlayerPrefs.GetInt("MineLvl") + 1));
+            gameController.SetLevel("MineLvl", (PlayerPrefs.GetInt("MineLvl") + 1));
             gameController.saveGame();
             setLuck(PlayerPrefs.GetInt("MineLvl"));
             setTextUpgarde();

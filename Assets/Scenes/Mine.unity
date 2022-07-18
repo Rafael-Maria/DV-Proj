@@ -581,6 +581,9 @@ MonoBehaviour:
   gold: {fileID: 0}
   mineStorage: {fileID: 1304318630}
   sfxAudioSource: {fileID: 64808996}
+  upgradeText: {fileID: 0}
+  upgradeButton: {fileID: 0}
+  textForNoResources: {fileID: 0}
 --- !u!82 &64808996
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4695,6 +4698,7 @@ MonoBehaviour:
   controller: {fileID: 1633200925}
   city: {fileID: 1438368460}
   robbedMsg: {fileID: 0}
+  textForNoCapacity: {fileID: 367820936}
 --- !u!1 &1328678457
 GameObject:
   m_ObjectHideFlags: 0
@@ -6476,6 +6480,7 @@ MonoBehaviour:
   controller: {fileID: 1633200925}
   city: {fileID: 0}
   robbedMsg: {fileID: 0}
+  textForNoCapacity: {fileID: 0}
 --- !u!114 &1915855073
 MonoBehaviour:
   m_ObjectHideFlags: 0
