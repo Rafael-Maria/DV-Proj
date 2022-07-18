@@ -38,14 +38,13 @@ public class City_Menus: MonoBehaviour {
         silver = 25;*/
         gameController = FindObjectOfType<GameController>();
 
-
         // Menus ---------------------------------------------------
         validation = true;
         goUp = false;
         isPressed = false;
         currentTime = 0;
         duration= 1.1f;
-        distance= 256f;
+        distance= 265f;
         startPos = board.transform.position;
         endPos = board.transform.position + Vector3.down * distance;
         startPos2 = endPos;
