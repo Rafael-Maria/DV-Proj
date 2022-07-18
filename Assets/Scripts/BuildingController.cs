@@ -27,6 +27,9 @@ public class BuildingController : MonoBehaviour
         gameController = GameObject.FindGameObjectWithTag("gameController").GetComponent<GameController>();
 
         if(name != "Game Bar"){
+            string fullName = "";
+            fullName = (name.ToString() + "Lvl");
+            SetLevel(PlayerPrefs.GetInt(fullName));
             foreach (Transform child in transform)
             {
                 if(child.CompareTag(name.ToLower())) { 
@@ -108,7 +111,7 @@ public class BuildingController : MonoBehaviour
             string fullName = "";
             fullName = (name.ToString() + "Lvl");
             Debug.Log(fullName);
-            //gameController.SetLevel(fullName, (GetLevel()+1));
+            gameController.SetLevel(fullName, (GetLevel()+1));
             gameController.saveGame();
         } else {
             Debug.Log("nao entrei");

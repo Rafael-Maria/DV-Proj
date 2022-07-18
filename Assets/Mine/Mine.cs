@@ -24,6 +24,7 @@ public class Mine : MonoBehaviour
 
     void Awake(){
         mineLevel = PlayerPrefs.GetInt("MineLvl");
+        mineLevel = 0;
         StoneLuck = 120;
         SilverLuck = 200;
         chooseOre();
