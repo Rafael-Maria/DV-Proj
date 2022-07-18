@@ -24,6 +24,7 @@ public class Mine : MonoBehaviour
         chooseOre();
         DontDestroyOnLoad(this.gameObject);
     }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,7 +35,7 @@ public class Mine : MonoBehaviour
     void Update()
     {
          if (Input.GetKeyDown(KeyCode.Space)){
-            mine()
+            mine();
          }
     }
 

@@ -2679,6 +2679,10 @@ MonoBehaviour:
   level: 0
   resourcesAmount: 0
   textForNoResources: {fileID: 0}
+  levelTxt: {fileID: 0}
+  menuText: {fileID: 0}
+  upgradeText: {fileID: 0}
+  upgradeButton: {fileID: 0}
 --- !u!224 &1946338328
 RectTransform:
   m_ObjectHideFlags: 0
