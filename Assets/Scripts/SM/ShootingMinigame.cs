@@ -48,6 +48,7 @@ public class ShootingMinigame : MonoBehaviour
 
     [Header("Countdown")]
     [SerializeField] private int countdownTime;
+    private int t;
     [SerializeField] private Text countdownDisplay;
 
     [Header("Countdown")]
@@ -61,9 +62,10 @@ public class ShootingMinigame : MonoBehaviour
     [SerializeField] private GameObject red;
 
     void Start() {
+        t = countdownTime;
         highscoreTable = GameObject.FindGameObjectWithTag("highscoreTable").GetComponent<HighscoreTable>();
         endMenu.SetActive(false);
-        StartCoroutine(countdownToStart());
+        go();
     }
 
     void Update()
@@ -211,6 +213,7 @@ public class ShootingMinigame : MonoBehaviour
 
     private void InitGame()
     {
+        InitialMenu.SetActive(false);
         reloading = false;
         playing = true;
 
@@ -238,16 +241,15 @@ public class ShootingMinigame : MonoBehaviour
     }
 
     public void restartgame(){
+        InitialMenu.SetActive(true);
+        t = countdownTime;
         go();
     }
 
     private void go(){
-        cursorHotspot = new Vector2(cursorTexture.width / 2, cursorTexture.height / 2);
+        cursorHotspot = new Vector2(cursorTexture.width / 1.5f, cursorTexture.height / 1.5f);
         Cursor.SetCursor(cursorTexture, Vector2.zero, CursorMode.ForceSoftware);
-        inGame.SetActive(true);
-        InitialMenu.SetActive(false);
-        countdownToStart();
-        InitGame();
+        StartCoroutine(countdownToStart());
     }
 
     IEnumerator countdownToStart(){
@@ -257,18 +259,17 @@ public class ShootingMinigame : MonoBehaviour
         bulletsText.text = "bullets: " + bullets.ToString();
         gameDuration = 30;
         //spawnedCactus = 0;
+        changeRevolver();
+        inGame.SetActive(true);
 
-        while(countdownTime > 0){
-            countdownDisplay.text = countdownTime.ToString();
+        while(t > 0){
+            countdownDisplay.text = t.ToString();
             yield return new WaitForSeconds(1f);
-            countdownTime--;
+            t--;
         }
 
         countdownDisplay.text = "GO!";
         yield return new WaitForSeconds(0.8f);
-        
-        go();
-
-        countdownDisplay.gameObject.SetActive(false);
+        InitGame();
     }
 }
