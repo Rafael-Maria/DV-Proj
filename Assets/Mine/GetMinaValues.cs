@@ -27,7 +27,7 @@ public class GetMinaValues : MonoBehaviour
         StoneSend.text = stoneSendValue.ToString();
         GoldSend.text = goldSendValue.ToString();
         SilverSend.text = silverSendValue.ToString();
-        Level.text = "Mine Level: "+ PlayerPrefs.GetInt("MineLevel").ToString();
+        Level.text = "Mine Level: " + PlayerPrefs.GetInt("MineLevel").ToString();
     }
 
     // Update is called once per frame

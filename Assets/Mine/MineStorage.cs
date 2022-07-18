@@ -341,7 +341,9 @@ public class MineStorage : MonoBehaviour
     }
 
     public void upgrade(){
-        switch(transpLevel){
+        int homeLevel = PlayerPrefs.GetInt("HomeLvl");
+        switch(homeLevel)
+        {
             case 0:
                 transpLevel = 1;
                 maxAmountToSend = 20;
@@ -359,7 +361,7 @@ public class MineStorage : MonoBehaviour
                 maxAmountToSend = 100;
                 break;
         }
-        PlayerPrefs.SetInt("TranspLevel",transpLevel);
+        PlayerPrefs.SetInt("TranspLevel", transpLevel);
         MaxTransp.text = "Max Trasnport:" + maxAmountToSend.ToString();
     }
 
@@ -422,7 +424,7 @@ public class MineStorage : MonoBehaviour
                 maxAmountToSend = 100;
                 break;
         }
-        MaxTransp.text = "Max Trasnport:" + maxAmountToSend.ToString();
+        MaxTransp.text = "Max Transport:" + maxAmountToSend.ToString();
     }
 
 }
