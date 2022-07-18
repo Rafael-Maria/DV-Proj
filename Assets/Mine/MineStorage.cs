@@ -49,6 +49,8 @@ public class MineStorage : MonoBehaviour
     [SerializeField] GameObject city;
     [SerializeField] GameObject robbedMsg;
 
+    [SerializeField] private GameObject textForNoCapacity;
+
     bool leavebool;
 
      void Awake(){
@@ -118,6 +120,7 @@ public class MineStorage : MonoBehaviour
 
     public void addProduct(int codeOre){
         if(storageSpaceOcupy >=storageSpaceAvailable){
+            StartCoroutine(ShowAndHide(textForNoCapacity, 2.0f));
             return;
         }
         storageSpaceOcupy++;
