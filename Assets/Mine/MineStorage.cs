@@ -47,10 +47,12 @@ public class MineStorage : MonoBehaviour
 
     [SerializeField] GameObject controller;
     [SerializeField] GameObject city;
+    [SerializeField] GameObject robbedMsg;
 
     bool leavebool;
 
      void Awake(){
+        //PlayerPrefs.SetInt("TimeMine",0);
         transpLevel=0;
         storageSpaceAvailable = 10;
         storageSpaceOcupy = 0;
@@ -82,17 +84,26 @@ public class MineStorage : MonoBehaviour
         actualAmountToSend = (amountStoneSend + amountSilverSend + amountGoldSend);
         timeTakes = ((5 * amountStoneSend) + (10 * amountSilverSend) + (15 * amountGoldSend));
         leavebool = true;
-        if(PlayerPrefs.GetInt("TimeMine") > 0 && leavebool){
-            timeTakes = PlayerPrefs.GetInt("TimeMine");
-            leavebool = true;
-            StartCoroutine(Send());
-        }
+        int temp = PlayerPrefs.GetInt("TimeMine");
+        Debug.Log("temp" + temp);
         sending = false;
+        if(temp > 0 && leavebool){
+            timeTakes = PlayerPrefs.GetInt("TimeMine");
+            Debug.Log("Enter if");
+            leavebool = true;
+            sending = true;
+            SendButton();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift) || Input.GetKey(KeyCode.Z)){
+            shiftPress = true;
+        }else{
+             shiftPress = false;
+        }
 
         if(sending && timeTakes > 0){
             timeTakes -= Time.deltaTime;
@@ -102,11 +113,6 @@ public class MineStorage : MonoBehaviour
                 timeLeft.text = timeTakes.ToString("F0");
             }
             //update button telling time
-        }
-        if(Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)){
-            shiftPress = true;
-        }else{
-             shiftPress = false;
         }
     }
 
@@ -137,6 +143,7 @@ public class MineStorage : MonoBehaviour
     }
 
     public void SendButton(){
+        Debug.Log("ENTER HERE PLS");
         StartCoroutine(Send());
     }
     IEnumerator Send(){
@@ -154,11 +161,24 @@ public class MineStorage : MonoBehaviour
             removeStone.interactable = false;
             sending = true;
             yield return new WaitForSeconds(timeTakes);
+            bool assault = false;
+            int randomAssault = Random.Range(0, 25);
+            if(PlayerPrefs.GetInt("SheriffLvl") == 2){
+                randomAssault = Random.Range(0, 60);
+            }
+            if(randomAssault == 12){
+                assault = true;
+            }
             storageSpaceOcupy = storageSpaceOcupy - amountGoldSend - amountSilverSend - amountStoneSend;
             
             GameController main = controller.GetComponent<GameController>();
         //Gold
-            int goldExc = main.AddGold(amountGoldSend);
+            int goldExc;
+            if(assault && amountGoldSend>1){
+                goldExc = main.AddGold(Mathf.FloorToInt(amountGoldSend/2));
+            }else{
+                goldExc = main.AddGold(amountGoldSend);
+            }
             amountGold -= (amountGoldSend + goldExc);
             amountGoldSend = goldExc;
             PlayerPrefs.SetInt("GoldSend",amountGoldSend);
@@ -167,7 +187,12 @@ public class MineStorage : MonoBehaviour
             GoldMine.text = amountGold.ToString();
 
         //Silver
-            int silverExc = main.AddSilver(amountSilverSend);
+        int silverExc;
+            if(assault && amountSilverSend>1){
+                silverExc = main.AddSilver(Mathf.FloorToInt(amountSilverSend/2));
+            }else{
+                silverExc = main.AddSilver(amountSilverSend);
+            }
             amountSilver -= (amountSilverSend + silverExc);
             amountSilverSend = silverExc;
             PlayerPrefs.SetInt("SilverSend",amountSilverSend);
@@ -176,7 +201,12 @@ public class MineStorage : MonoBehaviour
             SilverMine.text = amountSilver.ToString();
 
         //Stone
-            int stoneExc = main.AddStone(amountStoneSend);
+        int stoneExc;
+            if(assault && amountStoneSend>1){
+                 stoneExc = main.AddStone(Mathf.FloorToInt(amountStoneSend/2));
+            }else{
+                 stoneExc = main.AddStone(amountStoneSend);
+            }
             amountStone -= (amountStoneSend + stoneExc);
             amountStoneSend = stoneExc;
             PlayerPrefs.SetInt("StoneSend",amountStoneSend);
@@ -189,6 +219,11 @@ public class MineStorage : MonoBehaviour
             PlayerPrefs.SetInt("TimeMine",0);
             actualAmountToSend = (amountStoneSend + amountSilverSend + amountGoldSend);
             timeTakes = ((5 * amountStoneSend) + (10 * amountSilverSend) + (15 * amountGoldSend));
+            if(assault){
+                //Mesage telling the cargo got robbed
+                StartCoroutine(ShowAndHide(robbedMsg, 2.0f));
+            }
+            assault = false;
 
             //unlock send buttons
             SendResources.interactable = true;
@@ -207,13 +242,16 @@ public class MineStorage : MonoBehaviour
         if(sending){
             return;
         }
-        if(amountStoneSend >= amountStone){
+        if(amountStoneSend > amountStone){
+            shiftPress = false;
             return;
         }
-        if(actualAmountToSend >= maxAmountToSend){
+        if(actualAmountToSend > maxAmountToSend){
+            shiftPress = false;
             return;
         }
-        if(shiftPress){
+        if(shiftPress || Input.GetKey(KeyCode.Z)){
+            //Debug.Log("Pressed" + (amountStone - amountStoneSend) + " " + (maxAmountToSend - actualAmountToSend));
             if((amountStone - amountStoneSend) <= (maxAmountToSend - actualAmountToSend)){
                 timeTakes += (5 * (amountStone - amountStoneSend));
                 actualAmountToSend+=(amountStone - amountStoneSend);
@@ -228,6 +266,8 @@ public class MineStorage : MonoBehaviour
             actualAmountToSend++;
             timeTakes += 5;
         }
+        shiftPress = false;
+            Debug.Log("Pressed" + amountStoneSend);
         StoneSend.text = amountStoneSend.ToString();
         PlayerPrefs.SetInt("StoneSend",amountStoneSend);
     }
@@ -239,8 +279,8 @@ public class MineStorage : MonoBehaviour
         if(amountStoneSend <= 0){
             return;
         }
-        if(shiftPress){
-            timeTakes -= (5 * amountStoneSend);
+        if(shiftPress || Input.GetKey(KeyCode.Z)){
+            timeTakes = timeTakes - (5 * amountStoneSend);
             actualAmountToSend-=amountStoneSend;
             amountStoneSend=0;
         }else{
@@ -248,6 +288,7 @@ public class MineStorage : MonoBehaviour
             timeTakes -= 5;
             actualAmountToSend--;
         }
+        shiftPress = false;
         StoneSend.text = amountStoneSend.ToString();
         PlayerPrefs.SetInt("StoneSend",amountStoneSend);
     }
@@ -256,13 +297,13 @@ public class MineStorage : MonoBehaviour
         if(sending){
             return;
         }
-        if(amountSilverSend >= amountSilver){
+        if(amountSilverSend > amountSilver){
             return;
         }
-        if(actualAmountToSend >= maxAmountToSend){
+        if(actualAmountToSend > maxAmountToSend){
             return;
         }
-        if(shiftPress){
+        if(shiftPress || Input.GetKey(KeyCode.Z)){
             if((amountSilver - amountSilverSend) <= (maxAmountToSend - actualAmountToSend)){
                 timeTakes += (10 * (amountSilver - amountSilverSend));
                 actualAmountToSend+=(amountSilver - amountSilverSend);
@@ -277,6 +318,7 @@ public class MineStorage : MonoBehaviour
             actualAmountToSend++;
             timeTakes += 10;
         }
+        shiftPress = false;
         SilverSend.text = amountSilverSend.ToString();
         PlayerPrefs.SetInt("SilverSend",amountSilverSend);
     }
@@ -288,7 +330,7 @@ public class MineStorage : MonoBehaviour
         if(amountSilverSend <= 0){
             return;
         }
-        if(shiftPress){
+        if(shiftPress || Input.GetKey(KeyCode.Z)){
             timeTakes -= (10 * amountSilverSend);
             actualAmountToSend-=amountSilverSend;
             amountSilverSend=0;
@@ -297,6 +339,7 @@ public class MineStorage : MonoBehaviour
             actualAmountToSend--;
             timeTakes -= 10;
         }
+        shiftPress = false;
         SilverSend.text = amountSilverSend.ToString();
         PlayerPrefs.SetInt("SilverSend",amountSilverSend);
     }
@@ -305,13 +348,13 @@ public class MineStorage : MonoBehaviour
         if(sending){
             return;
         }
-        if(amountGoldSend >= amountGold){
+        if(amountGoldSend > amountGold){
             return;
         }
-        if(actualAmountToSend >= maxAmountToSend){
+        if(actualAmountToSend > maxAmountToSend){
             return;
         }
-        if(shiftPress){
+        if(shiftPress || Input.GetKey(KeyCode.Z)){
             if((amountGold - amountGoldSend) <= (maxAmountToSend - actualAmountToSend)){
                 timeTakes += (15 * (amountGold - amountGoldSend));
                 actualAmountToSend+=(amountGold - amountGoldSend);
@@ -326,6 +369,7 @@ public class MineStorage : MonoBehaviour
             actualAmountToSend++;
             timeTakes += 15;
         }
+        shiftPress = false;
         GoldSend.text = amountGoldSend.ToString();
         PlayerPrefs.SetInt("GoldSend",amountGoldSend);
     }
@@ -337,7 +381,7 @@ public class MineStorage : MonoBehaviour
         if(amountGoldSend <= 0){
             return;
         }
-        if(shiftPress){
+        if(shiftPress || Input.GetKey(KeyCode.Z)){
             timeTakes -= (15 * amountGoldSend);
             actualAmountToSend-=amountGoldSend;
             amountGoldSend=0;
@@ -346,6 +390,7 @@ public class MineStorage : MonoBehaviour
             actualAmountToSend--;
             timeTakes -= 15;
         }
+        shiftPress = false;
         GoldSend.text = amountGoldSend.ToString();
         PlayerPrefs.SetInt("GoldSend",amountGoldSend);
     }
@@ -438,7 +483,17 @@ public class MineStorage : MonoBehaviour
     }
 
     public void leave(){
-        PlayerPrefs.SetInt("TimeMine", (int) Mathf.Ceil(timeTakes));
+        Debug.Log("Leave" + (int) Mathf.Ceil(timeTakes));
+        int temp = Mathf.CeilToInt(timeTakes);
+        PlayerPrefs.SetInt("TimeMine", temp);
+        Debug.Log("Player Leave" +PlayerPrefs.GetInt("TimeMine", temp));
+        PlayerPrefs.Save();
         city.GetComponent<ScenesController>().loadCity();
+    }
+
+    IEnumerator ShowAndHide(GameObject go, float delay){
+        go.SetActive(true);
+        yield return new WaitForSeconds(delay);
+        go.SetActive(false);
     }
 }
