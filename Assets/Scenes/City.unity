@@ -385,7 +385,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -7.504}
+  m_AnchoredPosition: {x: 0, y: 4}
   m_SizeDelta: {x: 552.448, y: 554.802}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &33890456
@@ -441,6 +441,7 @@ MonoBehaviour:
   board: {fileID: 1509104821}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
+  upgradeMenu: {fileID: 1044798558}
 --- !u!114 &33890459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -798,6 +799,7 @@ MonoBehaviour:
   board: {fileID: 383090548}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
+  upgradeMenu: {fileID: 1801121046}
 --- !u!114 &63225962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1538,7 +1540,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 41}
+  m_AnchoredPosition: {x: 23, y: 10}
   m_SizeDelta: {x: 552.448, y: 568.446}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &189397311
@@ -1594,6 +1596,7 @@ MonoBehaviour:
   board: {fileID: 1804068243}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
+  upgradeMenu: {fileID: 1198035931}
 --- !u!114 &189397314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1882,6 +1885,7 @@ MonoBehaviour:
   menuText: {fileID: 2039228574}
   upgradeText: {fileID: 777513159}
   upgradeButton: {fileID: 1046824126}
+  menu: {fileID: 1040264982}
 --- !u!1 &197825737
 GameObject:
   m_ObjectHideFlags: 0
@@ -2946,6 +2950,7 @@ MonoBehaviour:
   board: {fileID: 1509104821}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
+  upgradeMenu: {fileID: 1044798558}
 --- !u!114 &311255747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3257,6 +3262,7 @@ MonoBehaviour:
   menuText: {fileID: 404465686}
   upgradeText: {fileID: 404465686}
   upgradeButton: {fileID: 1872482501}
+  menu: {fileID: 1804068243}
 --- !u!1 &325747694
 GameObject:
   m_ObjectHideFlags: 0
@@ -3530,8 +3536,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 385.19064, y: -0.35742188}
-  m_SizeDelta: {x: 436.9602, y: 4802.834}
+  m_AnchoredPosition: {x: 385.19064, y: 0.5308838}
+  m_SizeDelta: {x: 436.9602, y: 4801.0615}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &383090550
 MonoBehaviour:
@@ -3548,6 +3554,7 @@ MonoBehaviour:
   board: {fileID: 383090548}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
+  upgradeMenu: {fileID: 1801121046}
 --- !u!114 &383090551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4857,8 +4864,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00012207031, y: -9}
-  m_SizeDelta: {x: -0.000015258789, y: 0}
+  m_AnchoredPosition: {x: 0.00012207031, y: 3.5}
+  m_SizeDelta: {x: -0.000015258789, y: 7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &544109899
 MonoBehaviour:
@@ -5445,6 +5452,7 @@ MonoBehaviour:
   menuText: {fileID: 675352389}
   upgradeText: {fileID: 1056518048}
   upgradeButton: {fileID: 967292355}
+  menu: {fileID: 1509104821}
 --- !u!1 &664618407
 GameObject:
   m_ObjectHideFlags: 0
@@ -5502,6 +5510,7 @@ MonoBehaviour:
   menuText: {fileID: 576292059}
   upgradeText: {fileID: 1880994713}
   upgradeButton: {fileID: 1038941330}
+  menu: {fileID: 1593500610}
 --- !u!1 &675352389
 GameObject:
   m_ObjectHideFlags: 0
@@ -5990,7 +5999,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 808808721}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.0000014305}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 1.2, y: 1.6, z: 1}
   m_Children: []
   m_Father: {fileID: 196092373}
@@ -5998,7 +6007,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 31, y: 8}
+  m_AnchoredPosition: {x: 31, y: -1}
   m_SizeDelta: {x: 552.448, y: 379.829}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &808808723
@@ -6054,6 +6063,7 @@ MonoBehaviour:
   board: {fileID: 1040264982}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
+  upgradeMenu: {fileID: 544109897}
 --- !u!114 &808808726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6825,6 +6835,7 @@ MonoBehaviour:
   board: {fileID: 1804068243}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
+  upgradeMenu: {fileID: 1198035931}
 --- !u!114 &940117231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7845,8 +7856,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -772.80927, y: 0.32141113}
-  m_SizeDelta: {x: 436.95996, y: 4801.4775}
+  m_AnchoredPosition: {x: -772.80927, y: 0.53015137}
+  m_SizeDelta: {x: 436.95996, y: 4801.06}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1040264984
 MonoBehaviour:
@@ -7901,6 +7912,7 @@ MonoBehaviour:
   board: {fileID: 1040264982}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
+  upgradeMenu: {fileID: 544109897}
 --- !u!1 &1044798558
 GameObject:
   m_ObjectHideFlags: 0
@@ -8339,6 +8351,7 @@ MonoBehaviour:
   menuText: {fileID: 1768174133}
   upgradeText: {fileID: 585001908}
   upgradeButton: {fileID: 1404402414}
+  menu: {fileID: 383090548}
 --- !u!1 &1073047910
 GameObject:
   m_ObjectHideFlags: 0
@@ -8499,6 +8512,18 @@ MonoBehaviour:
       - m_Target: {fileID: 196092374}
         m_TargetAssemblyTypeName: BuildingController, Assembly-CSharp
         m_MethodName: Upgrade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1040264986}
+        m_TargetAssemblyTypeName: City_Menus, Assembly-CSharp
+        m_MethodName: close
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9251,6 +9276,7 @@ MonoBehaviour:
   menuText: {fileID: 0}
   upgradeText: {fileID: 0}
   upgradeButton: {fileID: 0}
+  menu: {fileID: 0}
 --- !u!1 &1194841917
 GameObject:
   m_ObjectHideFlags: 0
@@ -9369,8 +9395,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.001953125, y: 0}
-  m_SizeDelta: {x: 0.00024414062, y: -0.00048828125}
+  m_AnchoredPosition: {x: 0.001953125, y: -0.00024414062}
+  m_SizeDelta: {x: 0.00024414062, y: -0.00024414062}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1198035933
 MonoBehaviour:
@@ -10348,7 +10374,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 41}
+  m_AnchoredPosition: {x: 0, y: 22}
   m_SizeDelta: {x: 552.448, y: 568.446}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1367004094
@@ -10404,6 +10430,7 @@ MonoBehaviour:
   board: {fileID: 1804068243}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
+  upgradeMenu: {fileID: 1198035931}
 --- !u!114 &1367004097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11686,8 +11713,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -23.809326, y: -0.35742188}
-  m_SizeDelta: {x: 436.9602, y: 4802.834}
+  m_AnchoredPosition: {x: -23.809326, y: 0.52978516}
+  m_SizeDelta: {x: 436.9602, y: 4801.0596}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1509104823
 MonoBehaviour:
@@ -11704,6 +11731,7 @@ MonoBehaviour:
   board: {fileID: 1509104821}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
+  upgradeMenu: {fileID: 1044798558}
 --- !u!114 &1509104824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12172,6 +12200,7 @@ MonoBehaviour:
   board: {fileID: 1593500610}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
+  upgradeMenu: {fileID: 1902707803}
 --- !u!114 &1553570327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12480,6 +12509,7 @@ MonoBehaviour:
   board: {fileID: 1593500610}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
+  upgradeMenu: {fileID: 1902707803}
 --- !u!114 &1571161616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12628,6 +12658,7 @@ MonoBehaviour:
   board: {fileID: 1040264982}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
+  upgradeMenu: {fileID: 544109897}
 --- !u!114 &1572134136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12920,8 +12951,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -398.80933, y: -0.12850952}
-  m_SizeDelta: {x: 436.9602, y: 4802.377}
+  m_AnchoredPosition: {x: -398.80933, y: 0.52993774}
+  m_SizeDelta: {x: 436.9602, y: 4801.06}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1593500612
 MonoBehaviour:
@@ -12938,6 +12969,7 @@ MonoBehaviour:
   board: {fileID: 1593500610}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
+  upgradeMenu: {fileID: 1902707803}
 --- !u!114 &1593500613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13190,7 +13222,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: The warehouse is full of stone
+  m_text: The warehouse is full!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 89d5caf84ce14844f9c791ac6ed84c00, type: 2}
   m_sharedMaterial: {fileID: 8604379136250743304, guid: 89d5caf84ce14844f9c791ac6ed84c00, type: 2}
@@ -13509,6 +13541,7 @@ MonoBehaviour:
   board: {fileID: 1040264982}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
+  upgradeMenu: {fileID: 544109897}
 --- !u!114 &1646843202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14394,7 +14427,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1772489667}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 1.1, y: 1.1, z: 1}
   m_Children: []
   m_Father: {fileID: 196092373}
@@ -14402,7 +14435,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -26}
+  m_AnchoredPosition: {x: 0, y: -30}
   m_SizeDelta: {x: 552.448, y: 568.446}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1772489669
@@ -14458,6 +14491,7 @@ MonoBehaviour:
   board: {fileID: 1040264982}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
+  upgradeMenu: {fileID: 544109897}
 --- !u!114 &1772489672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14606,6 +14640,7 @@ MonoBehaviour:
   board: {fileID: 1509104821}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
+  upgradeMenu: {fileID: 1044798558}
 --- !u!114 &1779902051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14836,8 +14871,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1.3417969, y: 0.00024414062}
-  m_SizeDelta: {x: 0.00024414062, y: -0.00048828125}
+  m_AnchoredPosition: {x: -1.3417969, y: 0}
+  m_SizeDelta: {x: 0.00024414062, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1801121048
 MonoBehaviour:
@@ -15052,8 +15087,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 772.19055, y: -0.35742188}
-  m_SizeDelta: {x: 436.9602, y: 4802.834}
+  m_AnchoredPosition: {x: 772.19055, y: 0.52978516}
+  m_SizeDelta: {x: 436.9602, y: 4801.0596}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1804068245
 MonoBehaviour:
@@ -15070,6 +15105,7 @@ MonoBehaviour:
   board: {fileID: 1804068243}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
+  upgradeMenu: {fileID: 1198035931}
 --- !u!114 &1804068246
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16049,7 +16085,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.8094, y: 853}
+  m_AnchoredPosition: {x: 2.8094, y: 853.6}
   m_SizeDelta: {x: 1894.9058, y: 848.1927}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1902707803
@@ -16094,8 +16130,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.004760742, y: 5}
-  m_SizeDelta: {x: 0.00024414062, y: -0.00048828125}
+  m_AnchoredPosition: {x: -0.004760742, y: 2.5}
+  m_SizeDelta: {x: 0.00024414062, y: 4.999756}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1902707805
 MonoBehaviour:
@@ -16290,7 +16326,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -23}
+  m_AnchoredPosition: {x: 0, y: -42}
   m_SizeDelta: {x: 552.448, y: 568.446}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1921793909
@@ -16346,6 +16382,7 @@ MonoBehaviour:
   board: {fileID: 1804068243}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
+  upgradeMenu: {fileID: 1198035931}
 --- !u!114 &1921793912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16628,6 +16665,7 @@ MonoBehaviour:
   board: {fileID: 1804068243}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
+  upgradeMenu: {fileID: 1198035931}
 --- !u!114 &1940353867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16776,6 +16814,7 @@ MonoBehaviour:
   board: {fileID: 1040264982}
   navigation: {fileID: 2045112740}
   navigation_optional: {fileID: 325747694}
+  upgradeMenu: {fileID: 544109897}
 --- !u!114 &1952818828
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -20,6 +20,7 @@ public class City_Menus: MonoBehaviour {
     [SerializeField] private GameObject board;
     [SerializeField] private GameObject navigation;
     [SerializeField] private GameObject navigation_optional;
+    [SerializeField] private GameObject upgradeMenu;
     private Vector3 startPos;
     private Vector3 endPos;
     private Vector3 startPos2;
@@ -53,9 +54,9 @@ public class City_Menus: MonoBehaviour {
 
     public void pressed(){
         if(validation == true){
-            isPressed = true;
             currentTime = 0;
             validation = false;
+            isPressed = true;
             //navigation.SetActive(false);
             //navigation_optional.SetActive(true);
         }
@@ -63,12 +64,10 @@ public class City_Menus: MonoBehaviour {
 
     public void close(){
         if(validation == true && goUp == false){
+            currentTime=0;
             validation = false;
             isPressed = true;
             goUp = true;
-            currentTime=0;
-            startPos2 = board.transform.position;
-            endPos2 = board.transform.position + Vector3.up * distance;
             //navigation.SetActive(false);
             //navigation_optional.SetActive(true);
         }
@@ -98,17 +97,27 @@ public class City_Menus: MonoBehaviour {
         if(isPressed == true && goUp == true && validation == false) {
             currentTime += Time.deltaTime;
             if(currentTime >= duration){
+                Debug.Log("aqui");
                 isPressed = false;
                 goUp = false;
                 validation = true;
                 //navigation.SetActive(true);
                 //navigation_optional.SetActive(false);
                 //boardUpgrade.SetActive(false);
+                startPos = board.transform.position;
+                endPos = board.transform.position + Vector3.down * distance;
+                startPos2 = endPos;
+                endPos2 = startPos;
             }
 
 
             float Perc = currentTime/duration;
             board.transform.position = Vector3.Lerp(startPos2,endPos2,Perc);
+
+            Debug.Log(name);
+            if(name.Contains("_")){
+                upgradeMenu.SetActive(false);
+            }
         }
     }
 }

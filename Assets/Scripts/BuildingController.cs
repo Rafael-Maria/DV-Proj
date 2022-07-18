@@ -20,7 +20,7 @@ public class BuildingController : MonoBehaviour
     [SerializeField] private GameObject menuText;
     [SerializeField] private GameObject upgradeText;
     [SerializeField] private GameObject upgradeButton;
-
+    [SerializeField] private GameObject menu;
 
     void Start()
     {
@@ -42,7 +42,7 @@ public class BuildingController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public int GetLevel()
@@ -107,7 +107,8 @@ public class BuildingController : MonoBehaviour
             SetLevel((GetLevel()+1));
             string fullName = "";
             fullName = (name.ToString() + "Lvl");
-            Debug.Log(fullName);
+            Debug.Log("fullname " + fullName);
+            Debug.Log("lvl " + GetLevel());
             gameController.SetLevel(fullName, (GetLevel()+1));
             gameController.saveGame();
         } else {
