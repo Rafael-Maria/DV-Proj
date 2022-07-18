@@ -4907,8 +4907,8 @@ MonoBehaviour:
   timeLeft: {fileID: 168748006}
   controller: {fileID: 1633200925}
   city: {fileID: 1438368460}
+  textForNoCapacity: {fileID: 367820936}
   robbedMsg: {fileID: 382877548}
-  textForNoCapacity: {fileID: 0}
 --- !u!1 &1328678457
 GameObject:
   m_ObjectHideFlags: 0
