@@ -107,7 +107,7 @@ public class BuildingController : MonoBehaviour
             SetLevel((GetLevel()+1));
             gameController.saveGame();
         } else {
-            //Debug.Log("nao entrei");
+            Debug.Log("nao entrei");
             StartCoroutine(ShowAndHide(textForNoResources, 2.0f));
             //textForNoResources.SetActive(true);
         }
