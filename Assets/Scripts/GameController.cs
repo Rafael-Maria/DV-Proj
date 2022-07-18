@@ -69,7 +69,7 @@ public class GameController : MonoBehaviour
             AddStone(90);
             AddSilver(90);
             AddGold(90);
-            Debug.Log("Sheriff Level: " + PlayerPrefs.GetInt("SheriffLvl"));
+            //Debug.Log("Sheriff Level: " + PlayerPrefs.GetInt("SheriffLvl"));
         }
         if (Input.GetKeyDown(KeyCode.F10))
         {

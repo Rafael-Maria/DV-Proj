@@ -2917,7 +2917,7 @@ GameObject:
   - component: {fileID: 849100293}
   - component: {fileID: 849100292}
   m_Layer: 5
-  m_Name: Stone (1)
+  m_Name: Stone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2939,8 +2939,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 865.72046, y: 325.9326}
-  m_SizeDelta: {x: 68.6985, y: 67.1703}
+  m_AnchoredPosition: {x: 897.1, y: 308.01828}
+  m_SizeDelta: {x: 51.7249, y: 50.1969}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &849100292
 MonoBehaviour:
