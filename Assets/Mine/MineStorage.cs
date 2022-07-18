@@ -72,8 +72,11 @@ public class MineStorage : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("Mine level: " + PlayerPrefs.GetInt("MineLvl"));
+        setMine(PlayerPrefs.GetInt("MineLvl"));
         //max amount to send and storageSpaceAvailable
         MaxStorage.text = "Max Capacity: " + storageSpaceAvailable.ToString();
+        Debug.Log("Max Capacity: " + storageSpaceAvailable);
         setTrans(PlayerPrefs.GetInt("TranspLevel"));
         amountStone = PlayerPrefs.GetInt("StoneMine");
         amountSilver = PlayerPrefs.GetInt("SilverMine");
@@ -118,7 +121,9 @@ public class MineStorage : MonoBehaviour
     }
 
     public void addProduct(int codeOre){
-        if(storageSpaceOcupy >=storageSpaceAvailable){
+        if(storageSpaceOcupy >= storageSpaceAvailable){
+            Debug.Log("ocupy: " + storageSpaceOcupy);
+            Debug.Log("available: " + storageSpaceAvailable);
             StartCoroutine(ShowAndHide(textForNoCapacity, 2.0f));
             return;
         }
@@ -148,6 +153,7 @@ public class MineStorage : MonoBehaviour
         Debug.Log("ENTER HERE PLS");
         StartCoroutine(Send());
     }
+
     IEnumerator Send(){
         if(amountStoneSend == 0 && amountSilverSend == 0 && amountGoldSend == 0){
         }else{
@@ -162,6 +168,29 @@ public class MineStorage : MonoBehaviour
             removeSilver.interactable = false;
             removeStone.interactable = false;
             sending = true;
+            
+            int stableLevel = PlayerPrefs.GetInt("StableLvl");
+            float stableUpgrade = 0;
+            switch(stableLevel){
+                case 0:
+                    stableUpgrade = 0.5f;
+                    break;
+                case 1:
+                    stableUpgrade = 0.10f;
+                    break;
+                case 2:
+                    stableUpgrade = 0.20f;
+                    break;
+                case 3:
+                    stableUpgrade = 0.30f;
+                    break;
+                case 4:
+                    stableUpgrade = 0.50f;
+                    break;
+            }
+
+            timeTakes = timeTakes - (timeTakes * stableUpgrade);
+
             yield return new WaitForSeconds(timeTakes);
             bool assault = false;
             int randomAssault = Random.Range(0, 25);
@@ -398,12 +427,24 @@ public class MineStorage : MonoBehaviour
     }
 
     public void upgrade(){
+        int saloonLevel = PlayerPrefs.GetInt("SaloonLvl");
+        int saloonUpgrade = 0;
+        switch(saloonLevel){
+            case 0:
+                break;
+            case 1:
+                saloonUpgrade = 50;
+                break;
+            case 2:
+                saloonUpgrade = 100;
+                break;
+        }
+
         int homeLevel = PlayerPrefs.GetInt("HomeLvl");
-        switch(homeLevel)
-        {
+        switch(homeLevel){
             case 0:
                 transpLevel = 1;
-                maxAmountToSend = 20;
+                maxAmountToSend = 25;
                 break;
             case 1:
                 transpLevel = 2;
@@ -411,37 +452,37 @@ public class MineStorage : MonoBehaviour
                 break;
             case 2:
                 transpLevel = 3;
-                maxAmountToSend = 80;
+                maxAmountToSend = 100;
                 break;
             case 3:
                 transpLevel = 4;
-                maxAmountToSend = 100;
+                maxAmountToSend = 200;
+                break;
+            case 4:
+                transpLevel = 4;
+                maxAmountToSend = 500;
                 break;
         }
+        maxAmountToSend = storageSpaceAvailable + saloonUpgrade;
         PlayerPrefs.SetInt("TranspLevel", transpLevel);
         MaxTransp.text = "Max Trasnport:" + maxAmountToSend.ToString();
+        setTrans(PlayerPrefs.GetInt("MineLvl"));
     }
 
     public void upgradeMine(int mineLevel){
-        switch(mineLevel){
+        int saloonLevel = PlayerPrefs.GetInt("SaloonLvl");
+        int saloonUpgrade = 0;
+        switch(saloonLevel){
             case 0:
-                storageSpaceAvailable = 20;
                 break;
             case 1:
-                storageSpaceAvailable = 80;
+                saloonUpgrade = 50;
                 break;
             case 2:
-                storageSpaceAvailable = 100;
-                break;
-            case 3:
-                storageSpaceAvailable = 150;
+                saloonUpgrade = 100;
                 break;
         }
-        gameObject.GetComponent<Text>().text = "Mine Level: "+ mineLevel.ToString();
-        MaxStorage.text = "Max Capacity: " + storageSpaceAvailable.ToString();
-    }
 
-    public void setMine(int mineLevel){
         switch(mineLevel){
             case 0:
                 storageSpaceAvailable = 10;
@@ -459,28 +500,81 @@ public class MineStorage : MonoBehaviour
                 storageSpaceAvailable = 150;
                 break;
         }
+        storageSpaceAvailable = storageSpaceAvailable + saloonUpgrade;
+        gameObject.GetComponent<Text>().text = "Mine Level: "+ mineLevel.ToString();
+        MaxStorage.text = "Max Capacity: " + storageSpaceAvailable.ToString();
+        setMine(PlayerPrefs.GetInt("MineLvl"));
+    }
+
+    public void setMine(int mineLevel){
+        int saloonLevel = PlayerPrefs.GetInt("SaloonLvl");
+        int saloonUpgrade = 0;
+        switch(saloonLevel){
+            case 0:
+                break;
+            case 1:
+                saloonUpgrade = 50;
+                break;
+            case 2:
+                saloonUpgrade = 100;
+                break;
+        }
+
+        switch(mineLevel){
+            case 0:
+                storageSpaceAvailable = 10;
+                break;
+            case 1:
+                storageSpaceAvailable = 20;
+                break;
+            case 2:
+                storageSpaceAvailable = 80;
+                break;
+            case 3:
+                storageSpaceAvailable = 100;
+                break;
+            case 4:
+                storageSpaceAvailable = 150;
+                break;
+        }
+        storageSpaceAvailable = storageSpaceAvailable + saloonUpgrade;
         gameObject.GetComponent<Text>().text = "Mine Level: "+ (mineLevel + 1).ToString();
         MaxStorage.text = "Max Capacity: " + storageSpaceAvailable.ToString();
     }
 
     public void setTrans(int transpLevel){
-        switch(transpLevel){
+        int saloonLevel = PlayerPrefs.GetInt("SaloonLvl");
+        int saloonUpgrade = 0;
+        switch(saloonLevel){
             case 0:
-                maxAmountToSend = 10;
                 break;
             case 1:
-                maxAmountToSend = 20;
+                saloonUpgrade = 50;
                 break;
             case 2:
-                maxAmountToSend = 50;
-                break;
-            case 3:
-                maxAmountToSend = 80;
-                break;
-            case 4:
-                maxAmountToSend = 100;
+                saloonUpgrade = 100;
                 break;
         }
+
+        switch(transpLevel){
+            case 0:
+                maxAmountToSend = 25;
+                break;
+            case 1:
+                maxAmountToSend = 50;
+                break;
+            case 2:
+                maxAmountToSend = 100;
+                break;
+            case 3:
+                maxAmountToSend = 200;
+                break;
+            case 4:
+                maxAmountToSend = 500;
+                break;
+        }
+
+        maxAmountToSend = storageSpaceAvailable + saloonUpgrade;
         MaxTransp.text = "Max Transport:" + maxAmountToSend.ToString();
     }
 
