@@ -82,14 +82,20 @@ public class MineStorage : MonoBehaviour
         actualAmountToSend = (amountStoneSend + amountSilverSend + amountGoldSend);
         timeTakes = ((5 * amountStoneSend) + (10 * amountSilverSend) + (15 * amountGoldSend));
         leavebool = true;
+        if(PlayerPrefs.GetInt("TimeMine") > 0 && leavebool){
+            timeTakes = PlayerPrefs.GetInt("TimeMine");
+            leavebool = true;
+            StartCoroutine(Send());
+        }
         sending = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(PlayerPrefs.GetInt("TimeMine") > 0 && leavebool){
+        if(PlayerPrefs.GetInt("TimeMine") > 0){
             timeTakes = PlayerPrefs.GetInt("TimeMine");
+            PlayerPrefs.SetInt("TimeMine",0);
             leavebool = false;
             StartCoroutine(Send());
         }
@@ -436,7 +442,7 @@ public class MineStorage : MonoBehaviour
     }
 
     public void leave(){
-        PlayerPrefs.GetInt("TimeMine", (int) Mathf.Ceil(timeTakes));
+        PlayerPrefs.SetInt("TimeMine", (int) Mathf.Ceil(timeTakes));
         city.GetComponent<ScenesController>().loadCity();
     }
 }
