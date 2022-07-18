@@ -47,6 +47,7 @@ public class MineStorage : MonoBehaviour
 
     [SerializeField] GameObject controller;
     [SerializeField] GameObject city;
+    [SerializeField] GameObject robbedMsg;
 
     bool leavebool;
 
@@ -220,6 +221,7 @@ public class MineStorage : MonoBehaviour
             timeTakes = ((5 * amountStoneSend) + (10 * amountSilverSend) + (15 * amountGoldSend));
             if(assault){
                 //Mesage telling the cargo got robbed
+                StartCoroutine(ShowAndHide(robbedMsg, 2.0f));
             }
             assault = false;
 
@@ -487,5 +489,11 @@ public class MineStorage : MonoBehaviour
         Debug.Log("Player Leave" +PlayerPrefs.GetInt("TimeMine", temp));
         PlayerPrefs.Save();
         city.GetComponent<ScenesController>().loadCity();
+    }
+
+    IEnumerator ShowAndHide(GameObject go, float delay){
+        go.SetActive(true);
+        yield return new WaitForSeconds(delay);
+        go.SetActive(false);
     }
 }

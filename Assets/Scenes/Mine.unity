@@ -3589,6 +3589,7 @@ MonoBehaviour:
   timeLeft: {fileID: 168748006}
   controller: {fileID: 1633200925}
   city: {fileID: 1438368460}
+  robbedMsg: {fileID: 699036018}
 --- !u!1 &1387712248
 GameObject:
   m_ObjectHideFlags: 0
