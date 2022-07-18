@@ -46,9 +46,11 @@ public class MineStorage : MonoBehaviour
     [SerializeField] private Text timeLeft;
 
     [SerializeField] GameObject controller;
+    [SerializeField] GameObject city;
+
+    bool leavebool;
 
      void Awake(){
-        sending = false;
         transpLevel=0;
         storageSpaceAvailable = 10;
         storageSpaceOcupy = 0;
@@ -70,7 +72,6 @@ public class MineStorage : MonoBehaviour
         //max amount to send and storageSpaceAvailable
         MaxStorage.text = "Max Capacity: " + storageSpaceAvailable.ToString();
         setTrans(PlayerPrefs.GetInt("TranspLevel"));
-        sending = false;
         amountStone = PlayerPrefs.GetInt("StoneMine");
         amountSilver = PlayerPrefs.GetInt("SilverMine");
         amountGold = PlayerPrefs.GetInt("GoldMine");
@@ -80,11 +81,19 @@ public class MineStorage : MonoBehaviour
         storageSpaceOcupy = (amountStone + amountSilver + amountGold);
         actualAmountToSend = (amountStoneSend + amountSilverSend + amountGoldSend);
         timeTakes = ((5 * amountStoneSend) + (10 * amountSilverSend) + (15 * amountGoldSend));
+        leavebool = true;
+        if(PlayerPrefs.GetInt("TimeMine") > 0 && leavebool){
+            timeTakes = PlayerPrefs.GetInt("TimeMine");
+            leavebool = true;
+            StartCoroutine(Send());
+        }
+        sending = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+
         if(sending && timeTakes > 0){
             timeTakes -= Time.deltaTime;
             if(timeTakes > 60){
@@ -177,6 +186,7 @@ public class MineStorage : MonoBehaviour
 
         //other parts of storage    
             sending = false;
+            PlayerPrefs.SetInt("TimeMine",0);
             actualAmountToSend = (amountStoneSend + amountSilverSend + amountGoldSend);
             timeTakes = ((5 * amountStoneSend) + (10 * amountSilverSend) + (15 * amountGoldSend));
 
@@ -402,7 +412,7 @@ public class MineStorage : MonoBehaviour
                 storageSpaceAvailable = 150;
                 break;
         }
-        gameObject.GetComponent<Text>().text = "Mine Level: "+ mineLevel.ToString();
+        gameObject.GetComponent<Text>().text = "Mine Level: "+ (mineLevel + 1).ToString();
         MaxStorage.text = "Max Capacity: " + storageSpaceAvailable.ToString();
     }
 
@@ -427,4 +437,8 @@ public class MineStorage : MonoBehaviour
         MaxTransp.text = "Max Transport:" + maxAmountToSend.ToString();
     }
 
+    public void leave(){
+        PlayerPrefs.SetInt("TimeMine", (int) Mathf.Ceil(timeTakes));
+        city.GetComponent<ScenesController>().loadCity();
+    }
 }
