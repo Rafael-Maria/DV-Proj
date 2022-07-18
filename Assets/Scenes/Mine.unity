@@ -3378,13 +3378,8 @@ MonoBehaviour:
   upgradingButton: {fileID: 645395968}
   timeLeft: {fileID: 168748006}
   controller: {fileID: 1633200925}
-<<<<<<< Updated upstream
   city: {fileID: 0}
 --- !u!1 &1387712248
-=======
-  city: {fileID: 1438368460}
---- !u!1 &1304617581
->>>>>>> Stashed changes
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

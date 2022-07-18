@@ -456,6 +456,7 @@ public class MineStorage : MonoBehaviour
         Debug.Log("Leave" + (int) Mathf.Ceil(timeTakes));
         int temp = Mathf.CeilToInt(timeTakes);
         PlayerPrefs.SetInt("TimeMine", temp);
+        Debug.Log("Player Leave" +PlayerPrefs.GetInt("TimeMine", temp));
         city.GetComponent<ScenesController>().loadCity();
     }
 }
