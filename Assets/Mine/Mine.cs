@@ -95,6 +95,46 @@ public class Mine : MonoBehaviour
         mineStorage.GetComponent<MineStorage>().upgradeMine(mineLevel);
     }
 
+    private bool validateUpgrade(){
+        switch (GetLevel()){
+            case 0:
+                //Debug.Log("stone: " + gameController.GetStoneAmount());
+                if(gameController.GetStoneAmount() >= 90 && gameController.GetSilverAmount() == 0 && gameController.GetGoldAmount() == 0){
+                    //Debug.Log("NICEEE");
+                    gameController.RemoveStone(90);
+                    return true;
+                }
+                break;
+            case 1:
+                if(gameController.GetStoneAmount() >= 550 && gameController.GetSilverAmount() >= 300 && gameController.GetGoldAmount() == 0){
+                    gameController.RemoveStone(550);
+                    gameController.RemoveSilver(300);
+                    return true;
+                }
+                break;
+            case 2:
+                if(gameController.GetStoneAmount() >= 1500 && gameController.GetSilverAmount() >= 800 && gameController.GetGoldAmount() == 0){
+                    gameController.RemoveStone(1500);
+                    gameController.RemoveSilver(800);
+                    return true;
+                }
+                break;
+            case 3:
+                if(gameController.GetStoneAmount() >= 2900 && gameController.GetSilverAmount() >= 1500 && gameController.GetGoldAmount() >= 800){
+                    gameController.RemoveStone(2900);
+                    gameController.RemoveSilver(1500);
+                    gameController.RemoveGold(800);
+                    upgradeButton.SetActive(false);
+                    return true;
+                }
+                break;
+            case 4:
+                //ja ta no ultimo nivel (meter aviso)
+                break;
+        }
+        break;
+    }
+
     void setLuck(int mineLevel){
         this.mineLevel = mineLevel;
         switch(mineLevel){
