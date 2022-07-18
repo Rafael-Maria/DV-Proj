@@ -105,10 +105,6 @@ public class BuildingController : MonoBehaviour
         if(validateUpgrade()){
             //Debug.Log("validate level: " + GetLevel());
             SetLevel((GetLevel()+1));
-            string fullName = "";
-            fullName = (name.ToString() + "Lvl");
-            Debug.Log(fullName);
-            //gameController.SetLevel(fullName, (GetLevel()+1));
             gameController.saveGame();
         } else {
             Debug.Log("nao entrei");
