@@ -48,6 +48,8 @@ public class MineStorage : MonoBehaviour
     [SerializeField] GameObject controller;
     [SerializeField] GameObject city;
 
+    [SerializeField] private GameObject textForNoCapacity;
+
     bool leavebool;
 
      void Awake(){
@@ -117,6 +119,7 @@ public class MineStorage : MonoBehaviour
 
     public void addProduct(int codeOre){
         if(storageSpaceOcupy >=storageSpaceAvailable){
+            StartCoroutine(ShowAndHide(textForNoCapacity, 2.0f));
             return;
         }
         storageSpaceOcupy++;
@@ -484,5 +487,11 @@ public class MineStorage : MonoBehaviour
         Debug.Log("Player Leave" +PlayerPrefs.GetInt("TimeMine", temp));
         PlayerPrefs.Save();
         city.GetComponent<ScenesController>().loadCity();
+    }
+
+    IEnumerator ShowAndHide(GameObject go, float delay){
+        go.SetActive(true);
+        yield return new WaitForSeconds(delay);
+        go.SetActive(false);
     }
 }
