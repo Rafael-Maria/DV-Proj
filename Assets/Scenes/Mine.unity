@@ -3190,6 +3190,7 @@ MonoBehaviour:
   upgradingButton: {fileID: 645395968}
   timeLeft: {fileID: 168748006}
   controller: {fileID: 1633200925}
+  city: {fileID: 1792029207}
 --- !u!1 &1387712248
 GameObject:
   m_ObjectHideFlags: 0
@@ -3922,9 +3923,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1792029212}
-        m_TargetAssemblyTypeName: ScenesController, Assembly-CSharp
-        m_MethodName: loadCity
+      - m_Target: {fileID: 1304318634}
+        m_TargetAssemblyTypeName: MineStorage, Assembly-CSharp
+        m_MethodName: leave
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
