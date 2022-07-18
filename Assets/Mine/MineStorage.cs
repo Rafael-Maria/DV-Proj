@@ -51,6 +51,7 @@ public class MineStorage : MonoBehaviour
     bool leavebool;
 
      void Awake(){
+        PlayerPrefs.SetInt("TimeMine",0);
         transpLevel=0;
         storageSpaceAvailable = 10;
         storageSpaceOcupy = 0;
@@ -82,10 +83,13 @@ public class MineStorage : MonoBehaviour
         actualAmountToSend = (amountStoneSend + amountSilverSend + amountGoldSend);
         timeTakes = ((5 * amountStoneSend) + (10 * amountSilverSend) + (15 * amountGoldSend));
         leavebool = true;
-        if(PlayerPrefs.GetInt("TimeMine") > 0 && leavebool){
+        int temp = PlayerPrefs.GetInt("TimeMine");
+        Debug.Log("temp" + temp);
+        if(temp > 0 && leavebool){
             timeTakes = PlayerPrefs.GetInt("TimeMine");
+            Debug.Log("Enter if");
             leavebool = true;
-            StartCoroutine(Send());
+            SendButton();
         }
         sending = false;
     }
@@ -93,7 +97,6 @@ public class MineStorage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         if(Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift) || Input.GetKey(KeyCode.Z)){
             shiftPress = true;
         }else{
@@ -138,6 +141,7 @@ public class MineStorage : MonoBehaviour
     }
 
     public void SendButton(){
+        Debug.Log("ENTER HERE PLS");
         StartCoroutine(Send());
     }
     IEnumerator Send(){
@@ -449,7 +453,9 @@ public class MineStorage : MonoBehaviour
     }
 
     public void leave(){
-        PlayerPrefs.SetInt("TimeMine", (int) Mathf.Ceil(timeTakes));
+        Debug.Log("Leave" + (int) Mathf.Ceil(timeTakes));
+        int temp = Mathf.CeilToInt(timeTakes);
+        PlayerPrefs.SetInt("TimeMine", temp);
         city.GetComponent<ScenesController>().loadCity();
     }
 }
