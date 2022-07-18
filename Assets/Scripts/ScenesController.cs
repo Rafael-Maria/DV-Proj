@@ -24,32 +24,28 @@ public class ScenesController : MonoBehaviour
         //save
 
         loading.GetComponent<UnityEngine.UI.Image>().sprite = menuLoading; 
-        StartCoroutine(ShowAndHide(loading, 2.0f)); // 2 second
-        SceneManager.LoadScene(0);
+        StartCoroutine(ShowAndHide(loading, 2.0f, 0)); // 2 second
     }
 
     public void loadCity(){
         //save
 
         loading.GetComponent<UnityEngine.UI.Image>().sprite = cityLoading;
-        StartCoroutine(ShowAndHide(loading, 2.0f)); // 2 second
-        SceneManager.LoadScene(1);
+        StartCoroutine(ShowAndHide(loading, 2.0f, 1)); // 2 second
     }
 
     public void loadMine(){
         //save
 
         loading.GetComponent<UnityEngine.UI.Image>().sprite = mineLoading;
-        StartCoroutine(ShowAndHide(loading, 2.0f)); // 2 second
-        SceneManager.LoadScene(2);
+        StartCoroutine(ShowAndHide(loading, 2.0f, 2)); // 2 second
     }
 
     public void loadGunFight(){
         //save
 
         loading.GetComponent<UnityEngine.UI.Image>().sprite = gunFightLoading;
-        StartCoroutine(ShowAndHide(loading, 2.0f)); // 2 second.
-        SceneManager.LoadScene(3);
+        StartCoroutine(ShowAndHide(loading, 2.0f, 3)); // 2 second.
     }
 
     // Update is called once per frame
@@ -58,9 +54,10 @@ public class ScenesController : MonoBehaviour
         
     }
 
-    IEnumerator ShowAndHide(GameObject go, float delay){
+    IEnumerator ShowAndHide(GameObject go, float delay, int index){
         go.SetActive(true);
         yield return new WaitForSeconds(delay);
         go.SetActive(false);
+        SceneManager.LoadScene(index);
     }
 }
