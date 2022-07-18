@@ -89,6 +89,7 @@ public class MineStorage : MonoBehaviour
     void Update()
     {
         if(PlayerPrefs.GetInt("TimeMine") > 0 && leavebool){
+            timeTakes = PlayerPrefs.GetInt("TimeMine");
             leavebool = false;
             StartCoroutine(Send());
         }
