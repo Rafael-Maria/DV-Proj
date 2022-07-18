@@ -400,7 +400,7 @@ public class MineStorage : MonoBehaviour
                 storageSpaceAvailable = 150;
                 break;
         }
-        gameObject.GetComponent<Text>().text = "Mine Level: "+ mineLevel.ToString();
+        gameObject.GetComponent<Text>().text = "Mine Level: "+ (mineLevel + 1).ToString();
         MaxStorage.text = "Max Capacity: " + storageSpaceAvailable.ToString();
     }
 
