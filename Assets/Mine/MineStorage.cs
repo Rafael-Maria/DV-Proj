@@ -160,11 +160,23 @@ public class MineStorage : MonoBehaviour
             removeStone.interactable = false;
             sending = true;
             yield return new WaitForSeconds(timeTakes);
+            bool assault = false;
+            int randomAssault = Random.Range(0, 25);
+            if(PlayerPrefs.GetInt("SheriffLvl") == 2){
+                int randomAssault = Random.Range(0, 60);
+            }
+            if(randomAssault == 12){
+                assault = true;
+            }
             storageSpaceOcupy = storageSpaceOcupy - amountGoldSend - amountSilverSend - amountStoneSend;
             
             GameController main = controller.GetComponent<GameController>();
         //Gold
-            int goldExc = main.AddGold(amountGoldSend);
+            if(assault && amountGoldSend>1){
+                int goldExc = main.AddGold(Mathf.FloorToInt(amountGoldSend/2));
+            }else{
+                int goldExc = main.AddGold(amountGoldSend);
+            }
             amountGold -= (amountGoldSend + goldExc);
             amountGoldSend = goldExc;
             PlayerPrefs.SetInt("GoldSend",amountGoldSend);
@@ -173,7 +185,11 @@ public class MineStorage : MonoBehaviour
             GoldMine.text = amountGold.ToString();
 
         //Silver
-            int silverExc = main.AddSilver(amountSilverSend);
+            if(assault && amountSilverSend>1){
+                int silverExc = main.AddSilver(Mathf.FloorToInt(amountSilverSend/2));
+            }else{
+                int silverExc = main.AddSilver(amountSilverSend);
+            }
             amountSilver -= (amountSilverSend + silverExc);
             amountSilverSend = silverExc;
             PlayerPrefs.SetInt("SilverSend",amountSilverSend);
@@ -182,7 +198,11 @@ public class MineStorage : MonoBehaviour
             SilverMine.text = amountSilver.ToString();
 
         //Stone
-            int stoneExc = main.AddStone(amountStoneSend);
+            if(assault && amountStoneSend>1){
+                int stoneExc = main.AddStone(Mathf.FloorToInt(amountStoneSend/2));
+            }else{
+                int stoneExc = main.AddStone(amountStoneSend);
+            }
             amountStone -= (amountStoneSend + stoneExc);
             amountStoneSend = stoneExc;
             PlayerPrefs.SetInt("StoneSend",amountStoneSend);
@@ -194,7 +214,11 @@ public class MineStorage : MonoBehaviour
             sending = false;
             PlayerPrefs.SetInt("TimeMine",0);
             actualAmountToSend = (amountStoneSend + amountSilverSend + amountGoldSend);
-            timeTakes = ((5 * amountStoneSend) + (10 * amountSilverSend) + (15 * amountGoldSend));
+            timeTakes = ((5 * amountStoneSend) + (10 * amountSilverSend) + (15 * amountGoldSend));~
+            if(assault){
+                //Mesage telling the cargo got robbed
+            }
+            assault = false;
 
             //unlock send buttons
             SendResources.interactable = true;
