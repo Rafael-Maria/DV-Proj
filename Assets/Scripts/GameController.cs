@@ -59,11 +59,18 @@ public class GameController : MonoBehaviour
             mine_GO.GetComponent<BuildingController>().SetLevel(PlayerPrefs.GetInt("MineLvl"));
 
         //para testar --------------
-        //AddStone(100);
+        //AddStone(1000);
     } 
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            AddStone(90);
+            AddSilver(90);
+            AddGold(90);
+            Debug.Log("Sheriff Level: " + PlayerPrefs.GetInt("SheriffLvl"));
+        }
         if (Input.GetKeyDown(KeyCode.F10))
         {
             goldAmount = 0;

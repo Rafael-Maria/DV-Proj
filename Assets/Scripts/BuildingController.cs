@@ -37,9 +37,6 @@ public class BuildingController : MonoBehaviour
                 }
             }
         }
-        /*foreach(var x in children) {
-            Debug.Log(x.ToString());
-        }*/
     }
 
     // Update is called once per frame
@@ -135,26 +132,24 @@ public class BuildingController : MonoBehaviour
         //Debug.Log("name: " + name.ToString());
         switch (name.ToString()){
             case "Warehouse":
-                //Debug.Log("aquiiiiiiiii");
                 //Debug.Log("level: " + GetLevel());
                 switch (GetLevel()){
                     case 0:
                         //Debug.Log("stone: " + gameController.GetStoneAmount());
-                        if(gameController.GetStoneAmount() >= 90 && gameController.GetSilverAmount() == 0 && gameController.GetGoldAmount() == 0){
-                            //Debug.Log("NICEEE");
+                        if(gameController.GetStoneAmount() >= 90){
                             gameController.RemoveStone(90);
                             return true;
                         }
                         break;
                     case 1:
-                        if(gameController.GetStoneAmount() >= 550 && gameController.GetSilverAmount() >= 300 && gameController.GetGoldAmount() == 0){
+                        if(gameController.GetStoneAmount() >= 550 && gameController.GetSilverAmount() >= 300){
                             gameController.RemoveStone(550);
                             gameController.RemoveSilver(300);
                             return true;
                         }
                         break;
                     case 2:
-                        if(gameController.GetStoneAmount() >= 1500 && gameController.GetSilverAmount() >= 800 && gameController.GetGoldAmount() == 0){
+                        if(gameController.GetStoneAmount() >= 1500 && gameController.GetSilverAmount() >= 800){
                             gameController.RemoveStone(1500);
                             gameController.RemoveSilver(800);
                             return true;
@@ -193,7 +188,7 @@ public class BuildingController : MonoBehaviour
             case "Saloon":
                 switch (GetLevel()){
                     case 0:
-                        if(gameController.GetStoneAmount() >= 550 && gameController.GetSilverAmount() >= 300 && gameController.GetGoldAmount() == 0){
+                        if(gameController.GetStoneAmount() >= 550 && gameController.GetSilverAmount() >= 300){
                             gameController.RemoveStone(550);
                             gameController.RemoveSilver(300);
                             return true;
@@ -216,14 +211,14 @@ public class BuildingController : MonoBehaviour
             case "Stable":
                 switch (GetLevel()){
                     case 0:
-                        if(gameController.GetStoneAmount() >= 400 && gameController.GetSilverAmount() >= 250 && gameController.GetGoldAmount() == 0){
+                        if(gameController.GetStoneAmount() >= 400 && gameController.GetSilverAmount() >= 250){
                             gameController.RemoveStone(400);
                             gameController.RemoveSilver(250);
                             return true;
                         }
                         break;
                     case 1:
-                        if(gameController.GetStoneAmount() >= 1300 && gameController.GetSilverAmount() >= 750 && gameController.GetGoldAmount() == 0){
+                        if(gameController.GetStoneAmount() >= 1300 && gameController.GetSilverAmount() >= 750){
                             gameController.RemoveStone(1300);
                             gameController.RemoveSilver(750);
                             return true;
@@ -254,7 +249,7 @@ public class BuildingController : MonoBehaviour
             case "Home":
                 switch (GetLevel()){
                     case 0:
-                        if(gameController.GetStoneAmount() >= 200 && gameController.GetSilverAmount() >= 90 && gameController.GetGoldAmount() == 0){
+                        if(gameController.GetStoneAmount() >= 200 && gameController.GetSilverAmount() >= 90){
                             gameController.RemoveStone(200);
                             gameController.RemoveSilver(90);
                             gameController.AddCitizens(10);
@@ -262,7 +257,7 @@ public class BuildingController : MonoBehaviour
                         }
                         break;
                     case 1:
-                        if(gameController.GetStoneAmount() >= 800 && gameController.GetSilverAmount() >= 400 && gameController.GetGoldAmount() == 0){
+                        if(gameController.GetStoneAmount() >= 800 && gameController.GetSilverAmount() >= 400){
                             gameController.RemoveStone(800);
                             gameController.RemoveSilver(400);
                             gameController.AddCitizens(20);
