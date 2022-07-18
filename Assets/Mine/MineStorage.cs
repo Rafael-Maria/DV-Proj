@@ -51,7 +51,7 @@ public class MineStorage : MonoBehaviour
     bool leavebool;
 
      void Awake(){
-        PlayerPrefs.SetInt("TimeMine",0);
+        //PlayerPrefs.SetInt("TimeMine",0);
         transpLevel=0;
         storageSpaceAvailable = 10;
         storageSpaceOcupy = 0;
@@ -85,13 +85,14 @@ public class MineStorage : MonoBehaviour
         leavebool = true;
         int temp = PlayerPrefs.GetInt("TimeMine");
         Debug.Log("temp" + temp);
+        sending = false;
         if(temp > 0 && leavebool){
             timeTakes = PlayerPrefs.GetInt("TimeMine");
             Debug.Log("Enter if");
             leavebool = true;
+            sending = true;
             SendButton();
         }
-        sending = false;
     }
 
     // Update is called once per frame
@@ -457,6 +458,7 @@ public class MineStorage : MonoBehaviour
         int temp = Mathf.CeilToInt(timeTakes);
         PlayerPrefs.SetInt("TimeMine", temp);
         Debug.Log("Player Leave" +PlayerPrefs.GetInt("TimeMine", temp));
+        PlayerPrefs.Save();
         city.GetComponent<ScenesController>().loadCity();
     }
 }
