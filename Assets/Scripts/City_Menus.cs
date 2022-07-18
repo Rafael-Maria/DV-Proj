@@ -44,7 +44,7 @@ public class City_Menus: MonoBehaviour {
         isPressed = false;
         currentTime = 0;
         duration= 1.1f;
-        distance= 265f;
+        distance= 470f;
         startPos = board.transform.position;
         endPos = board.transform.position + Vector3.down * distance;
         startPos2 = endPos;
