@@ -17,7 +17,13 @@ public class Mine : MonoBehaviour
     [SerializeField] Sprite gold;
     [SerializeField] GameObject mineStorage;
     [SerializeField] private AudioSource sfxAudioSource;
+    [SerializeField] private GameObject upgradeText;
+    [SerializeField] private GameObject upgradeButton;
+    [SerializeField] private GameObject textForNoResources;
+    private GameController gameController;
+
     void Awake(){
+        mineLevel = PlayerPrefs.GetInt("MineLvl");
         mineLevel = 0;
         StoneLuck = 120;
         SilverLuck = 200;
@@ -28,7 +34,10 @@ public class Mine : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        setLuck(PlayerPrefs.GetInt("MineLevel"));
+        gameController = GameObject.FindGameObjectWithTag("gameController").GetComponent<GameController>();
+        mineLevel = PlayerPrefs.GetInt("MineLvl");
+        setLuck(mineLevel);
+        setTextUpgarde();
     }
 
     // Update is called once per frame
@@ -70,60 +79,47 @@ public class Mine : MonoBehaviour
     }
 
     public void upgrade(){
-        switch(mineLevel){
-            case 0:
-                StoneLuck = 80;
-                SilverLuck = 140;
-                break;
-            case 1:
-                StoneLuck = 60;
-                SilverLuck = 120;
-                break;
-            case 2:
-                StoneLuck = 50;
-                SilverLuck = 80;
-                break;
-            case 3:
-                StoneLuck = 33;
-                SilverLuck = 66;
-                break;
+        if(validateUpgrade()){
+            //gameController.SetLevel("MineLvl", (PlayerPrefs.GetInt("MineLvl") + 1));
+            gameController.saveGame();
+            setLuck(PlayerPrefs.GetInt("MineLvl"));
+            setTextUpgarde();
+        } else {
+            //Debug.Log("nao entrei");
+            StartCoroutine(ShowAndHide(textForNoResources, 2.0f));
+            //textForNoResources.SetActive(true);
         }
-        if(mineLevel < 4){
-            mineLevel++;
-        }
-        PlayerPrefs.SetInt("MineLevel",mineLevel);
-        mineStorage.GetComponent<MineStorage>().upgradeMine(mineLevel);
+        mineStorage.GetComponent<MineStorage>().upgradeMine(PlayerPrefs.GetInt("MineLvl"));
+        gameController.saveGame();
     }
 
-    /*private bool validateUpgrade(){
-        switch (GetLevel()){
+    private bool validateUpgrade(){
+        switch (PlayerPrefs.GetInt("MineLvl")){
             case 0:
-                //Debug.Log("stone: " + gameController.GetStoneAmount());
-                if(gameController.GetStoneAmount() >= 90 && gameController.GetSilverAmount() == 0 && gameController.GetGoldAmount() == 0){
-                    //Debug.Log("NICEEE");
-                    gameController.RemoveStone(90);
+                if(gameController.GetStoneAmount() >= 300 && gameController.GetSilverAmount() == 0 && gameController.GetGoldAmount() == 0){
+                    gameController.RemoveStone(300);
                     return true;
                 }
                 break;
             case 1:
-                if(gameController.GetStoneAmount() >= 550 && gameController.GetSilverAmount() >= 300 && gameController.GetGoldAmount() == 0){
-                    gameController.RemoveStone(550);
-                    gameController.RemoveSilver(300);
+                if(gameController.GetStoneAmount() >= 800 && gameController.GetSilverAmount() >= 350 && gameController.GetGoldAmount() == 0){
+                    gameController.RemoveStone(800);
+                    gameController.RemoveSilver(350);
                     return true;
                 }
                 break;
             case 2:
-                if(gameController.GetStoneAmount() >= 1500 && gameController.GetSilverAmount() >= 800 && gameController.GetGoldAmount() == 0){
-                    gameController.RemoveStone(1500);
-                    gameController.RemoveSilver(800);
+                if(gameController.GetStoneAmount() >= 2200 && gameController.GetSilverAmount() >= 1100 && gameController.GetGoldAmount() == 0){
+                    gameController.RemoveStone(2200);
+                    gameController.RemoveSilver(1100);
                     return true;
                 }
                 break;
             case 3:
-                if(gameController.GetStoneAmount() >= 2900 && gameController.GetSilverAmount() >= 1500 && gameController.GetGoldAmount() >= 800){
-                    gameController.RemoveStone(2900);
-                    gameController.RemoveSilver(1500);
-                    gameController.RemoveGold(800);
+                if(gameController.GetStoneAmount() >= 4000 && gameController.GetSilverAmount() >= 2100 && gameController.GetGoldAmount() >= 750){
+                    gameController.RemoveStone(4000);
+                    gameController.RemoveSilver(2100);
+                    gameController.RemoveGold(750);
                     upgradeButton.SetActive(false);
                     return true;
                 }
@@ -132,8 +128,28 @@ public class Mine : MonoBehaviour
                 //ja ta no ultimo nivel (meter aviso)
                 break;
         }
-        break;
-    }*/
+        return false;
+    }
+
+    public void setTextUpgarde(){
+        switch (PlayerPrefs.GetInt("MineLvl")){
+            case 0:
+                upgradeText.GetComponent<UnityEngine.UI.Text>().text = "Probability of mining:\nStone - 100%\nSilver - 0%\nGold - 0%\n\nCost of upgarde:\n300            0         0  ";
+                break;
+            case 1:
+                upgradeText.GetComponent<UnityEngine.UI.Text>().text = "Probability of mining:\nStone - 80%\nSilver - 20%\nGold - 0%\n\nCost of upgarde:\n800        350         0   ";
+                break;
+            case 2:
+                upgradeText.GetComponent<UnityEngine.UI.Text>().text = "Probability of mining:\nStone - 60%\nSilver - 40%\nGold - 0%\n\nCost of upgarde:\n2200     1100         0     ";
+                break;
+            case 3:
+                upgradeText.GetComponent<UnityEngine.UI.Text>().text = "Probability of mining:\nStone - 50%\nSilver - 30%\nGold - 20%\n\nCost of upgarde:\n4000     2100     750    ";
+                break;
+            case 4:
+                upgradeText.GetComponent<UnityEngine.UI.Text>().text = "Probability of mining:\nStone - 33.3%\nSilver - 33.3%\nGold - 33.3%\n\nMax Level";
+                break;
+        }
+    }
 
     void setLuck(int mineLevel){
         this.mineLevel = mineLevel;
@@ -160,5 +176,11 @@ public class Mine : MonoBehaviour
                 break;
         }
         mineStorage.GetComponent<MineStorage>().setMine(mineLevel);
+    }
+
+    IEnumerator ShowAndHide(GameObject go, float delay){
+        go.SetActive(true);
+        yield return new WaitForSeconds(delay);
+        go.SetActive(false);
     }
 }
