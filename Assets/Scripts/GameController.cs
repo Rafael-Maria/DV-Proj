@@ -59,7 +59,7 @@ public class GameController : MonoBehaviour
             mine_GO.GetComponent<BuildingController>().SetLevel(PlayerPrefs.GetInt("MineLvl"));
 
         //para testar --------------
-        AddStone(100);
+        //AddStone(100);
     } 
 
     void Update()

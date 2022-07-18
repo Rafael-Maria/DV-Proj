@@ -10,9 +10,12 @@ public class HighscoreTable : MonoBehaviour {
     [SerializeField] private GameObject entryContainer;
     [SerializeField] private GameObject entryTemplate;
     private List<Transform> highscoreEntryTransformList;
+    private bool first = true;
 
     private void Awake() {
-        sort();
+        if(first){
+            sort();
+        }
     }
 
     public void sort(){
@@ -121,13 +124,13 @@ public class HighscoreTable : MonoBehaviour {
     }
 
     public void AddHighscoreEntry(int score, string name) {
-        //if(score != 0){
-            // Create HighscoreEntry
-            HighscoreEntry highscoreEntry = new HighscoreEntry { score = score, name = name };
-        
+        if(score != 0 || first == true){
             // Load saved Highscores
             string jsonString = PlayerPrefs.GetString("highscoreTable");
             Highscores highscores = JsonUtility.FromJson<Highscores>(jsonString);
+
+            // Create HighscoreEntry
+            HighscoreEntry highscoreEntry = new HighscoreEntry { score = score, name = name };
 
             if (highscores == null) {
                 // There's no stored table, initialize
@@ -143,7 +146,8 @@ public class HighscoreTable : MonoBehaviour {
             string json = JsonUtility.ToJson(highscores);
             PlayerPrefs.SetString("highscoreTable", json);
             PlayerPrefs.Save();
-        //} 
+            first = false;
+        }
     }
 
     private class Highscores {
