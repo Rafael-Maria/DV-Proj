@@ -38,13 +38,17 @@ public class Mine : MonoBehaviour
         mineLevel = PlayerPrefs.GetInt("MineLvl");
         setLuck(mineLevel);
         setTextUpgarde();
+        mineStorage.GetComponent<MineStorage>().setMine(PlayerPrefs.GetInt("MineLvl"));
+        mineStorage.GetComponent<MineStorage>().setTrans(PlayerPrefs.GetInt("MineLvl"));
     }
 
     // Update is called once per frame
     void Update()
     {
          if (Input.GetKeyDown(KeyCode.Space)){
-            mine();
+             //mineStorage.GetComponent<MineStorage>().setMine(PlayerPrefs.GetInt("MineLvl"));
+             //mineStorage.GetComponent<MineStorage>().setTrans(PlayerPrefs.GetInt("MineLvl"));
+             mine();
          }
     }
 
@@ -71,6 +75,7 @@ public class Mine : MonoBehaviour
         //adicionar ao storage o valor do ore, se o Storage ainda estiver espaço;
         //Fazer random para ver o próximo ore (alterar texture)
         //storage.addProduct(currentOre);//need to get the  of the ore
+        Debug.Log(currentOre);
         mineStorage.GetComponent<MineStorage>().addProduct(currentOre);
         int randomPickaxeNum = Random.Range(0, 3);
         string pickaxeSound = "Mina/pickaxe" + randomPickaxeNum;
@@ -90,6 +95,8 @@ public class Mine : MonoBehaviour
             //textForNoResources.SetActive(true);
         }
         mineStorage.GetComponent<MineStorage>().upgradeMine(PlayerPrefs.GetInt("MineLvl"));
+        mineStorage.GetComponent<MineStorage>().setMine(PlayerPrefs.GetInt("MineLvl"));
+        mineStorage.GetComponent<MineStorage>().setTrans(PlayerPrefs.GetInt("MineLvl"));
         gameController.saveGame();
     }
 
