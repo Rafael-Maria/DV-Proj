@@ -5278,11 +5278,10 @@ MonoBehaviour:
   m_text: 'To advance your empire you must upgrade your buildings (click on them,
     analyze the costs and upgrade them!)
 
-    
 
-    You can accept the challenge
-    and shoot the targets (gun icon on the top bar) if you need extra gold for your
-    city!'
+
+    You can accept the challenge and
+    shoot the targets (gun icon on the top bar) if you need extra gold for your city!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 89d5caf84ce14844f9c791ac6ed84c00, type: 2}
   m_sharedMaterial: {fileID: 8604379136250743304, guid: 89d5caf84ce14844f9c791ac6ed84c00, type: 2}
