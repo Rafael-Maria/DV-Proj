@@ -59,7 +59,7 @@ public class GameController : MonoBehaviour
             mine_GO.GetComponent<BuildingController>().SetLevel(PlayerPrefs.GetInt("MineLvl"));
 
         //para testar --------------
-        //AddStone(100);
+        AddStone(100);
     } 
 
     void Update()
@@ -224,7 +224,7 @@ public class GameController : MonoBehaviour
     public bool RemoveStone(int amount)
     {
         if((GetStoneAmount() - amount) >= 0){
-            silverAmount -= amount;
+            stoneAmount -= amount;
             saveGame();
             return true;
         } else {
