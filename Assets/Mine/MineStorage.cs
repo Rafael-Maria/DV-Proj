@@ -94,6 +94,12 @@ public class MineStorage : MonoBehaviour
     void Update()
     {
 
+        if(Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift) || Input.GetKey(KeyCode.Z)){
+            shiftPress = true;
+        }else{
+             shiftPress = false;
+        }
+
         if(sending && timeTakes > 0){
             timeTakes -= Time.deltaTime;
             if(timeTakes > 60){
@@ -102,11 +108,6 @@ public class MineStorage : MonoBehaviour
                 timeLeft.text = timeTakes.ToString("F0");
             }
             //update button telling time
-        }
-        if(Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)){
-            shiftPress = true;
-        }else{
-             shiftPress = false;
         }
     }
 
@@ -207,13 +208,16 @@ public class MineStorage : MonoBehaviour
         if(sending){
             return;
         }
-        if(amountStoneSend >= amountStone){
+        if(amountStoneSend > amountStone){
+            shiftPress = false;
             return;
         }
-        if(actualAmountToSend >= maxAmountToSend){
+        if(actualAmountToSend > maxAmountToSend){
+            shiftPress = false;
             return;
         }
-        if(shiftPress){
+        if(shiftPress || Input.GetKey(KeyCode.Z)){
+            //Debug.Log("Pressed" + (amountStone - amountStoneSend) + " " + (maxAmountToSend - actualAmountToSend));
             if((amountStone - amountStoneSend) <= (maxAmountToSend - actualAmountToSend)){
                 timeTakes += (5 * (amountStone - amountStoneSend));
                 actualAmountToSend+=(amountStone - amountStoneSend);
@@ -228,6 +232,8 @@ public class MineStorage : MonoBehaviour
             actualAmountToSend++;
             timeTakes += 5;
         }
+        shiftPress = false;
+            Debug.Log("Pressed" + amountStoneSend);
         StoneSend.text = amountStoneSend.ToString();
         PlayerPrefs.SetInt("StoneSend",amountStoneSend);
     }
@@ -239,8 +245,8 @@ public class MineStorage : MonoBehaviour
         if(amountStoneSend <= 0){
             return;
         }
-        if(shiftPress){
-            timeTakes -= (5 * amountStoneSend);
+        if(shiftPress || Input.GetKey(KeyCode.Z)){
+            timeTakes = timeTakes - (5 * amountStoneSend);
             actualAmountToSend-=amountStoneSend;
             amountStoneSend=0;
         }else{
@@ -248,6 +254,7 @@ public class MineStorage : MonoBehaviour
             timeTakes -= 5;
             actualAmountToSend--;
         }
+        shiftPress = false;
         StoneSend.text = amountStoneSend.ToString();
         PlayerPrefs.SetInt("StoneSend",amountStoneSend);
     }
@@ -256,13 +263,13 @@ public class MineStorage : MonoBehaviour
         if(sending){
             return;
         }
-        if(amountSilverSend >= amountSilver){
+        if(amountSilverSend > amountSilver){
             return;
         }
-        if(actualAmountToSend >= maxAmountToSend){
+        if(actualAmountToSend > maxAmountToSend){
             return;
         }
-        if(shiftPress){
+        if(shiftPress || Input.GetKey(KeyCode.Z)){
             if((amountSilver - amountSilverSend) <= (maxAmountToSend - actualAmountToSend)){
                 timeTakes += (10 * (amountSilver - amountSilverSend));
                 actualAmountToSend+=(amountSilver - amountSilverSend);
@@ -277,6 +284,7 @@ public class MineStorage : MonoBehaviour
             actualAmountToSend++;
             timeTakes += 10;
         }
+        shiftPress = false;
         SilverSend.text = amountSilverSend.ToString();
         PlayerPrefs.SetInt("SilverSend",amountSilverSend);
     }
@@ -288,7 +296,7 @@ public class MineStorage : MonoBehaviour
         if(amountSilverSend <= 0){
             return;
         }
-        if(shiftPress){
+        if(shiftPress || Input.GetKey(KeyCode.Z)){
             timeTakes -= (10 * amountSilverSend);
             actualAmountToSend-=amountSilverSend;
             amountSilverSend=0;
@@ -297,6 +305,7 @@ public class MineStorage : MonoBehaviour
             actualAmountToSend--;
             timeTakes -= 10;
         }
+        shiftPress = false;
         SilverSend.text = amountSilverSend.ToString();
         PlayerPrefs.SetInt("SilverSend",amountSilverSend);
     }
@@ -305,13 +314,13 @@ public class MineStorage : MonoBehaviour
         if(sending){
             return;
         }
-        if(amountGoldSend >= amountGold){
+        if(amountGoldSend > amountGold){
             return;
         }
-        if(actualAmountToSend >= maxAmountToSend){
+        if(actualAmountToSend > maxAmountToSend){
             return;
         }
-        if(shiftPress){
+        if(shiftPress || Input.GetKey(KeyCode.Z)){
             if((amountGold - amountGoldSend) <= (maxAmountToSend - actualAmountToSend)){
                 timeTakes += (15 * (amountGold - amountGoldSend));
                 actualAmountToSend+=(amountGold - amountGoldSend);
@@ -326,6 +335,7 @@ public class MineStorage : MonoBehaviour
             actualAmountToSend++;
             timeTakes += 15;
         }
+        shiftPress = false;
         GoldSend.text = amountGoldSend.ToString();
         PlayerPrefs.SetInt("GoldSend",amountGoldSend);
     }
@@ -337,7 +347,7 @@ public class MineStorage : MonoBehaviour
         if(amountGoldSend <= 0){
             return;
         }
-        if(shiftPress){
+        if(shiftPress || Input.GetKey(KeyCode.Z)){
             timeTakes -= (15 * amountGoldSend);
             actualAmountToSend-=amountGoldSend;
             amountGoldSend=0;
@@ -346,6 +356,7 @@ public class MineStorage : MonoBehaviour
             actualAmountToSend--;
             timeTakes -= 15;
         }
+        shiftPress = false;
         GoldSend.text = amountGoldSend.ToString();
         PlayerPrefs.SetInt("GoldSend",amountGoldSend);
     }
