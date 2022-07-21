@@ -103,20 +103,20 @@ public class Mine : MonoBehaviour
     private bool validateUpgrade(){
         switch (PlayerPrefs.GetInt("MineLvl")){
             case 0:
-                if(gameController.GetStoneAmount() >= 300 && gameController.GetSilverAmount() == 0 && gameController.GetGoldAmount() == 0){
+                if(gameController.GetStoneAmount() >= 300){
                     gameController.RemoveStone(300);
                     return true;
                 }
                 break;
             case 1:
-                if(gameController.GetStoneAmount() >= 800 && gameController.GetSilverAmount() >= 350 && gameController.GetGoldAmount() == 0){
+                if(gameController.GetStoneAmount() >= 800 && gameController.GetSilverAmount() >= 350){
                     gameController.RemoveStone(800);
                     gameController.RemoveSilver(350);
                     return true;
                 }
                 break;
             case 2:
-                if(gameController.GetStoneAmount() >= 2200 && gameController.GetSilverAmount() >= 1100 && gameController.GetGoldAmount() == 0){
+                if(gameController.GetStoneAmount() >= 2200 && gameController.GetSilverAmount() >= 1100){
                     gameController.RemoveStone(2200);
                     gameController.RemoveSilver(1100);
                     return true;
